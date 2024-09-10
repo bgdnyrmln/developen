@@ -1,0 +1,229 @@
+body{
+    margin: 0;
+    background-color: black;
+}
+
+
+
+.container{
+    margin: 0px 166px;
+}
+
+.header{
+    background-image: url(assets/background.png);
+    height: 100vh;
+    background-size: cover;
+}
+    
+
+.header-line{
+    padding-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.nav-item{
+    color: white;
+    font-weight: 700;
+    font-size: 14px;
+    font-family: 'Open Sans', sans-serif;
+    margin-right: 25px;
+    text-decoration: none;
+    transition: color 0.1s linear;
+}
+
+.nav-item:hover{
+    color: grey;
+}
+
+.cart{
+    position: relative;
+    padding-right: 10px;
+    height: 50px;
+}
+
+.cart-img{
+    border-radius: 5px;
+    position: absolute;
+    top: 13px;
+    right: 5px;
+}
+
+.logo-img{
+    border-radius: 100px;
+}
+
+.phone-img{
+    border-radius: 100%;
+}
+
+.num{
+    color: white;
+    text-decoration: none;
+    font-weight: 700;
+    font-family: 'Open Sans', sans-serif;
+    transition: color 0.1s linear;
+}
+
+.num:hover{
+    color: grey;
+}
+
+.phone-text{
+    color: white;
+    font-weight: 700;
+    font-size: 9px;
+    font-family: 'Open Sans', sans-serif;
+    margin-right: 25px;
+    text-decoration: none;
+    transition: color 0.1s linear;
+}
+
+
+
+.button{
+    background-color: rgb(255, 255, 255);
+    border-radius: 5px;
+    padding: 14px 19px;
+    color: black;
+    font-weight: 700;
+    font-size: 14px;
+    font-family: 'Open Sans', sans-serif;
+    margin-right: 25px;
+    text-decoration: none;
+    transition: background-color 0.1s linear;
+}
+
+.button:hover{
+    background-color: grey;
+}
+
+.header-down{
+    position: relative;
+}
+.header-title{
+    margin-top: 222px;
+    position: absolute;
+    font-family: 'Open Sans', sans-serif;
+    color: white;
+    font-weight: 400;
+    font-size: 50px;
+    text-align: center;
+}
+
+.header-subtitle{
+    color: white;
+    font-size: 70px;
+}
+
+.header-suptitle{
+    color: white;
+    font-size: 17px;
+}
+
+.header-suptitle:after{
+    position: absolute;
+    content: "";
+    height: 2px;
+    width: 65px;
+    background-color: white;
+    top: 175px;
+    left: 310px;
+}
+.header-suptitle:before{
+    position: absolute;
+    content: "";
+    height: 2px;
+    width: 65px;
+    background-color: white;
+    top: 175px;
+    right: 310px;
+}
+
+.header-button{
+    font-family: 'Open Sans', sans-serif;
+    border-radius: 5px;
+    background-color: white;
+    padding: 14px 28px;
+    color: black;
+    font-size: 14px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: background-color 0.1s linear;
+}
+
+.header-button:hover{
+    background-color: grey;
+}
+
+.cards{
+    background-image: url(background2.png);
+    height: 100vh;
+    background-size: cover;
+}
+
+.card-holder{
+    display: flex;
+    justify-content: center;
+}
+
+.card{
+    border-radius: 10px;
+    box-shadow: 10px 10px 40px 20px #0000001A;
+    width: 349px;
+    margin-right: 31px;
+    background-color: white;
+    margin-top: -80px;
+    padding: 0px 20px;
+}
+
+.card-img{
+    height: 100px;
+    width: 100px;
+}
+
+.card-image{
+    display:flex;
+    justify-content: center;
+    padding-top: 31px;
+}
+
+.card-title{
+    display:flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    font-family: 'Tinos', serif;
+    font-size: 30px;
+    font-weight: 400;
+}
+.card-title span{
+    color: rgb(192, 140, 140);
+}
+.card-desc{
+    text-align: center;
+    font-family: 'Tinos', serif;
+    font-size: 26px;
+    font-weight: 400;
+    color: gray;
+}
+
+.cards-animation {
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.cards-animation.cards-show{
+    opacity: 1;
+    transition: all 1.5s;
+    transform: translateY(0%);
+}
+
+
+.about-title{
+    font-family: 'Open Sans', sans-serif;
+    color: white;
+    font-weight: 400;
+    font-size: 50px;
+    text-align: center;
+}
