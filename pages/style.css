@@ -227,3 +227,11 @@ body{
     font-size: 50px;
     text-align: center;
 }
+
+.about-text{
+    font-family: 'Open Sans', sans-serif;
+    color: white;
+    font-weight: 400;
+    font-size: 20px;
+    text-align: center;
+}
