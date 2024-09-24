@@ -13,6 +13,10 @@ body{
     background-image: url(assets/background.png);
     height: 100vh;
     background-size: cover;
+    background-position: center center; /* Keeps the image centered */
+    background-repeat: no-repeat; /* Prevents the image from repeating */
+    background-attachment: fixed; /* Optional: Keeps the image fixed when scrolling */
+
 }
     
 
@@ -37,18 +41,6 @@ body{
     color: grey;
 }
 
-.cart{
-    position: relative;
-    padding-right: 10px;
-    height: 50px;
-}
-
-.cart-img{
-    border-radius: 5px;
-    position: absolute;
-    top: 13px;
-    right: 5px;
-}
 
 .logo-img{
     border-radius: 100px;
@@ -81,7 +73,6 @@ body{
 }
 
 
-
 .button{
     background-color: rgb(255, 255, 255);
     border-radius: 5px;
@@ -95,6 +86,19 @@ body{
     transition: background-color 0.1s linear;
 }
 
+.button-title{
+    background-color: rgb(255, 255, 255);
+    border-radius: 5px;
+    padding: 14px 19px;
+    color: black;
+    font-weight: 700;
+    font-size: 14px;
+    font-family: 'Open Sans', sans-serif;
+    margin-right: 2vh;
+    text-decoration: none;
+    transition: background-color 0.1s linear;
+}
+
 .button:hover{
     background-color: grey;
 }
@@ -103,61 +107,46 @@ body{
     position: relative;
 }
 .header-title{
-    margin-top: 222px;
+    margin-top: 22vh;
     position: absolute;
     font-family: 'Open Sans', sans-serif;
     color: white;
     font-weight: 400;
-    font-size: 50px;
+    font-size: 7vh;
     text-align: center;
 }
 
 .header-subtitle{
     color: white;
-    font-size: 70px;
+    font-size: 9vh;
 }
 
 .header-suptitle{
     color: white;
-    font-size: 17px;
+    font-size: 2vh;
 }
 
 .header-suptitle:after{
     position: absolute;
     content: "";
-    height: 2px;
-    width: 65px;
+    height: 0.2vh;
+    width: 7vh;
     background-color: white;
-    top: 175px;
-    left: 310px;
+    top: 23.5vh;
+    left: 40vh;
 }
 .header-suptitle:before{
     position: absolute;
     content: "";
-    height: 2px;
-    width: 65px;
+    height: 0.2vh;
+    width: 7vh;
     background-color: white;
-    top: 175px;
-    right: 310px;
-}
-
-.header-button{
-    font-family: 'Open Sans', sans-serif;
-    border-radius: 5px;
-    background-color: white;
-    padding: 14px 28px;
-    color: black;
-    font-size: 14px;
-    font-weight: 700;
-    text-decoration: none;
-    transition: background-color 0.1s linear;
-}
-
-.header-button:hover{
-    background-color: grey;
+    top: 23.5vh;
+    right: 40vh;
 }
 
 .cards{
+    margin-top: 25vh;
     background-image: url(background2.png);
     height: 100vh;
     background-size: cover;
@@ -169,13 +158,18 @@ body{
 }
 
 .card{
-    border-radius: 10px;
-    box-shadow: 10px 10px 40px 20px #0000001A;
-    width: 349px;
-    margin-right: 31px;
+    border-radius: 1vh;
+    box-shadow: 1vh 1vh 4vh 2vh #0000001A;
+    width: 34.9vh;
+    margin-right: 3vh;
     background-color: white;
     margin-top: -80px;
     padding: 0px 20px;
+}
+
+.card:hover {
+    background-color: rgb(222, 222, 222);
+    transition: 0.5s;
 }
 
 .card-img{
@@ -206,6 +200,27 @@ body{
     font-size: 26px;
     font-weight: 400;
     color: gray;
+}
+
+.card-button{
+    background-color:rgb(192, 140, 140);
+    border-radius: 5px;
+    padding: 14px 19px;
+    color: black;
+    font-weight: 700;
+    font-size: 14px;
+    font-family: 'Open Sans', sans-serif;
+    margin-right: 25px;
+    text-decoration: none;
+    transition: background-color 0.1s linear;
+    display: flex;
+    justify-content: center;
+    margin: 50px;
+}
+
+.card-button:hover{
+    background-color: grey;
+    transition: all 0.5s;
 }
 
 .cards-animation {
