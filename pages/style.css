@@ -4,6 +4,11 @@ body{
 }
 
 
+.dark{
+    background-color: #e6e6e6;
+    color: #222;
+}
+
 
 .container{
     margin: 0px 166px;
@@ -25,6 +30,23 @@ body{
     display: flex;
     align-items: center;
     justify-content: space-around;
+    position: fixed;
+    width: 80%;
+    height: 20vh;
+    -webkit-transition: 0.5s ease-in-out;
+    -moz-transition: 0.5s ease-in-out;
+    transition: 0.5s ease-in-out;
+    transition: background-color 0.5s opacity 0.3s;
+    z-index: 1000;
+}
+
+.header-line:hover{
+    background-color: black;
+    transition: 0.5s;
+}
+
+html:has(body:has(:not(.header-line))) .header-line {
+    background-color: black;
 }
 
 .nav-item{
@@ -35,9 +57,25 @@ body{
     margin-right: 25px;
     text-decoration: none;
     transition: color 0.1s linear;
+    
 }
 
 .nav-item:hover{
+    color: grey;
+}
+
+.changetheme{
+    color: white;
+    font-weight: 700;
+    font-size: 14px;
+    font-family: 'Open Sans', sans-serif;
+    margin-right: 25px;
+    text-decoration: none;
+    transition: color 0.1s linear;
+    cursor: pointer;
+}
+
+.changetheme:hover{
     color: grey;
 }
 
@@ -103,11 +141,9 @@ body{
     background-color: grey;
 }
 
-.header-down{
-    position: relative;
-}
+
 .header-title{
-    margin-top: 22vh;
+    margin-top: 50vh;
     position: absolute;
     font-family: 'Open Sans', sans-serif;
     color: white;
@@ -146,7 +182,7 @@ body{
 }
 
 .cards{
-    margin-top: 25vh;
+    margin-top: 35vh;
     background-image: url(background2.png);
     height: 100vh;
     background-size: cover;
@@ -165,6 +201,9 @@ body{
     background-color: white;
     margin-top: -80px;
     padding: 0px 20px;
+    -webkit-transition: 0.5s ease-in-out;
+    -moz-transition: 0.5s ease-in-out;
+    transition: 0.5s ease-in-out;
 }
 
 .card:hover {
@@ -216,6 +255,9 @@ body{
     display: flex;
     justify-content: center;
     margin: 50px;
+    -webkit-transition: 0.5s ease-in-out;
+    -moz-transition: 0.5s ease-in-out;
+    transition: 0.5s ease-in-out;
 }
 
 .card-button:hover{
