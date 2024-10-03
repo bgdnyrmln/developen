@@ -1,18 +1,44 @@
 body{
     margin: 0;
     background-color: black;
+    transition: background-color 0.5s, color 0.5s;
+}
+
+/* Light theme styles */
+body.light-theme {
+    background-color: white;
+    color: black;
 }
 
 
-.dark{
-    background-color: #e6e6e6;
-    color: #222;
+
+.button.light-theme {
+    background-color: black;
+    color: white;
+}
+
+.card.light-theme {
+    background-color: #f0f0f0;
+}
+
+.card-title.light-theme {
+    color: #000;
+}
+
+.card-desc.light-theme {
+    color: #444;
+}
+
+.card-button.light-theme {
+    background-color: #444;
+    color: white;
+}
+
+.card-button.light-theme:hover {
+    background-color: black;
 }
 
 
-.container{
-    margin: 0px 166px;
-}
 
 .header{
     background-image: url(assets/background.png);
@@ -26,12 +52,12 @@ body{
     
 
 .header-line{
+    width: 100%;
     padding-top: 10px;
     display: flex;
     align-items: center;
     justify-content: space-around;
     position: fixed;
-    width: 80%;
     height: 20vh;
     -webkit-transition: 0.5s ease-in-out;
     -moz-transition: 0.5s ease-in-out;
@@ -48,6 +74,7 @@ body{
 html:has(body:has(:not(.header-line))) .header-line {
     background-color: black;
 }
+
 
 .nav-item{
     color: white;
@@ -122,6 +149,7 @@ html:has(body:has(:not(.header-line))) .header-line {
     margin-right: 25px;
     text-decoration: none;
     transition: background-color 0.1s linear;
+    width: 12.2vh;
 }
 
 .button-title{
@@ -137,8 +165,54 @@ html:has(body:has(:not(.header-line))) .header-line {
     transition: background-color 0.1s linear;
 }
 
-.button:hover{
-    background-color: grey;
+
+
+
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    margin-top: 0vh;
+    display: none;
+    position: absolute;
+    background-color: rgb(255, 255, 255);
+    border-radius: 5px;
+    padding: 1vh 0.7vh;
+    color: black;
+    font-weight: 700;
+    font-size: 14px;
+    font-family: 'Open Sans', sans-serif;
+    margin-right: 25px;
+    text-decoration: none;
+    transition: background-color 0.1s linear;
+
+  }
+  
+  /* Links inside the dropdown */
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+  
+  /* Change color of dropdown links on hover */
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+  
+  /* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+  
+  /* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {
+    background-color: #3e8e41;
+}
+
+.header-down{
+    display: flex;
+    margin-left: 20vh;
 }
 
 

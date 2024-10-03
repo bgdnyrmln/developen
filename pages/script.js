@@ -40,14 +40,18 @@ function onEntry(entry) {
   });
   
 
-
-
-  $( ".changetheme" ).on("click", function() {
-    if( $( "body" ).hasClass( "dark" )) {
-        $( "body" ).removeClass( "dark" );
-        $( ".changetheme" ).text( "unfreak my eyes pls" );
-    } else {
-        $( "body" ).addClass( "dark" );
-        $( ".change" ).text( "ON" );
-    }
+  document.addEventListener('DOMContentLoaded', () => {
+    const themeToggleButton = document.getElementById('theme-toggle');
+    const bodyElement = document.body;
+    // Function to toggle between light and dark themes
+    themeToggleButton.addEventListener('click', () => {
+        bodyElement.classList.toggle('light-theme');
+        // Update the button text based on the current theme
+        if (bodyElement.classList.contains('light-theme')) {
+            themeToggleButton.textContent = 'Back to Dark Mode';
+        } else {
+            themeToggleButton.textContent = 'freak my eyes pls';
+        }
+    });
 });
+
