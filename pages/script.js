@@ -55,3 +55,16 @@ function onEntry(entry) {
     });
 });
 
+
+document.getElementById("logo").addEventListener("click", function () {
+  if(window.innerWidth <= 815) {  // works only for mobile version
+    document.getElementById("side-menu").style.width = "250px"; // Open the side menu
+  }
+  else {
+    document.getElementById("logo").href = "main.html";
+  }
+});
+
+document.getElementById("close-btn").addEventListener("click", function () {
+  document.getElementById("side-menu").style.width = "0"; // Close the side menu
+});

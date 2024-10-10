@@ -111,10 +111,6 @@ html:has(body:has(:not(.header-line))) .header-line {
     border-radius: 100px;
 }
 
-.phone-img{
-    border-radius: 100%;
-}
-
 .num{
     color: white;
     text-decoration: none;
@@ -211,7 +207,6 @@ html:has(body:has(:not(.header-line))) .header-line {
 }
 
 .header-down{
-    display: flex;
     margin-left: 20vh;
 }
 
@@ -315,6 +310,54 @@ html:has(body:has(:not(.header-line))) .header-line {
     color: gray;
 }
 
+@media (max-width: 815px) {
+    .card-holder {
+        flex-direction: column; /* Stack cards vertically */
+        align-items: center; /* Center the cards */
+    }
+
+    .card {
+        margin-top: 1vh; /* Add some margin to the top of the card */
+        margin-right: 0; /* Remove right margin between cards */
+        margin-bottom: 20px; /* Add some margin between stacked cards */
+        width: 80%; /* Adjust card width for mobile */
+    }
+
+    .nav-item{
+        display: none;
+    }
+}
+
+@media (max-width: 650px) { /* Mobile styles */
+    .header-title{
+        font-size: 5vh;
+    }
+    .header-subtitle{
+        margin-bottom: 2.7vh;
+    }
+    .num{
+        display: none;
+    }
+    .phone-text{
+        display: none;
+    }
+    .logo-img{
+        margin-right: 5vh;
+    }
+    .header-line{
+        display: flex;
+        justify-content: center;
+    }
+    .header-down{
+        margin-left: 0vh;
+        display: flex;
+        justify-content: center;
+    }
+    .header-logo {
+        cursor: pointer;
+    }
+}
+
 .card-button{
     background-color:rgb(192, 140, 140);
     border-radius: 5px;
@@ -333,6 +376,7 @@ html:has(body:has(:not(.header-line))) .header-line {
     -moz-transition: 0.5s ease-in-out;
     transition: 0.5s ease-in-out;
 }
+
 
 .card-button:hover{
     background-color: grey;
@@ -365,4 +409,40 @@ html:has(body:has(:not(.header-line))) .header-line {
     font-weight: 400;
     font-size: 20px;
     text-align: center;
+}
+
+
+/* Side menu styles */
+.side-menu {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1001;
+    top: 0;
+    left: 0;
+    background-color: black;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+    text-align: center;
+}
+
+.side-menu a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: white;
+    display: block;
+    transition: 0.3s;
+}
+
+.side-menu a:hover {
+    color: grey;
+}
+
+#close-btn {
+    position: absolute;
+    top: 20px;
+    right: 25px;
+    font-size: 36px;
 }
