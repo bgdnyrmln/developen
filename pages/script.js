@@ -1,11 +1,13 @@
 function onEntry(entry) {
     entry.forEach(change => {
       if (change.isIntersecting) {
-       change.target.classList.add('cards-show');
+        change.target.classList.add('cards-show');
       }
     });
   }
   
+
+
   let options = {
     threshold: [0.5] };
   let observer = new IntersectionObserver(onEntry, options);
@@ -67,4 +69,26 @@ document.getElementById("logo").addEventListener("click", function () {
 
 document.getElementById("close-btn").addEventListener("click", function () {
   document.getElementById("side-menu").style.width = "0"; // Close the side menu
+});
+
+
+function disableScrolling(){ // Disable scrolling
+  var x=window.scrollX;
+  var y=window.scrollY;
+  window.onscroll=function(){window.scrollTo(x, y);};
+}
+
+function enableScrolling(){ // Enable scrolling
+  window.onscroll=function(){};
+}
+
+
+document.getElementById("modal-button1").addEventListener("click", function () {
+  document.getElementById("modal1").style.display = "block"; // Open the modal
+  disableScrolling(); // Disable scrolling
+});
+
+document.getElementById("modal1").addEventListener("click", function () {
+  document.getElementById("modal1").style.display = "none"; // Close the modal
+  enableScrolling(); // Enable scrolling
 });
