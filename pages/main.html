@@ -20,40 +20,46 @@
 <body>
 <div class = "header">
     <div class = "container">
-        <!-- horizontal navigation bar or smth like that -->
         <div class = "header-line" id = "headerline">
-            <div class = "header-logo">
-                <img class = "logo-img" src="assets/logo.png" id="logo" alt="">
-            </div>
-            <div class = "nav">
-                <a class="nav-item" href="main.html">Home</a>
-                <a class="nav-item" href="about.html">About us</a>
-                <a class="nav-item" href="contacts.html">Contacts</a>
-            </div>
-            <div>
-                <div class="number">
-                    <a class = "num" href="#">+37122073901</a>
+                    <div class = "header-logo">
+                        <img class = "logo-img" src="assets/logo.png" id="logo" alt="">
+                    </div>
+                    <div class = "nav">
+                        <a class="nav-item" href="main.html">Home</a>
+                        <a class="nav-item" href="/pages/pages/about.html">About us</a>
+                        <a class="nav-item" href="/pages/pages/contacts.html">Contacts</a>
+                    </div>
+                    <div>
+                        <div class="number">
+                            <a class = "num" href="#">+37122073901</a>
+                        </div>
+                        <div class="phone-text">
+                            Bro just call us if u want.
+                        </div>
+                    </div>
+                    <div class="changetheme" id='theme-toggle'>
+                        freak my eyes pls
+                    </div>
+                    
+                    <!-- profile button dropdown (need to add the functionality)-->
+                    <div class="dropdown">
+                        <div class="btn">
+                            <a class = "button">Profile &#x2935;</a>
+                        </div>
+                        <div class="dropdown-content">
+                            <a href="#">Link 1</a>
+                            <a href="#">Link 2</a>
+                            <a href="#">Link 3</a>
+                          </div>
+                    </div>
+                    <div id="side-menu" class="side-menu">
+                        <a href="main.html">Home</a>
+                        <a href="about.html">About us</a>
+                        <a href="contacts.html">Contacts</a>
+                        <a href="#" id="close-btn">Close</a>
+                    </div>
                 </div>
-                <div class="phone-text">
-                    Bro just call us if u want.
-                </div>
-            </div>
-            <div class="changetheme" id="theme-toggle">
-                freak my eyes pls
-            </div>
-            
-            <!-- profile button dropdown (need to add the functionality)-->
-            <div class="dropdown">
-                <div class="btn">
-                    <a class = "button" href="#">Profile</a>
-                </div>
-                <div class="dropdown-content">
-                    <a href="#">Link 1</a>
-                    <a href="#">Link 2</a>
-                    <a href="#">Link 3</a>
-                  </div>
-            </div>
-        </div>
+        
         <!-- down the header (big cool text 0_0, might add some animation) -->
         <div class="header-down">
             <div class="header-title">
@@ -70,13 +76,6 @@
             </div>
         </div>
     </div>
-</div>
-
-<div id="side-menu" class="side-menu">
-    <a href="main.html">Home</a>
-    <a href="about.html">About us</a>
-    <a href="contacts.html">Contacts</a>
-    <a href="#" id="close-btn">Close</a>
 </div>
 
 <!-- cards (need to add cool animations) -->
@@ -107,7 +106,19 @@
                         </div>
                         <div class = "modal-body">
                             <div class = "modal-text">
-                                Modal text
+                                card description card description
+                                card description card description
+                                card description card descriptioncard description card description
+                                card description card description
+                                card description card descriptioncard description card description
+                                card description card description
+                                card description card descriptioncard description card description
+                                card description card description
+                                card description card descriptioncard description card description
+                                card description card description
+                                card description card descriptioncard description card description
+                                card description card description
+                                card description card description
                             </div>
                         </div>
                     </div>
@@ -128,6 +139,32 @@
                 <div class = "card-btn">
                     <a class = "card-button" href = "#" id="modal-button2">xd</a>
                 </div>
+                <div class = "modal" id = "modal2"> 
+                    <div class = "modal-content">
+                        <div class = "modal-header">
+                            <div class = "modal-title">
+                                Modal title
+                            </div>
+                        </div>
+                        <div class = "modal-body">
+                            <div class = "modal-text">
+                                card description card description
+                                card description card description
+                                card description card descriptioncard description card description
+                                card description card description
+                                card description card descriptioncard description card description
+                                card description card description
+                                card description card descriptioncard description card description
+                                card description card description
+                                card description card descriptioncard description card description
+                                card description card description
+                                card description card descriptioncard description card description
+                                card description card description
+                                card description card description
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class = "card">
                 <div class = "card-image">
@@ -144,11 +181,54 @@
                 <div class = "card-btn">
                     <a class = "card-button" href = "#" id="modal-button3">xd</a>
                 </div>
+                <div class = "modal" id = "modal3"> 
+                    <div class = "modal-content">
+                        <div class = "modal-header">
+                            <div class = "modal-title">
+                                Modal title
+                            </div>
+                        </div>
+                        <div class = "modal-body">
+                            <div class = "modal-text">
+                                card description card description
+                                card description card description
+                                card description card descriptioncard description card description
+                                card description card description
+                                card description card descriptioncard description card description
+                                card description card description
+                                card description card descriptioncard description card description
+                                card description card description
+                                card description card descriptioncard description card description
+                                card description card description
+                                card description card descriptioncard description card description
+                                card description card description
+                                card description card description
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </div>
 
 <script src="script.js"></script>
+
+<script>
+    const themeToggleButton = document.getElementById('theme-toggle');
+const bodyElement = document.body;
+
+// Function to toggle between light and dark themes
+themeToggleButton.addEventListener('click', () => {
+    bodyElement.classList.toggle('light-theme');
+    // Update the button text based on the current theme
+    if (bodyElement.classList.contains('light-theme')) {
+        themeToggleButton.textContent = 'Back to Dark Mode';
+    } else {
+        themeToggleButton.textContent = 'freak my eyes pls';
+    }
+});
+    </script>
+
 </body>
 </html>

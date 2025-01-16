@@ -1,3 +1,4 @@
+
 function onEntry(entry) {
     entry.forEach(change => {
       if (change.isIntersecting) {
@@ -42,30 +43,11 @@ function onEntry(entry) {
   });
   
 
-  document.addEventListener('DOMContentLoaded', () => {
-    const themeToggleButton = document.getElementById('theme-toggle');
-    const bodyElement = document.body;
-    // Function to toggle between light and dark themes
-    themeToggleButton.addEventListener('click', () => {
-        bodyElement.classList.toggle('light-theme');
-        // Update the button text based on the current theme
-        if (bodyElement.classList.contains('light-theme')) {
-            themeToggleButton.textContent = 'Back to Dark Mode';
-        } else {
-            themeToggleButton.textContent = 'freak my eyes pls';
-        }
-    });
-});
+
+  
 
 
-document.getElementById("logo").addEventListener("click", function () {
-  if(window.innerWidth <= 815) {  // works only for mobile version
-    document.getElementById("side-menu").style.width = "250px"; // Open the side menu
-  }
-  else {
-    document.getElementById("logo").href = "main.html";
-  }
-});
+ 
 
 document.getElementById("close-btn").addEventListener("click", function () {
   document.getElementById("side-menu").style.width = "0"; // Close the side menu
@@ -92,3 +74,55 @@ document.getElementById("modal1").addEventListener("click", function () {
   document.getElementById("modal1").style.display = "none"; // Close the modal
   enableScrolling(); // Enable scrolling
 });
+
+document.getElementById("modal-button2").addEventListener("click", function () {
+  document.getElementById("modal2").style.display = "block"; // Open the modal
+  disableScrolling(); // Disable scrolling
+});
+
+document.getElementById("modal2").addEventListener("click", function () {
+  document.getElementById("modal2").style.display = "none"; // Close the modal
+  enableScrolling(); // Enable scrolling
+});
+
+document.getElementById("modal-button3").addEventListener("click", function () {
+  document.getElementById("modal3").style.display = "block"; // Open the modal
+  disableScrolling(); // Disable scrolling
+});
+
+document.getElementById("modal3").addEventListener("click", function () {
+  document.getElementById("modal3").style.display = "none"; // Close the modal
+  enableScrolling(); // Enable scrolling
+});
+            document.getElementById("logo").addEventListener("click", function () {
+              if(window.innerWidth <= 815) {  // works only for mobile version
+                document.getElementById("side-menu").style.width = "250px"; // Open the side menu
+              }
+              else {
+                document.getElementById("logo").href = "main.html";
+              }
+            });
+        
+            const themeToggleButton = document.getElementById('theme-toggle');
+            const bodyElement = document.body;
+            // Function to toggle between light and dark themes
+            themeToggleButton.addEventListener('click', () => {
+                bodyElement.classList.toggle('light-theme');
+                // Update the button text based on the current theme
+                if (bodyElement.classList.contains('light-theme')) {
+                    themeToggleButton.textContent = 'Back to Dark Mode';
+                } else {
+                    themeToggleButton.textContent = 'freak my eyes pls';
+                }
+            });
+       
+
+            document.getElementById("logo").addEventListener("click", function () {
+              if(window.innerWidth <= 815) {  // works only for mobile version
+                document.getElementById("side-menu").style.width = "250px"; // Open the side menu
+              }
+              else {
+                document.getElementById("logo").href = "main.html";
+              }
+            });
+      
