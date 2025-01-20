@@ -1,4 +1,5 @@
 
+
 function onEntry(entry) {
     entry.forEach(change => {
       if (change.isIntersecting) {
@@ -125,4 +126,4 @@ document.getElementById("modal3").addEventListener("click", function () {
                 document.getElementById("logo").href = "main.html";
               }
             });
-      
+            
