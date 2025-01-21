@@ -17,7 +17,7 @@
         <!--    logo    --> 
         <link rel="icon" href="assets/logo.png">
     </head>
-<body>
+<body id="app">
 <div class = "header">
     <div class = "container">
         <div class = "header-line" id = "headerline">
@@ -26,12 +26,12 @@
                     </div>
                     <div class = "nav">
                         <a class="nav-item" href="main.html">Home</a>
-                        <a class="nav-item" href="/pages/pages/about.html">About us</a>
-                        <a class="nav-item" href="/pages/pages/contacts.html">Contacts</a>
+                        <a class="nav-item" v-bind:href="aboutpage">About us</a>
+                        <a class="nav-item" v-bind:href="contactpage">Contacts</a>
                     </div>
                     <div>
                         <div class="number">
-                            <a class = "num" href="#">+37122073901</a>
+                            <a class = "num" href="#">{{number}}</a>
                         </div>
                         <div class="phone-text">
                             Bro just call us if u want.
@@ -214,18 +214,38 @@
 <div class = 'footer'>
     <div class = 'footer-line'>
         <nav class = "nav">
-            <a class="nav-item" href="https://www.instagram.com/bgdnyrmln/">Bogdan Yarmolinsqy</a>
+            <a class="nav-item" href="https://www.instagram.com/bgdnyrmln/"> {{name}} {{surname}}</a>
             <a class="nav-item" href="https://en.wikipedia.org/wiki/2025">2025</a>
             <a class="nav-item" href="main.html">Home</a>
-            <a class="nav-item" href="/pages/pages/about.html">About us</a>
-            <a class="nav-item" href="/pages/pages/contacts.html">Contacts</a>
+            <a class="nav-item" v-bind:href="aboutpage">About us</a>
+            <a class="nav-item" v-bind:href="contactpage">Contacts</a>
+
         </nav>
     </div>
 </div>
 
 
 <script src="script.js"></script>
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 
+<script>
+  const app = Vue.createApp({
+    data() {
+      return {
+        message: "Hello World!",
+        name: "Bogdan",
+        surname: "Yarmolinsqy",
+        number: "+37122073901",
+        aboutpage: "/pages/pages/about.html",
+        contactpage: "/pages/pages/contacts.html"
+      }
+    }
+  })
+ app.mount('#app')
+
+
+
+</script>
 
 </body>
 </html>
