@@ -1,3 +1,4 @@
+
 const app = Vue.createApp({
   data() {
     return {
@@ -11,6 +12,9 @@ const app = Vue.createApp({
   }
 })
 app.mount('#app')
+
+
+
   
   
   const headerline = document.getElementById("headerline");
@@ -120,3 +124,4 @@ document.getElementById("modal3").addEventListener("click", function () {
               }
             });
             
+            console.log(app);
