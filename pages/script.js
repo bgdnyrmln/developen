@@ -1,21 +1,21 @@
 
-const app = Vue.createApp({
-  data() {
-    return {
-      message: "Hello World!",
-      name: "Bogdan",
-      surname: "Yarmolinsqy",
-      number: "+37122073901",
-      aboutpage: "/pages/pages/about.html",
-      contactpage: "/pages/pages/contacts.html"
+  const app = Vue.createApp({
+    data() {
+      return {
+        message: "Hello World!",
+        name: "Bogdan",
+        surname: "Yarmolinsqy",
+        number: "+37122073901",
+        aboutpage: "/pages/pages/about.html",
+        contactpage: "/pages/pages/contacts.html"
+      }
     }
-  }
-})
-app.mount('#app')
+  })
+  app.mount('#app')
 
 
 
-  
+    
   
   const headerline = document.getElementById("headerline");
   const viewportHeight = window.innerHeight;
@@ -39,89 +39,82 @@ app.mount('#app')
     }
     
   });
+
+
+
+
+  function disableScrolling(){ // Disable scrolling
+    var x=window.scrollX;
+    var y=window.scrollY;
+    window.onscroll=function(){window.scrollTo(x, y);};
+  }
+
+  function enableScrolling(){ // Enable scrolling
+    window.onscroll=function(){};
+  }
+
+
+
+
+
+  //function that calls modal logs 
+  function setupModal(buttonId, modalId) {
+    const button = document.getElementById(buttonId);
+    const modal = document.getElementById(modalId);
+  
+    button.addEventListener("click", function () {
+      modal.style.display = "block"; // Open the modal
+      disableScrolling(); // Disable scrolling
+    });
+  
+    modal.addEventListener("click", function () {
+      modal.style.display = "none"; // Close the modal
+      enableScrolling(); // Enable scrolling
+    });
+  }
+  
+  
+  setupModal("modal-button2", "modal2")
+  setupModal("modal-button3", "modal3")
   
 
-
-  
-
-
- 
-
-document.getElementById("close-btn").addEventListener("click", function () {
-  document.getElementById("side-menu").style.width = "0"; // Close the side menu
-});
-
-
-function disableScrolling(){ // Disable scrolling
-  var x=window.scrollX;
-  var y=window.scrollY;
-  window.onscroll=function(){window.scrollTo(x, y);};
-}
-
-function enableScrolling(){ // Enable scrolling
-  window.onscroll=function(){};
-}
-
-
-document.getElementById("modal-button1").addEventListener("click", function () {
-  document.getElementById("modal1").style.display = "block"; // Open the modal
-  disableScrolling(); // Disable scrolling
-});
-
-document.getElementById("modal1").addEventListener("click", function () {
-  document.getElementById("modal1").style.display = "none"; // Close the modal
-  enableScrolling(); // Enable scrolling
-});
-
-document.getElementById("modal-button2").addEventListener("click", function () {
-  document.getElementById("modal2").style.display = "block"; // Open the modal
-  disableScrolling(); // Disable scrolling
-});
-
-document.getElementById("modal2").addEventListener("click", function () {
-  document.getElementById("modal2").style.display = "none"; // Close the modal
-  enableScrolling(); // Enable scrolling
-});
-
-document.getElementById("modal-button3").addEventListener("click", function () {
-  document.getElementById("modal3").style.display = "block"; // Open the modal
-  disableScrolling(); // Disable scrolling
-});
-
-document.getElementById("modal3").addEventListener("click", function () {
-  document.getElementById("modal3").style.display = "none"; // Close the modal
-  enableScrolling(); // Enable scrolling
-});
-            document.getElementById("logo").addEventListener("click", function () {
-              if(window.innerWidth <= 815) {  // works only for mobile version
-                document.getElementById("side-menu").style.width = "250px"; // Open the side menu
-              }
-              else {
-                document.getElementById("logo").href = "main.html";
-              }
-            });
+            
+  document.getElementById("logo").addEventListener("click", function () {
+    if(window.innerWidth <= 815) {  // works only for mobile version
+      document.getElementById("side-menu").style.width = "250px"; // Open the side menu
+    }
+    else {
+      document.getElementById("logo").href = "main.html";
+    }
+  });
         
-            const themeToggleButton = document.getElementById('theme-toggle');
-            const bodyElement = document.body;
-            // Function to toggle between light and dark themes
-            themeToggleButton.addEventListener('click', () => {
-                bodyElement.classList.toggle('light-theme');
-                // Update the button text based on the current theme
-                if (bodyElement.classList.contains('light-theme')) {
-                    themeToggleButton.textContent = 'Back to Dark Mode';
-                } else {
-                    themeToggleButton.textContent = 'freak my eyes pls';
-                }
-            });
+
+  
+  document.getElementById("close-btn").addEventListener("click", function () {
+    document.getElementById("side-menu").style.width = "0"; // Close the side menu
+  });
+
+
+
+  
+  
+  
+  const themeToggleButton = document.getElementById('theme-toggle');
+  const bodyElement = document.body;
+
+  // Function to toggle between light and dark themes
+  themeToggleButton.addEventListener('click', () => {
+    bodyElement.classList.toggle('light-theme');
+    // Update the button text based on the current theme
+    if (bodyElement.classList.contains('light-theme')) {
+      themeToggleButton.textContent = 'Back to Dark Mode';
+    } else {
+      themeToggleButton.textContent = 'freak my eyes pls';
+    }
+  });
        
 
-            document.getElementById("logo").addEventListener("click", function () {
-              if(window.innerWidth <= 815) {  // works only for mobile version
-                document.getElementById("side-menu").style.width = "250px"; // Open the side menu
-              }
-              else {
-                document.getElementById("logo").href = "main.html";
-              }
-            });
+
+
             
-            console.log(app);
+  console.log(app);

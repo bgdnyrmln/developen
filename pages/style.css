@@ -329,6 +329,7 @@ html:has(body:has(:not(.header-line))) .header-line {
 }
 .card-title span{
     color: rgb(192, 140, 140);
+    padding-left: 1vh;
 }
 .card-desc{
     text-align: center;

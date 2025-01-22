@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        <!--    Vue framework   -->
         <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,13 +11,13 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@500&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="style.css">
         <!--    opensans font    -->
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
         <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@500&family=Tinos&display=swap" rel="stylesheet">
         <!--    logo    --> 
         <link rel="icon" href="assets/logo.png">
+        <!--    css    -->
+        <link rel="stylesheet" href="style.css">
     </head>
 <body id="app">
 <div class = "header">
@@ -89,36 +90,35 @@
                 <div class="card-title">
                     New  <span> feelings.</span>
                 </div>
-                <div class = "card-desc">
-                    card description card description <br>
-                    card description card description <br>
-                    card description card description <br>
+                <div class="card-desc">  
+                    Embrace the journey <br>  
+                    towards tomorrow. <br>  
+                    Challenge yourself, <br>  
+                    grow with each step, <br>  
+                    and discover new talents. <br>  
                 </div>
                 <div class = "card-btn">
-                    <a class = "card-button" id="modal-button1">xd</a>  
+                    <a class = "card-button" id="modal-button1" 
+                    onclick='setupModal("modal-button1", "modal1")'>learn more</a>  
                 </div>
                 <div class = "modal" id = "modal1"> 
                     <div class = "modal-content">
                         <div class = "modal-header">
                             <div class = "modal-title">
-                                Modal title
+                                New feelings.
                             </div>
                         </div>
                         <div class = "modal-body">
                             <div class = "modal-text">
-                                card description card description
-                                card description card description
-                                card description card descriptioncard description card description
-                                card description card description
-                                card description card descriptioncard description card description
-                                card description card description
-                                card description card descriptioncard description card description
-                                card description card description
-                                card description card descriptioncard description card description
-                                card description card description
-                                card description card descriptioncard description card description
-                                card description card description
-                                card description card description
+                                Life is a journey filled with opportunities for growth and discovery. 
+                                Embracing the path to tomorrow means stepping out of your comfort zone 
+                                and into a world of new possibilities. By challenging yourself, 
+                                you open doors to experiences that help you learn, grow, and unlock 
+                                your full potential. Each step forward brings new lessons and skills 
+                                that shape you into a stronger, more capable version of yourself. 
+                                It’s not just about reaching a destination; it’s about the transformation 
+                                that happens along the way. So, take that leap—your future is waiting for 
+                                you to claim it.
                             </div>
                         </div>
                     </div>
@@ -129,38 +129,38 @@
                     <img class="card-img" src="assets/card2.png" alt="">
                 </div>
                 <div class="card-title">
-                    New  <span> feelings.</span>
+                    New  <span> ideas.</span>
                 </div>
-                <div class = "card-desc">
-                    card description card description <br>
-                    card description card description <br>
-                    card description card description <br>
+                <div class="card-desc">  
+                    Step into the future <br>  
+                    with an open heart. <br>  
+                    Dare to explore, <br>  
+                    expand your horizons, <br>  
+                    and unlock new possibilities. <br>   
                 </div>
                 <div class = "card-btn">
-                    <a class = "card-button" href = "#" id="modal-button2">xd</a>
+                    <a class = "card-button" href = "#" id="modal-button2" 
+                    onclick='setupModal("modal-button2", "modal2")'>learn more</a>
                 </div>
                 <div class = "modal" id = "modal2"> 
                     <div class = "modal-content">
                         <div class = "modal-header">
                             <div class = "modal-title">
-                                Modal title
+                                New ideas.
                             </div>
                         </div>
                         <div class = "modal-body">
                             <div class = "modal-text">
-                                card description card description
-                                card description card description
-                                card description card descriptioncard description card description
-                                card description card description
-                                card description card descriptioncard description card description
-                                card description card description
-                                card description card descriptioncard description card description
-                                card description card description
-                                card description card descriptioncard description card description
-                                card description card description
-                                card description card descriptioncard description card description
-                                card description card description
-                                card description card description
+                                The future is an open canvas, ready for those who dare to 
+                                paint their dreams upon it. By stepping forward with curiosity 
+                                and courage, you set yourself on a path to discover the unknown. 
+                                Exploring new ideas and learning fresh skills isn’t just about 
+                                personal growth—it’s about finding joy in the process and 
+                                becoming part of something greater. Each moment you choose 
+                                to learn and expand your horizons is a moment of empowerment, 
+                                one that brings you closer to your fullest potential. Dare to try, 
+                                to dream, and to create. The possibilities are endless, and it all 
+                                starts with you.
                             </div>
                         </div>
                     </div>
@@ -171,38 +171,39 @@
                     <img class="card-img" src="assets/card3.png" alt="">
                 </div>
                 <div class="card-title">
-                    New  <span> feelings.</span>
+                    New  <span> skills.</span>
                 </div>
                 <div class = "card-desc">
-                    card description card description <br>
-                    card description card description <br>
-                    card description card description <br>
+                    Be open to be a <br>
+                    part of the future <br>
+                    by trying yourself<br>
+                    and learning <br>
+                    new skills. <br>
+                    <br>
                 </div>
                 <div class = "card-btn">
-                    <a class = "card-button" href = "#" id="modal-button3">xd</a>
+                    <a class = "card-button" href = "#" id="modal-button3" 
+                    onclick='setupModal("modal-button3", "modal3")'>learn more</a>
                 </div>
                 <div class = "modal" id = "modal3"> 
                     <div class = "modal-content">
                         <div class = "modal-header">
                             <div class = "modal-title">
-                                Modal title
+                                New skills.
                             </div>
                         </div>
                         <div class = "modal-body">
                             <div class = "modal-text">
-                                card description card description
-                                card description card description
-                                card description card descriptioncard description card description
-                                card description card description
-                                card description card descriptioncard description card description
-                                card description card description
-                                card description card descriptioncard description card description
-                                card description card description
-                                card description card descriptioncard description card description
-                                card description card description
-                                card description card descriptioncard description card description
-                                card description card description
-                                card description card description
+                                Being open to the future means embracing the possibilities it holds and 
+                                stepping into the unknown with courage and curiosity.
+                                It’s about more than just dreaming of a better tomorrow—it’s about 
+                                actively participating in creating it. By challenging yourself,
+                                you unlock hidden potential and discover strengths you never
+                                knew you had. Learning new skills not only equips you for the 
+                                changes ahead but also empowers you to grow, adapt, and thrive. 
+                                The future isn’t something that happens to you; it’s something you shape 
+                                with every effort you make. Take the first step, and let your journey toward 
+                                growth and innovation begin today.
                             </div>
                         </div>
                     </div>
@@ -227,15 +228,6 @@
 
 
 <script src="script.js"></script>
-
-<script>
-  
-
-
-  
-
-
-</script>
 
 </body>
 </html>
