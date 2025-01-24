@@ -1,26 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <style>
-    .pinkBG {
-      background-color: lightpink;
-    }
-  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
 </head>
 <body>
-
   <div id="app">
-    <img v-bind:src="url">
+    <img v-bind:src="imgUrl">
+    <ol>
+      <li v-for="food in manyFoods" v-on:click="imgUrl=food.url">
+        {{ food.name }}
+      </li>
+    </ol>
   </div>
-
+  
   <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
   <script>
     const app = Vue.createApp({
       data() {
         return {
-          vueClass: "pinkBG",
-          message: "Hello Vue!",
-          url: "https://vuejs.org/images/logo.png"
+          imgUrl: '/pages/assets/logo.png',
+          manyFoods: [
+            {name: 'Burrito', url: 'img_burrito.svg'},
+            {name: 'Salad', url: 'img_salad.svg'},
+            {name: 'Cake', url: 'img_cake.svg'},
+            {name: 'Soup', url: 'img_soup.svg'}
+          ]
         }
       }
     })
