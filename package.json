@@ -1,0 +1,55 @@
+{
+   
+  
+  "dependencies": {
+   
+  
+     
+  
+  "express": "^4.21.2",
+   
+  
+     
+  
+  "nodemon": "^3.1.9",
+   
+  
+     
+  
+  "require": "^0.4.4"
+   
+  
+  },
+   
+  
+  "name": "developen",
+   
+  
+  "version": "1.0.0",
+   
+  
+  "description": "## What is DevelOpen? 👀 **DevelOpen** is an upcoming online platform designed for individuals who want to learn the basics of programming. The core idea is to provide users with simple, high-quality, and easy-to-understand theory, followed by tests and practical exercises to solidify their learning. The platform aims to make the learning process approachable for beginners while ensuring they gain a firm understanding of fundamental concepts.",
+   
+  
+  "main": "index.js",
+   
+  
+  "scripts": {
+   
+  
+     
+  
+  "test": "echo \"Error: no test specified\" && exit 1"
+   
+  
+  },
+   
+  
+  "keywords": [],
+   
+  
+  "author": "",
+   
+  
+  "license": "ISC"
+}

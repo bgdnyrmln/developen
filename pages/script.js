@@ -1,3 +1,27 @@
+// server.js
+const express = require('express');
+const appx = express();
+const PORT = 3000;
+
+// define the route
+appx.get('/',
+    (req, res) => {
+        res.send(
+            `<h1 style="color: green;">
+            Hello Gfg!</h1>`
+        );
+    });
+
+appx.listen(PORT,
+    () => {
+        console.log(
+            `Server is listening at 
+            http://localhost:${PORT}`
+        );
+    });
+
+
+
 
   const app = Vue.createApp({
     data() {
@@ -12,6 +36,8 @@
     }
   })
   app.mount('#app')
+
+
 
 
 
@@ -41,8 +67,6 @@
   });
 
 
-
-
   function disableScrolling(){ // Disable scrolling
     var x=window.scrollX;
     var y=window.scrollY;
@@ -52,8 +76,6 @@
   function enableScrolling(){ // Enable scrolling
     window.onscroll=function(){};
   }
-
-
 
 
 
@@ -89,15 +111,12 @@
   });
         
 
-  
+
   document.getElementById("close-btn").addEventListener("click", function () {
     document.getElementById("side-menu").style.width = "0"; // Close the side menu
   });
 
 
-
-  
-  
   
   const themeToggleButton = document.getElementById('theme-toggle');
   const bodyElement = document.body;
@@ -112,9 +131,5 @@
       themeToggleButton.textContent = 'freak my eyes pls';
     }
   });
-       
-
-
-
-            
+        
   console.log(app);
