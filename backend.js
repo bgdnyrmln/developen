@@ -1,21 +1,19 @@
-// server.js
-const express = require('express');
-const appx = express();
-const PORT = 3000;
+const express = require('express'); 
+const app = express(); 
 
-// define the route
-appx.get('/',
-    (req, res) => {
-        res.send(
-            `<h1 style="color: red;">
-            Hello Gfg xd!</h1>`
-        );
-    });
 
-appx.listen(PORT,
-    () => {
-        console.log(
-            `Server is listening at port 3000
-            http://localhost:${PORT}`
-        );
-    });
+var name = "bogdan";
+console.log(name);
+
+app.set('view engine', 'ejs'); 
+  
+app.get('/:name' , (req , res)=>{ 
+    res.render("index" , { 
+        data : req.params.name 
+    }); 
+}) 
+  
+app.listen(4000 , ()=>{ 
+    console.log("server is running on port 4000"); 
+})
+
