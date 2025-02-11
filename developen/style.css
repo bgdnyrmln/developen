@@ -1,0 +1,493 @@
+body{
+    margin: 0;
+    background-color: black;
+    transition: background-color 0.5s, color 0.5s;
+    font-family: 'Open Sans', sans-serif;
+}
+
+/* Light theme styles */
+body.light-theme {
+    background-color: white;
+    color: black;
+}
+
+
+.header-line{
+    width: 100%;
+    padding-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    position: fixed;
+    height: 20vh;
+    -webkit-transition: 0.5s ease-in-out;
+    -moz-transition: 0.5s ease-in-out;
+    transition: 0.5s ease-in-out;
+    transition: background-color 0.5s opacity 0.3s;
+    z-index: 1000;
+}
+
+.header-line{
+    width: 100%;
+    padding-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    position: fixed;
+    height: 20vh;
+    -webkit-transition: 0.5s ease-in-out;
+    -moz-transition: 0.5s ease-in-out;
+    transition: 0.5s ease-in-out;
+    transition: background-color 0.5s opacity 0.3s;
+    z-index: 1000;
+}
+     
+.header-line:hover{
+    background-color: black;
+    transition: 0.5s;
+}
+
+html:has(body:has(:not(.header-line))) .header-line {
+    background-color: black;
+}
+
+
+.nav-item{
+    color: white;
+    font-weight: 700;
+    font-size: 14px;
+    margin-right: 25px;
+    text-decoration: none;
+    transition: color 0.1s linear;
+    
+}
+
+.nav-item:hover{
+    color: grey;
+}
+
+.changetheme{
+    color: white;
+    font-weight: 700;
+    font-size: 14px;
+    margin-right: 25px;
+    text-decoration: none;
+    transition: color 0.1s linear;
+    cursor: pointer;
+}
+
+.changetheme:hover{
+    color: grey;
+}
+
+
+.logo-img{
+    border-radius: 100px;
+}
+
+.num{
+    color: white;
+    text-decoration: none;
+    font-weight: 700;
+    transition: color 0.1s linear;
+}
+
+.num:hover{
+    color: grey;
+}
+
+.phone-text{
+    color: white;
+    font-weight: 700;
+    font-size: 9px;
+    margin-right: 25px;
+    text-decoration: none;
+    transition: color 0.1s linear;
+}
+
+
+.button{
+    background-color: rgb(255, 255, 255);
+    border-radius: 5px;
+    padding: 14px 19px;
+    color: black;
+    font-weight: 700;
+    font-size: 14px;
+    margin-right: 25px;
+    text-decoration: none;
+    transition: background-color 0.1s linear;
+    width: 13.6vh;
+}
+
+        /* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    width: 13.6vh;
+    margin-top: 0vh;
+    position: absolute;
+    background-color: rgb(255, 255, 255);
+    border-radius: 5px;
+    padding: 1vh 0.7vh;
+    color: black;
+    font-weight: 700;
+    font-size: 14px;
+    margin-right: 25px;
+    text-decoration: none;
+    visibility: hidden;
+    opacity: 0;
+    transition: all 0.3s linear;
+    display: block;
+    height: 0;
+}
+
+
+
+/* Links inside the dropdown */
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+    height: 12vh;
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Side menu styles */
+.side-menu {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1001;
+    top: 0;
+    left: 0;
+    background-color: black;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+    text-align: center;
+}
+
+.side-menu a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: white;
+    display: block;
+    transition: 0.3s;
+}
+
+.side-menu a:hover {
+    color: grey;
+}
+
+#close-btn {
+    position: absolute;
+    top: 20px;
+    right: 25px;
+    font-size: 36px;
+}
+
+
+
+
+.header{
+    background-image: url(assets/background.png);
+    height: 100vh;
+    background-size: cover;
+    background-position: center center; /* Keeps the image centered */
+    background-repeat: no-repeat; /* Prevents the image from repeating */
+    background-attachment: fixed; /* Optional: Keeps the image fixed when scrolling */
+}
+
+.header-about{
+    height: 20vh;
+    background-size: cover;
+    background-position: center center; /* Keeps the image centered */
+    background-repeat: no-repeat; /* Prevents the image from repeating */
+    background-attachment: fixed; /* Optional: Keeps the image fixed when scrolling */
+}
+    
+.button-title{
+    background-color: rgb(255, 255, 255);
+    border-radius: 5px;
+    padding: 14px 19px;
+    color: black;
+    font-weight: 700;
+    font-size: 14px;
+    margin-right: 2vh;
+    text-decoration: none;
+    transition: background-color 0.1s linear;
+}
+
+
+html:has(body:has(:not(.header-line))) .header-line {
+    background-color: black;
+}
+
+
+
+.header-down{
+    margin-left: 20vh;
+}
+
+
+.header-title{
+    margin-top: 50vh;
+    position: absolute;
+    color: white;
+    font-weight: 400;
+    font-size: 7vh;
+    text-align: center;
+}
+
+.header-subtitle{
+    color: white;
+    font-size: 9vh;
+}
+
+.header-suptitle{
+    color: white;
+    font-size: 2vh;
+}
+
+.header-suptitle:after{
+    position: absolute;
+    content: "";
+    height: 0.2vh;
+    width: 7vh;
+    background-color: white;
+    top: 23.5vh;
+    left: 40vh;
+}
+.header-suptitle:before{
+    position: absolute;
+    content: "";
+    height: 0.2vh;
+    width: 7vh;
+    background-color: white;
+    top: 23.5vh;
+    right: 40vh;
+}
+
+.cards{
+    margin-top: 35vh;
+    height: 100vh;
+    background-size: cover;
+}
+
+.card-holder{
+    display: flex;
+    justify-content: center;
+}
+
+.card{
+    border-radius: 1vh;
+    box-shadow: 1vh 1vh 4vh 2vh #0000001A;
+    width: 34.9vh;
+    margin-right: 3vh;
+    background-color: white;
+    margin-top: -80px;
+    padding: 0px 20px;
+    -webkit-transition: 0.5s ease-in-out;
+    -moz-transition: 0.5s ease-in-out;
+    transition: 0.5s ease-in-out;
+}
+
+.card:hover {
+    background-color: rgb(222, 222, 222);
+    transition: 0.5s;
+}
+
+.card-img{
+    height: 100px;
+    width: 100px;
+}
+
+.card-image{
+    display:flex;
+    justify-content: center;
+    padding-top: 31px;
+}
+
+.card-title{
+    display:flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    font-family: 'Tinos', serif;
+    font-size: 30px;
+    font-weight: 400;
+}
+.card-title span{
+    color: rgb(192, 140, 140);
+    padding-left: 1vh;
+}
+.card-desc{
+    text-align: center;
+    font-family: 'Tinos', serif;
+    font-size: 26px;
+    font-weight: 400;
+    color: gray;
+}
+
+@media (max-width: 815px) {
+    .card-holder {
+        flex-direction: column; /* Stack cards vertically */
+        align-items: center; /* Center the cards */
+    }
+
+    .card {
+        margin-top: 1vh; /* Add some margin to the top of the card */
+        margin-right: 0; /* Remove right margin between cards */
+        margin-bottom: 20px; /* Add some margin between stacked cards */
+        width: 80%; /* Adjust card width for mobile */
+    }
+
+    .nav-item{
+        display: none;
+    }
+}
+
+@media (max-width: 650px) { /* Mobile styles */
+    .header-title{
+        font-size: 5vh;
+    }
+    .header-subtitle{
+        margin-bottom: 2.7vh;
+    }
+    .num{
+        display: none;
+    }
+    .phone-text{
+        display: none;
+    }
+    .logo-img{
+        margin-right: 5vh;
+    }
+    .header-line{
+        display: flex;
+        justify-content: center;
+    }
+    .header-down{
+        margin-left: 0vh;
+        display: flex;
+        justify-content: center;
+    }
+    .header-logo {
+        cursor: pointer;
+    }
+}
+
+.card-button{
+    cursor: pointer;
+    background-color:rgb(192, 140, 140);
+    border-radius: 5px;
+    padding: 14px 19px;
+    color: black;
+    font-weight: 700;
+    font-size: 14px;
+    margin-right: 25px;
+    text-decoration: none;
+    transition: background-color 0.1s linear;
+    display: flex;
+    justify-content: center;
+    margin: 50px;
+    -webkit-transition: 0.5s ease-in-out;
+    -moz-transition: 0.5s ease-in-out;
+    transition: 0.5s ease-in-out;
+}
+
+
+.card-button:hover{
+    background-color: grey;
+    transition: all 0.5s;
+}
+
+.modal{
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+    justify-content: center;
+}
+
+.modal-content{
+    width: 50%;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    min-width: 34.9vh;
+    position: relative;
+    display: flex;
+    border-radius: 1vh;
+    box-shadow: 1vh 1vh 4vh 2vh #0000001A;
+
+}
+
+.modal-header{
+    color: rgb(0, 0, 0);
+    font-weight: 400;
+    font-size: 7vh;
+    text-align: center;
+}
+
+.modal-text{
+    color: rgb(0, 0, 0);
+    font-weight: 400;
+    font-size: 3vh;
+    text-align: center;
+}
+
+.cards-animation {
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.cards-animation.cards-show{
+    opacity: 1;
+    transition: all 1.5s;
+    transform: translateY(0%);
+}
+
+
+.about-title{
+    color: white;
+    font-weight: 400;
+    font-size: 50px;
+    text-align: center;
+}
+
+.about-text{
+    color: white;
+    font-weight: 400;
+    font-size: 20px;
+    text-align: center;
+}
+
+.footer-line{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    height: 20vh;
+    z-index: 1001;
+    background-color: #222222;
+}

@@ -1,28 +1,3 @@
-// server.js
-const express = require('express');
-const appx = express();
-const PORT = 3000;
-
-// define the route
-appx.get('/',
-    (req, res) => {
-        res.send(
-            `<h1 style="color: green;">
-            Hello Gfg!</h1>`
-        );
-    });
-
-appx.listen(PORT,
-    () => {
-        console.log(
-            `Server is listening at 
-            http://localhost:${PORT}`
-        );
-    });
-
-
-
-
   const app = Vue.createApp({
     data() {
       return {
@@ -37,11 +12,6 @@ appx.listen(PORT,
   })
   app.mount('#app')
 
-
-
-
-
-    
   
   const headerline = document.getElementById("headerline");
   const viewportHeight = window.innerHeight;
