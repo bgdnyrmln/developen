@@ -1,7 +1,7 @@
 <template>
 
     <div class="container1">
-            <!-- down the header (big cool text 0_0, might add some animation) -->
+        <!-- down the header (big cool text 0_0, might add some animation) -->
             <div class="header-down">
                 <div class="header-title">
                     Welcome to the
@@ -16,7 +16,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+       </div>
 
 <!-- cards (need to add cool animations) -->
 <div class = "cards">
@@ -186,10 +186,11 @@ const setupModal = (modalId) => {
 
 <style>
 .container1{
-height: 80vh;
+    height: 100vh;
     background-image: url(background.png);
     background-size: cover;
     background-position: center center; /* Keeps the image centered */
     background-repeat: no-repeat; /* Prevents the image from repeating */
+    
 }
 </style>

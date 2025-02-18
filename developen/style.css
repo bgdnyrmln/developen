@@ -29,7 +29,6 @@ body.light-theme {
 
 .header-line{
     width: 100%;
-    padding-top: 10px;
     display: flex;
     align-items: center;
     justify-content: space-around;
@@ -209,14 +208,6 @@ html:has(body:has(:not(.header-line))) .header-line {
     background-attachment: fixed; /* Optional: Keeps the image fixed when scrolling */
 }
 
-.header-about{
-    height: 20vh;
-    background-size: cover;
-    background-position: center center; /* Keeps the image centered */
-    background-repeat: no-repeat; /* Prevents the image from repeating */
-    background-attachment: fixed; /* Optional: Keeps the image fixed when scrolling */
-}
-    
 .button-title{
     background-color: rgb(255, 255, 255);
     border-radius: 5px;

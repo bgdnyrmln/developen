@@ -1,6 +1,6 @@
-<template>    
-    <div class="about" >
-        <div class="container" >
+<template> 
+    <div class="about1">
+        <div class="container">
             <div class="about-title">
                 <h1>About Us</h1>
             </div>
@@ -16,3 +16,13 @@
         </div>
     </div>
 </template>
+
+<style>
+.about1 {
+    height: 60vh;
+    background-size: cover;
+    background-position: center center; /* Keeps the image centered */
+    background-repeat: no-repeat; /* Prevents the image from repeating */
+    padding-top: 20vh;
+}
+</style>

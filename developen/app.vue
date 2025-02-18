@@ -1,6 +1,5 @@
 
 <template> 
-
         <div class = "header-line" id = "headerline">
             <div class = "header-logo">
                 <img class = "logo-img" src="assets/logo.png" id="logo" alt="">
@@ -39,7 +38,7 @@
                 <a href="#" id="close-btn">Close</a>
             </div>
         </div>
-        <div style="height: 20vh;"></div>
+        
     <NuxtPage />
 
 <div class = 'footer'>
