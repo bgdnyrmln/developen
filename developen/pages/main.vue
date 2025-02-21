@@ -155,42 +155,32 @@
 </template>
 
 <script>
+import { ref } from 'vue'
 
-// Modal Functionality
-const disableScrolling = () => {
-  document.body.style.overflow = "hidden"
-}
-const enableScrolling = () => {
-  document.body.style.overflow = "auto"
-}
+// Reactive state to track open modal
+const activeModal = ref(null)
 
 // Function to open modals
 const setupModal = (modalId) => {
-  const modal = document.getElementById(modalId)
+  activeModal.value = modalId
+  document.body.style.overflow = "hidden"
+}
 
-  if (modal) {
-    modal.style.display = "block"
-    disableScrolling()
-
-    // Close modal when clicking outside content
-    modal.addEventListener("click", (event) => {
-      if (event.target === modal) {
-        modal.style.display = "none"
-        enableScrolling()
-      }
-    })
-  }
+// Function to close modals
+const closeModal = () => {
+  activeModal.value = null
+  document.body.style.overflow = "auto"
 }
 </script>
 
 
 <style>
+
 .container1{
     height: 100vh;
-    background-image: url(background.png);
+    background-image: url(assets/background.png);
     background-size: cover;
     background-position: center center; /* Keeps the image centered */
     background-repeat: no-repeat; /* Prevents the image from repeating */
-    
 }
 </style>

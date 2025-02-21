@@ -53,8 +53,6 @@
     </div>
 </div>
 
-
-<Nuxt />
 </template>
 
 <script setup>
@@ -91,33 +89,6 @@ onMounted(() => {
   })
 })
 
-// Modal Functionality
-const disableScrolling = () => {
-  document.body.style.overflow = "hidden"
-}
-const enableScrolling = () => {
-  document.body.style.overflow = "auto"
-}
-
-// Function to open modals
-const setupModal = (modalId) => {
-  const modal = document.getElementById(modalId)
-
-  if (modal) {
-    modal.style.display = "block"
-    disableScrolling()
-
-    // Close modal when clicking outside content
-    modal.addEventListener("click", (event) => {
-      if (event.target === modal) {
-        modal.style.display = "none"
-        enableScrolling()
-      }
-    })
-  }
-}
-
-
 // Mobile Menu
 onMounted(() => {
   document.getElementById("logo").addEventListener("click", () => {
@@ -152,5 +123,5 @@ onMounted(() => {
 
 
 <style>
-  @import url('style.css');
+  @import url('assets/style.css');
 </style>
