@@ -7,6 +7,7 @@ export default defineNuxtConfig({
       link: [{ rel: 'icon', type: 'image/x-icon', href: 'assets/logo.png' }],
     },
   },
+  qiet: false,
   
 
   compatibilityDate: '2025-02-11'

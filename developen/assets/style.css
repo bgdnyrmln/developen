@@ -482,6 +482,7 @@ html:has(body:has(:not(.header-line))) .header-line {
     height: 20vh;
     z-index: 1001;
     background-color: #222222;
+    margin-top: 10vh;
 }
 
 .register-title{
