@@ -8,7 +8,13 @@ export default defineNuxtConfig({
     },
   },
   qiet: false,
-  
+  routeRules: {
+    "/": {
+      // Temporary redirect using a 307 status code
+      redirect: "/main",
+    }
+  },
+
 
   compatibilityDate: '2025-02-11'
 })

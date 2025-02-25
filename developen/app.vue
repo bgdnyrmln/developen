@@ -56,6 +56,16 @@
 </template>
 
 <script setup>
+import { useRouter } from 'vue-router'
+
+const router = useRouter()
+
+if (process.client) {
+  if (router.currentRoute.value.path === '/') {
+    router.replace('/main')
+  }
+}
+
 import { ref, onMounted, onUnmounted } from 'vue'
 
 
