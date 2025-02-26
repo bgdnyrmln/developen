@@ -15,3 +15,9 @@
   Courses will be divided into well-organized modules that guide users from beginner to more advanced levels in a structured, step-by-step manner. Each module will include a balanced mix of theory, quizzes, and practical coding exercises.
 - **Interactive Challenges & Projects**:  
   To help learners reinforce their knowledge, **DevelOpen** will feature coding challenges. These projects are designed to simulate real-world problems and provide users with the opportunity to apply their coding skills in practical scenarios.
+
+- **Current progress**:  
+  Using Nuxt.js framework.
+  Made some pages, such as main, about, register and started to work on registration system. Now registration have hash for passwords and saves all of the data to the json file.
+  Want to add database, will try to figure out how to use laravel.
+  After tweaking registration system and database thingies I'll start to work on online compilier.
