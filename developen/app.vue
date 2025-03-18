@@ -32,9 +32,9 @@
                     </div>
             </div>
             <div id="side-menu" class="side-menu">
-                <a href="main.html">Home</a>
-                <a href="about.html">About us</a>
-                <a href="contacts.html">Contacts</a>
+                <a href="/main">Home</a>
+                <a href="/about">About us</a>
+                <a href="/contacts">Contacts</a>
                 <a href="#" id="close-btn">Close</a>
             </div>
         </div>
@@ -73,8 +73,8 @@ import { ref, onMounted, onUnmounted } from 'vue'
 const name = ref("Bogdan")
 const surname = ref("Yarmolinsqy")
 const number = ref("+37122073901")
-const aboutpage = ref("about.html")
-const contactpage = ref("pages/contacts.html")
+const aboutpage = ref("/about")
+const contactpage = ref("/contacts")
 
 // Header Scroll Behavior
 const headerline = ref(null)
@@ -105,7 +105,7 @@ onMounted(() => {
     if (window.innerWidth <= 815) {
       document.getElementById("side-menu").style.width = "250px"
     } else {
-      window.location.href = "main.html"
+      window.location.href = "/main"
     }
   })
 
