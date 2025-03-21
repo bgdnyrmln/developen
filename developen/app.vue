@@ -27,8 +27,8 @@
                     <a class = "button">Profile &#x2935;</a>
                 </div>
                 <div class="dropdown-content">
-                    <a href="#">Register</a>
-                    <a href="#">Login</a>
+                    <a href="/register">Register</a>
+                    <a href="/login">Login</a>
                     </div>
             </div>
             <div id="side-menu" class="side-menu">

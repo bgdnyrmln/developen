@@ -1,5 +1,4 @@
-<template> 
-    <div class="about1">
+<template>
         <div class="container">
             <div class="about-title">
                 <h1>About Us</h1>
@@ -14,15 +13,17 @@
                 <br>
             </div>
         </div>
-    </div>
-</template>
+        <maplibre/>
 
-<style>
-.about1 {
-    height: 60vh;
-    background-size: cover;
-    background-position: center center; /* Keeps the image centered */
-    background-repeat: no-repeat; /* Prevents the image from repeating */
-    padding-top: 20vh;
-}
+
+  </template>
+  
+  <script setup>
+  
+  </script>
+  
+  <style>
+    .container {
+       padding-top: 20vh;
+    }
 </style>

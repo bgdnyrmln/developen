@@ -14,6 +14,8 @@ export default defineNuxtConfig({
       redirect: "/main",
     }
   },
+  modules: ['nuxt-mapbox', 'nuxt-maplibre'],
+  "moduleResolution": "bundler",
 
 
   compatibilityDate: '2025-02-11'

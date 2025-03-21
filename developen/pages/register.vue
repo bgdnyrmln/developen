@@ -78,7 +78,7 @@
   
   <style>
   .register {
-    height: 100vh;
+    height: 125vh;
     background-image: url(assets/background3.png);
     background-size: cover;
     background-position: center;
