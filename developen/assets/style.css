@@ -3,6 +3,18 @@ body{
     background-color: black;
     transition: background-color 0.5s, color 0.5s;
     font-family: 'Open Sans', sans-serif;
+    color: white;
+}
+
+body a:link, a:visited {
+    color: white;
+    text-decoration: none;
+}
+body.light-theme a:link {
+    color: black;
+}
+body.light-theme a:visited {
+    color: black;
 }
 
 /* Light theme styles */
@@ -42,18 +54,10 @@ body.light-theme {
     
 }
      
-.header-line:hover{
-    background-color: black;
-    transition: 0.5s;
-}
 
-html:has(body:has(:not(.header-line))) .header-line {
-    background-color: black;
-}
 
 
 .nav-item{
-    color: white;
     font-weight: 700;
     font-size: 14px;
     margin-right: 25px;
@@ -67,7 +71,7 @@ html:has(body:has(:not(.header-line))) .header-line {
 }
 
 .changetheme{
-    color: white;
+
     font-weight: 700;
     font-size: 14px;
     margin-right: 25px;
@@ -97,7 +101,6 @@ html:has(body:has(:not(.header-line))) .header-line {
 }
 
 .phone-text{
-    color: white;
     font-weight: 700;
     font-size: 9px;
     margin-right: 25px;
@@ -283,6 +286,7 @@ html:has(body:has(:not(.header-line))) .header-line {
 }
 
 .card{
+    color: black;
     border-radius: 1vh;
     box-shadow: 1vh 1vh 4vh 2vh #0000001A;
     width: 34.9vh;
@@ -461,14 +465,14 @@ html:has(body:has(:not(.header-line))) .header-line {
 
 
 .about-title{
-    color: white;
+
     font-weight: 400;
     font-size: 50px;
     text-align: center;
 }
 
 .about-text{
-    color: white;
+
     font-weight: 400;
     font-size: 20px;
     text-align: center;

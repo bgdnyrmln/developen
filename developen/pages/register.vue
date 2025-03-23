@@ -23,9 +23,10 @@
               <input class="register-input" type="password" id="password" v-model="password" placeholder="Enter your password" required />
   
               <button class="register-button" type="submit">Enter</button>
-              <button class="register-button">Already have an account?</button>
+              
             </div>
           </form>
+          <a class="register-button" href="/login">Already have an account?</a>
         </div>
       </div>
     </div>

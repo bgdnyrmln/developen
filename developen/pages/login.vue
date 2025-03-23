@@ -17,8 +17,10 @@
               <input class="register-input" type="password" id="password" v-model="password" placeholder="Enter your password" required />
   
               <button class="register-button" type="submit">Enter</button>
+              
             </div>
           </form>
+          <a class="register-button" href="/register">Don't have an account?</a>
         </div>
       </div>
     </div>

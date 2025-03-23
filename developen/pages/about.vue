@@ -13,17 +13,13 @@
                 <br>
             </div>
         </div>
-        <maplibre/>
 
 
   </template>
-  
-  <script setup>
-  
-  </script>
-  
+
   <style>
     .container {
        padding-top: 20vh;
+       height: 50vh;
     }
 </style>

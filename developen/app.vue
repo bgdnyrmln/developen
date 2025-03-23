@@ -5,7 +5,7 @@
                 <img class = "logo-img" src="assets/logo.png" id="logo" alt="">
             </div>
             <div class = "nav">
-                <a class="nav-item" href="#">Home</a>
+                <a class="nav-item" v-bind:href="home">Home</a>
                 <a class="nav-item" v-bind:href="aboutpage">About us</a>
                 <a class="nav-item" v-bind:href="contactpage">Contacts</a>
             </div>
@@ -27,14 +27,14 @@
                     <a class = "button">Profile &#x2935;</a>
                 </div>
                 <div class="dropdown-content">
-                    <a href="/register">Register</a>
-                    <a href="/login">Login</a>
+                    <a v-bind:href="register">Register</a>
+                    <a v-bind:href="login">Login</a>
                     </div>
             </div>
             <div id="side-menu" class="side-menu">
-                <a href="/main">Home</a>
-                <a href="/about">About us</a>
-                <a href="/contacts">Contacts</a>
+                <a v-bind:href="home">Home</a>
+                <a v-bind:href="aboutpage">About us</a>
+                <a v-bind:href="contactpage">Contacts</a>
                 <a href="#" id="close-btn">Close</a>
             </div>
         </div>
@@ -46,7 +46,7 @@
         <nav class = "nav">
             <a class="nav-item" href="https://www.instagram.com/bgdnyrmln/"> {{name}} {{surname}}</a>
             <a class="nav-item" href="https://en.wikipedia.org/wiki/2025">2025</a>
-            <a class="nav-item" href="#">Home</a>
+            <a class="nav-item" v-bind:href="home">Home</a>
             <a class="nav-item" v-bind:href="aboutpage">About us</a>
             <a class="nav-item" v-bind:href="contactpage">Contacts</a>
         </nav>
@@ -69,12 +69,17 @@ if (process.client) {
 import { ref, onMounted, onUnmounted } from 'vue'
 
 
+
 // Reactive variables
 const name = ref("Bogdan")
 const surname = ref("Yarmolinsqy")
 const number = ref("+37122073901")
 const aboutpage = ref("/about")
 const contactpage = ref("/contacts")
+const home = ref("/main")
+const register = ref("/register")
+const login = ref("/login")
+
 
 // Header Scroll Behavior
 const headerline = ref(null)
