@@ -1,0 +1,53 @@
+
+services:
+  server:
+    volumes:
+      - "./.docker/000-default.conf:/etc/apache2/sites-available/000-default.conf"
+      - code:/var/www/html
+    build:
+      context: .
+    ports:
+      - 9000:80
+    links:
+      - db
+
+  db:
+    image: mariadb:10.4
+    restart: always
+    user: root
+    environment:
+      - MYSQL_DATABASE=${DB_DATABASE}
+      # - MYSQL_USER=${DB_USERNAME}
+      - MYSQL_PASSWORD=${DB_PASSWORD}
+      - MYSQL_ROOT_PASSWORD=${DB_PASSWORD}
+    volumes:
+      - ./.docker/data/db:/var/lib/mysql
+    ports:
+      - 3307:3306
+
+
+
+x-mutagen:
+    sync:
+        defaults:
+            ignore:
+                vcs: true
+                paths:
+                    # - "storage/app/media/*"
+                    # - "storage/app/uploads/public/"
+                    # - 'vendor'
+                    - "node_modules"
+                    - "mysql"
+                    #   - '.idea'
+        code:
+            alpha: "./"
+            beta: "volume://code"
+            permissions:
+                defaultDirectoryMode: 0777
+                defaultFileMode: 0666
+            configurationBeta:
+                permissions:
+                    defaultOwner: "id:33"
+                    defaultGroup: "id:33"
+volumes:
+    code:

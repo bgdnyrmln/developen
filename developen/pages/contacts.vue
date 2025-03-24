@@ -24,5 +24,6 @@
 <style>
 .container {
    padding-top: 20vh;
+   height: 70vh;
 }
 </style>
