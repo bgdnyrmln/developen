@@ -32,3 +32,28 @@ CMD ["apache2-foreground"]
 # RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash && source ~/.profile \
 #         && nvm install 12.16.3 \
 #         && npm -g install yarn
+
+
+# Install nvm
+RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.2/install.sh | bash
+
+# Install Node.js using nvm
+RUN bash -c "\
+    export NVM_DIR=\$HOME/.nvm && \
+    [ -s \"\$NVM_DIR/nvm.sh\" ] && \. \"\$NVM_DIR/nvm.sh\" && \
+    nvm install 22"
+
+# Set environment variables for nvm
+ENV NVM_DIR /root/.nvm
+ENV PATH $NVM_DIR/versions/node/v22.14.0/bin:$PATH
+
+# Verify the Node.js version
+RUN node -v
+
+# Verify npm version
+RUN npm -v
+
+# Install npm dependencies (after Node.js is installed)
+WORKDIR /var/www/html
+COPY package.json package-lock.json ./
+RUN npm install

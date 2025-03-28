@@ -4,10 +4,13 @@ services:
     volumes:
       - "./.docker/000-default.conf:/etc/apache2/sites-available/000-default.conf"
       - code:/var/www/html
+      - ./resources:/var/www/html/resources
+      - ./node_modules:/var/www/html/node_modules
     build:
       context: .
     ports:
       - 9000:80
+      - 5173:5173
     links:
       - db
 

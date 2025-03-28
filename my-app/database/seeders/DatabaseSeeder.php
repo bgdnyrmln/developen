@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\Car;
+use App\Models\Driver;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -16,8 +18,12 @@ class DatabaseSeeder extends Seeder
         // User::factory(10)->create();
 
         User::factory()->create([
-            'name' => 'Test User',
+            'first_name' => 'Test',
+            'last_name' => 'User',
             'email' => 'test@example.com',
         ]);
+
+        Car::factory(10)->create();
+        Driver::factory(10)->create();
     }
 }

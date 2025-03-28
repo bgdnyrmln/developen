@@ -17,7 +17,7 @@ class CarFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => fake()->name(),
+            'name' => fake()->word(),
             'model' => fake()->word(),
             'driver_id' => Driver::factory()
         ];
