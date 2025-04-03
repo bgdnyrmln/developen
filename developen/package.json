@@ -11,10 +11,13 @@
   },
   "dependencies": {
     "@nuxt/typescript-runtime": "^3.0.2",
+    "@qirolab/nuxt-sanctum-authentication": "^0.1.15",
+    "axios": "^1.8.4",
     "bcrypt": "^5.1.1",
     "bcryptjs": "^3.0.2",
     "maplibre-gl": "^5.2.0",
     "nuxt": "^3.16.1",
+    "nuxt-auth-utils": "^0.5.18",
     "nuxt-mapbox": "^1.6.2",
     "nuxt-maplibre": "^1.0.1",
     "vue": "latest",

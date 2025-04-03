@@ -8,7 +8,7 @@
           <p>Log into your account.</p>
         </div>
         <div class="register-form">
-          <form @submit.prevent="login"> 
+          <form @submit.prevent="submitForm" id="form"> 
             <div class="form-group">
               <label class="register-text" for="username">Username:</label>
               <input class="register-input" type="text" id="username" v-model="username" placeholder="Enter your username" required />
@@ -32,35 +32,11 @@ import { ref } from 'vue'
 const username = ref('')
 const password = ref('')
 
-const login = async () => {
-  if (!username.value || !password.value) {
-    alert('Please enter your username and password!')
-    return
-  }
-
-  try {
-    const response = await fetch('/api/login', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        username: username.value,
-        password: password.value
-      })
-    })
-
-    const result = await response.json()
-
-    if (result.success) {
-      alert('Login successful!')
-      // Redirect user or store session token if needed
-    } else {
-      alert(`Error: ${result.error}`)
-    }
-  } catch (error) {
-    console.error('Error:', error)
-    alert('Something went wrong, please try again.')
-  }
-}
+const { login } = useSanctum();
+ 
+const submitForm = async () => {
+  await login(form.value);
+};
 </script>
 
 

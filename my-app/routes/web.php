@@ -1,18 +1,19 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Models\Car;
 use App\Http\Controllers\Carcontroller;
 use App\Http\Controllers\Usercontroller;
 use App\Http\Controllers\Sessioncontroller;
-use Illuminate\Support\Facades\Mail;
+use App\Http\Controllers\ExerciseController;
+use Illuminate\Http\Request;
 
 Route::view('/', 'welcome');
 
-Route::get('test', function () {
-    Mail::to('bgdnyrmln@gmail.com')->
-    send(new \App\Mail\CarListed());
-});
+
+
+Route::get('/users', [UserController::class, 'index']);
+
+Route::get('/exercises', [ExerciseController::class, 'index']);
 
 
 
@@ -30,5 +31,12 @@ Route::post('/register', [Usercontroller::class, 'store']);
 
 
 Route::get('/login', [Sessioncontroller::class, 'create']) -> name('login');
+
+
 Route::post('/login', [Sessioncontroller::class, 'store']);
 Route::post('/logout', [Sessioncontroller::class, 'destroy']);
+
+
+Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+    return $request->user();
+});

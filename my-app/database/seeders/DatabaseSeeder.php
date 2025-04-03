@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\Car;
 use App\Models\Driver;
 use App\Models\User;
+use App\Models\Tag;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -23,7 +24,9 @@ class DatabaseSeeder extends Seeder
             'email' => 'test@example.com',
         ]);
 
-        Car::factory(10)->create();
-        Driver::factory(10)->create();
-    }
+
+            $tags = Tag::factory(3)->create();
+            Car::factory(10)->hasAttached($tags)->create();
+        }
+
 }

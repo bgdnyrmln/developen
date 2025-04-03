@@ -1,5 +1,4 @@
-
-<h1>Car</h1>
+<x-layout>
 
 <p>Name: {{ $car->name }}</p>
 <p>Model: {{ $car->model }}</p>
@@ -18,4 +17,4 @@
 @can('edit-car', $car)
     <a href="/cars/{{ $car->id }}/edit">Edit</a>
 @endcan
-
+</x-layout>

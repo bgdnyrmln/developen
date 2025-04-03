@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 use App\Models\Driver;
+use App\Models\Tag;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**

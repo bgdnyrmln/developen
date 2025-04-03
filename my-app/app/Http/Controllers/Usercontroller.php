@@ -9,6 +9,13 @@ use Illuminate\Support\Facades\Auth;
 
 class Usercontroller extends Controller
 {
+
+    public function index()
+{
+    return response()->json(User::all());
+}
+
+
     public function create()
     {
         return view('register');
