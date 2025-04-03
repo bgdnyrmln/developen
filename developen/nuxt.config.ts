@@ -16,13 +16,10 @@ export default defineNuxtConfig({
     }
   },
   modules: ['nuxt-mapbox', 'nuxt-maplibre', 'nuxt-auth-utils', "@qirolab/nuxt-sanctum-authentication"],
-  runtimeConfig: {
-    public: {
-      sanctum: {
-        apiUrl: "http://api.yourapp.test",
-        authMode: "token",  // Switch to token-based authentication
-      },
-    },
+
+  laravelSanctum: {
+    apiUrl: "http://localhost:9000",
+    authMode: "cookie",  // Switch to token-based authentication
   },
 
 

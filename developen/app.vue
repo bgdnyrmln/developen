@@ -20,16 +20,22 @@
             <div class="changetheme" id='theme-toggle'>
                 freak my eyes pls
             </div>
+
+            <template v-if="!isLoggedIn"> not logged in</template>
+            <template v-else>
+              logged in
+            </template>
                     
                     <!-- profile button dropdown (need to add the functionality)-->
-            <div class="dropdown">
+            <div class="dropdown" >
                 <div class="btn">
                     <a class = "button">Profile &#x2935;</a>
                 </div>
+
                 <div class="dropdown-content">
                     <a v-bind:href="register">Register</a>
                     <a v-bind:href="login">Login</a>
-                    </div>
+                </div>
             </div>
             <div id="side-menu" class="side-menu">
                 <a v-bind:href="home">Home</a>
@@ -68,6 +74,7 @@ if (process.client) {
 
 import { ref, onMounted, onUnmounted } from 'vue'
 
+const { isLoggedIn } = useSanctum()
 
 
 // Reactive variables
@@ -132,6 +139,8 @@ onMounted(() => {
       : "freak my eyes pls"
   })
 })
+
+
 
 
 </script>

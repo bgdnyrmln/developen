@@ -8,7 +8,7 @@ use App\Http\Controllers\ExerciseController;
 
 Route::get('/user', function(){
     return response() -> json("Hello World");
-});
+})->middleware('auth:sanctum');
 
 Route::get('/users', [Sessioncontroller::class, 'index']);
 

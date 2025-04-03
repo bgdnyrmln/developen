@@ -8,16 +8,28 @@
           <p>Log into your account.</p>
         </div>
         <div class="register-form">
-          <form @submit.prevent="submitForm" id="form"> 
+          <!-- Prevent default form submission and handle it with submitForm method -->
+          <form @submit.prevent="submitForm">
             <div class="form-group">
-              <label class="register-text" for="username">Username:</label>
-              <input class="register-input" type="text" id="username" v-model="username" placeholder="Enter your username" required />
+              <label class="register-text" for="email">Username:</label>
+              <input
+                class="register-input"
+                type="text"
+                id="email"
+                v-model="form.email"
+                placeholder="Enter your username"
+              />
   
               <label class="register-text" for="password">Password:</label>
-              <input class="register-input" type="password" id="password" v-model="password" placeholder="Enter your password" required />
+              <input
+                class="register-input"
+                type="password"
+                id="password"
+                v-model="form.password"
+                placeholder="Enter your password"
+              />
   
               <button class="register-button" type="submit">Enter</button>
-              
             </div>
           </form>
           <a class="register-button" href="/register">Don't have an account?</a>
@@ -26,27 +38,39 @@
     </div>
   </template>
   
-<script setup>
-import { ref } from 'vue'
+  <script setup>
+  import axios from 'axios';
+  import { ref } from 'vue';
+  
+  // Call this before making login requests
+    await axios.get("http://localhost:9000/sanctum/csrf-cookie", {
+        withCredentials: true
+    });
 
-const username = ref('')
-const password = ref('')
+  const form = ref({
+    email: '',
+    password: ''
+  });
 
+// Assuming useSanctum is a composable that provides authentication methods
 const { login } = useSanctum();
- 
+
 const submitForm = async () => {
-  await login(form.value);
+    await login(form.value);
 };
+
+
+const { isLoggedIn } = useSanctum();
 </script>
+  
 
-
-  <style>
-  .register {
-    height: 100vh;
+<style>
+.register {
+    padding-top: 20vh;
+    height: 60vh;
     background-image: url(assets/background3.png);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
   }
-  </style>
-  
+</style>
