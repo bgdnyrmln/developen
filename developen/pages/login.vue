@@ -8,13 +8,13 @@
           <p>Log into your account.</p>
         </div>
         <div class="register-form">
-          <form @submit.prevent="submitForm"> 
+          <form @submit.prevent="submitForm" id="form"> 
             <div class="form-group">
               <label class="register-text" for="username">Username:</label>
-              <input class="register-input" type="email" id="email" v-model="form.email" placeholder="Enter your email" />
+              <input class="register-input" type="text" id="username" v-model="username" placeholder="Enter your username" required />
   
               <label class="register-text" for="password">Password:</label>
-              <input class="register-input" type="password" id="password" v-model="form.password" placeholder="Enter your password" />
+              <input class="register-input" type="password" id="password" v-model="password" placeholder="Enter your password" required />
   
               <button class="register-button" type="submit">Enter</button>
               
@@ -29,20 +29,15 @@
 <script setup>
 import { ref } from 'vue'
 
-const form = ref({
-  email: '',
-  password: ''
-});
+const username = ref('')
+const password = ref('')
 
 const { login } = useSanctum();
  
-const submitForm = () => {
-  login(form.value);
+const submitForm = async () => {
+  await login(form.value);
 };
-
-
 </script>
-
 
 
   <style>

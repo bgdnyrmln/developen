@@ -16,7 +16,6 @@ class Sessioncontroller extends Controller
 
     public function store()
     {
-
         $ValidatedAttributes = request()->validate([
             'email' => ['required', 'email'],
             'password' => ['required']
@@ -41,6 +40,3 @@ class Sessioncontroller extends Controller
         return redirect('/cars');
     }
 }
-
-
-
