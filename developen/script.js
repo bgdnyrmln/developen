@@ -20,7 +20,9 @@
   // Add an event listener for scroll event
   window.addEventListener("scroll", function() {
       // Check if page has been scrolled by at least 1 pixel
-      if (window.scrollY > 0) {
+      if (window.scrollY > 0 && themeToggleButton.textContent === "Back to Dark Mode") {
+        headerline.style.backgroundColor = "white"; // Change to desired color
+      } else if (window.scrollY > 0 && themeToggleButton.textContent === "freak my eyes pls") {
         headerline.style.backgroundColor = "black"; // Change to desired color
       } else {
         headerline.style.backgroundColor = "transparent";  // Original color

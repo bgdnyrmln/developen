@@ -15,3 +15,5 @@ Route::get('/users', [Sessioncontroller::class, 'index']);
 
 Route::get('/exercises', [ExerciseController::class, 'index']);
 
+
+Route::get('/exercises/{exercise}', [ExerciseController::class, 'show']);
