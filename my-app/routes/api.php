@@ -6,9 +6,10 @@ use App\Http\Controllers\Sessioncontroller;
 use App\Http\Controllers\ExerciseController;
 
 
-Route::get('/user', function(){
-    return response() -> json("Hello World");
+Route::get('/user', function (Request $request) {
+    return response()->json(["yolo"]);
 })->middleware('auth:sanctum');
+
 
 Route::get('/users', [Sessioncontroller::class, 'index']);
 

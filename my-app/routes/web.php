@@ -28,4 +28,4 @@ Route::patch('/cars/{car}', [Carcontroller::class, 'update']);
 Route::delete('/cars/{car}', [Carcontroller::class, 'destroy']);
 
 
-Route::post('/login', [SessionController::class, 'store']);
+// Route::post('/login', [SessionController::class, 'store']);

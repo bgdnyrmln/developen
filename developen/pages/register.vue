@@ -8,22 +8,21 @@
           <p>Fill in the form below to create an account.</p>
         </div>
         <div class="register-form">
-          <form @submit.prevent="register"> 
+          <form @submit.prevent="submitForm"> 
             <div class="form-group">
-              <label class="register-text" for="name">Name:</label>
-              <input class="register-input" type="text" id="name" v-model="name" placeholder="Enter your name" required />
+              <label class="register-text" for="first_name">Name:</label>
+              <input class="register-input" type="text" id="first_name" v-model="form.first_name" placeholder="Enter your name" required />
   
-              <label class="register-text" for="surname">Surname:</label>
-              <input class="register-input" type="text" id="surname" v-model="surname" placeholder="Enter your surname" required />
+              <label class="register-text" for="last_name">Surname:</label>
+              <input class="register-input" type="text" id="last_name" v-model="form.last_name" placeholder="Enter your surname" required />
   
-              <label class="register-text" for="username">Username:</label>
-              <input class="register-input" type="text" id="username" v-model="username" placeholder="Enter your username" required />
+              <label class="register-text" for="email">Email:</label>
+              <input class="register-input" type="text" id="email" v-model="form.email" placeholder="Enter your email" required />
   
               <label class="register-text" for="password">Password:</label>
-              <input class="register-input" type="password" id="password" v-model="password" placeholder="Enter your password" required />
+              <input class="register-input" type="password" id="password" v-model="form.password" placeholder="Enter your password" required />
   
               <button class="register-button" type="submit">Enter</button>
-              
             </div>
           </form>
           <a class="register-button" href="/login">Already have an account?</a>
@@ -32,49 +31,40 @@
     </div>
   </template>
   
-  <script setup>
+  <script setup lang="ts">
   import { ref } from 'vue'
-  
-  const name = ref('')
-  const surname = ref('')
-  const username = ref('')
-  const password = ref('')
-  
-  const register = async () => {
-    if (!name.value || !surname.value || !username.value || !password.value) {
-      alert('Please fill out all fields!')
-      return
-    }
-  
+  import axios from 'axios';
+  useSeoMeta({
+    title: "Register",
+  });
+
+  await axios.get("http://localhost:9000/sanctum/csrf-cookie", {
+        withCredentials: true
+    });
+
+
+  const { refreshUser } = useSanctum<User>();
+
+  const form = useSanctumForm("post", "/register", {
+    first_name: "",
+    last_name: "",
+    email: "",
+    password: "",
+  });
+
+  async function submitForm() {
+    if (form.processing) return;
     try {
-      const response = await fetch('/api/register', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          name: name.value,
-          surname: surname.value,
-          username: username.value,
-          password: password.value
-        })
-      })
-  
-      const result = await response.json()
-      console.log(result) // Check response in console
-  
-      if (result.success) {
-        alert('Registration successful!')
-        name.value = ''
-        surname.value = ''
-        username.value = ''
-        password.value = ''
-      } else {
-        alert(`Error: ${result.error}`)
-      }
-    } catch (error) {
-      console.error('Error:', error)
-      alert('Something went wrong, please try again.')
+      await form.submit();
+      await refreshUser();
+      return navigateTo("/dashboard");
+    } catch (err) {
+      console.log(err);
     }
   }
+
+
+
   </script>
   
   <style>

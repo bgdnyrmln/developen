@@ -21,10 +21,7 @@
                 freak my eyes pls
             </div>
 
-            <template v-if="!isLoggedIn"> not logged in</template>
-            <template v-else>
-              logged in
-            </template>
+            
                     
                     <!-- profile button dropdown (need to add the functionality)-->
             <div class="dropdown" >
@@ -33,8 +30,15 @@
                 </div>
 
                 <div class="dropdown-content">
+                  <template v-if="!isLoggedIn">
                     <a v-bind:href="register">Register</a>
                     <a v-bind:href="login">Login</a>
+                  </template>
+                  <template v-else>
+                    <a href="#">Profile</a>
+                    <a href="#" id="logout" @click.prevent="logout">Logout</a>
+                  </template>
+
                 </div>
             </div>
             <div id="side-menu" class="side-menu">
@@ -63,6 +67,7 @@
 
 <script setup>
 import { useRouter } from 'vue-router'
+const { logout } = useSanctum()
 
 const router = useRouter()
 
