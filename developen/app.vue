@@ -107,15 +107,12 @@ const login = ref("/login")
 // Header Scroll Behavior
 const headerline = ref(null)
 
-
 onMounted(() => {
   headerline.value = document.getElementById("headerline")
 
   window.addEventListener("scroll", () => {
-    const isLightTheme = document.body.classList.contains("light-theme")
-
     if (window.scrollY > 0) {
-      headerline.value.style.backgroundColor = isLightTheme ? "white" : "black"
+      headerline.value.style.backgroundColor = "black"
     } else {
       headerline.value.style.backgroundColor = "transparent"
     }
@@ -129,7 +126,6 @@ onMounted(() => {
     }
   })
 })
-
 
 // Mobile Menu
 onMounted(() => {
@@ -153,7 +149,6 @@ onMounted(() => {
 
   themeToggleButton.addEventListener("click", () => {
     bodyElement.classList.toggle("light-theme")
-    theme = !theme
 
     themeToggleButton.textContent = bodyElement.classList.contains("light-theme")
       ? "Back to Dark Mode"

@@ -2,11 +2,6 @@
 import { NuxtLink } from '#components';
 import { ref, onMounted } from 'vue';
 
-definePageMeta({
-    middleware: ["$auth"],
-});
-
-
 const exercises = ref([]);
 
 onMounted(async () => {
@@ -23,30 +18,23 @@ onMounted(async () => {
 <template>
     <div class="exercises">
       <h1>Exercises for you!</h1>
-
-
-      <NuxtLink :to="`/exercises/${exercise.id}`" v-for="exercise in exercises" :key="exercise.id" class="containerforexercise">
+  
+      <div v-for="exercise in exercises" :key="exercise.id" class="containerforexercise">
         <span>{{ exercise.name }}</span>
-      </NuxtLink>
-
-
+        <!-- <NuxtLink :to="{ name: 'exercises-id', params: { id: exercise.id } }">
+          Create Exercise
+        </NuxtLink> -->
+      </div>
     </div>
   </template>
   
 
 
 <style>
-
-
 .exercises{
-  background-image: url("assets/background6.png");
-  background-size: 100%;
-  background-position: center;
-  background-repeat: no-repeat;
-  height: 80vh;
-  padding-top: 20vh;
-  padding-left: 10vh; 
-  padding-right: 10vh;
+    padding-top: 20vh;
+    padding-left: 10vh; 
+    padding-right: 10vh;
 }
 
 .containerforexercise{

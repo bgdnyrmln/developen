@@ -26,16 +26,9 @@ class ExerciseController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show($id)
+    public function show(string $id)
     {
-        $exercise = Exercise::find($id); // Fetch car by ID
-        if (!$exercise) {
-            return response()->json([
-                'name' => 'Not found',
-                'description' => 'Exercise with such id does not exist'
-            ]);
-        }
-        return response()->json($exercise);
+        //
     }
 
     /**

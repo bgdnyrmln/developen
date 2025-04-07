@@ -12,7 +12,7 @@
                         Place to start your journey.
                     </div>
                     <div class="btn">
-                        <a class = "button-title" href="/exercises/all">lets get started</a>
+                        <a class = "button-title" href="#">lets get started</a>
                     </div>
                 </div>
             </div>

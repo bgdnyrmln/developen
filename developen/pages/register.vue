@@ -38,16 +38,12 @@
     title: "Register",
   });
 
-  definePageMeta({
-    middleware: ["$guest"],
-  });
-
   await axios.get("http://localhost:9000/sanctum/csrf-cookie", {
         withCredentials: true
     });
 
 
-  const { refreshUser } = useSanctum();
+  const { refreshUser } = useSanctum<User>();
 
   const form = useSanctumForm("post", "/register", {
     first_name: "",
@@ -61,7 +57,7 @@
     try {
       await form.submit();
       await refreshUser();
-      return navigateTo("/main");
+      return navigateTo("/dashboard");
     } catch (err) {
       console.log(err);
     }

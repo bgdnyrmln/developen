@@ -42,17 +42,10 @@
   import axios from 'axios';
   import { ref } from 'vue';
   
-  definePageMeta({
-    middleware: ["$guest"],
-  });
-
-
   // Call this before making login requests
     await axios.get("http://localhost:9000/sanctum/csrf-cookie", {
         withCredentials: true
     });
-
-
 
   const form = ref({
     email: '',
@@ -73,6 +66,8 @@ const { isLoggedIn } = useSanctum();
 
 <style>
 .register {
+    padding-top: 20vh;
+    height: 60vh;
     background-image: url(assets/background3.png);
     background-size: cover;
     background-position: center;
