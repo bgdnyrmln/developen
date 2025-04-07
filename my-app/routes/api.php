@@ -23,8 +23,5 @@ Route::get('/users', [Sessioncontroller::class, 'index']);
 
 Route::get('/exercises', [ExerciseController::class, 'index']);
 
-<<<<<<< HEAD
 
 Route::get('/exercises/{exercise}', [ExerciseController::class, 'show']);
-=======
->>>>>>> parent of 2543cfd (commint)
