@@ -13,7 +13,7 @@ onMounted(async () => {
   try {
     exercises.value = await $fetch('http://localhost:9000/api/exercises');
   } catch (error) {
-    console.error('Error fetching users:', error);
+    console.error('Error fetching exercises:', error);
   }
 
 

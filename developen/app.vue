@@ -21,7 +21,9 @@
                 freak my eyes pls
             </div>
 
-            
+            <div v-if = "role === 'admin'"> 
+              <a href="/admin/panel">admin panel</a>
+            </div>
                     
                     <!-- profile button dropdown (need to add the functionality)-->
             <div class="dropdown" >
@@ -71,15 +73,22 @@ const { logout } = useSanctum()
 
 const router = useRouter()
 
+
 if (process.client) {
   if (router.currentRoute.value.path === '/') {
     router.replace('/main')
   }
 }
 
+
+
 import { ref, onMounted, onUnmounted } from 'vue'
 
 const { isLoggedIn } = useSanctum()
+
+
+
+const { role } = await useSanctumFetch('http://localhost:9000/api/user');
 
 
 // Reactive variables
@@ -91,6 +100,8 @@ const contactpage = ref("/contacts")
 const home = ref("/main")
 const register = ref("/register")
 const login = ref("/login")
+
+
 
 
 // Header Scroll Behavior
@@ -149,11 +160,9 @@ onMounted(() => {
       : "freak my eyes pls"
   })
 })
-
-
-
-
 </script>
+
+
 
 
 <style>
