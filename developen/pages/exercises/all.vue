@@ -10,9 +10,9 @@ onMounted(async () => {
   } catch (error) {
     console.error('Error fetching users:', error);
   }
-
-
 });
+
+
 </script>
 
 <template>
@@ -21,9 +21,9 @@ onMounted(async () => {
   
       <div v-for="exercise in exercises" :key="exercise.id" class="containerforexercise">
         <span>{{ exercise.name }}</span>
-        <!-- <NuxtLink :to="{ name: 'exercises-id', params: { id: exercise.id } }">
-          Create Exercise
-        </NuxtLink> -->
+        <NuxtLink :to="{ name: 'exercises-id', params: { id: exercise.id } }">
+          {{ exercise.description }}
+        </NuxtLink>
       </div>
     </div>
   </template>
