@@ -7,16 +7,8 @@ use App\Http\Controllers\ExerciseController;
 
 
 Route::get('/user', function (Request $request) {
-    return response()->json(
-        [
-            'role' => $request->user()->role,
-            'first_name' => $request->user()->first_name,
-            'last_name' => $request->user()->last_name,
-            'email' => $request->user()->email
-        ]);
-    })->middleware('auth:sanctum');
-
-
+    return response()->json(["yolo"]);
+})->middleware('auth:sanctum');
 
 
 Route::get('/users', [Sessioncontroller::class, 'index']);
