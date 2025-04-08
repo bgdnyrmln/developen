@@ -1,6 +1,5 @@
 <template>
 
-    
     <div class = "container" style="padding-left: 34vh">
         <h1>Welcome back, dear {{ first_name }}!</h1>
         <h2>You can use the navigation bar to the left from this text.</h2>

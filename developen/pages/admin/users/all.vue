@@ -14,7 +14,6 @@
             </div>
         </div>
     </div>
-
     <admin-panel/>
 </template>
 
@@ -23,7 +22,7 @@ import axios from 'axios';
 const users = ref([]);
 
 definePageMeta({
-    middleware: ["$auth"],    
+    middleware: ["$auth", "admin"],    
 });
 
 onMounted(async () => {

@@ -12,6 +12,12 @@
 </template>
 
 <script setup>
+
+    definePageMeta({
+        middleware: ["$auth", "admin"],    
+    });
+
+    
     import { useRoute } from 'vue-router';
 
     const route = useRoute();
