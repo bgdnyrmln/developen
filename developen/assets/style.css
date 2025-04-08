@@ -23,6 +23,11 @@ body.light-theme {
     color: black;
 }
 
+.container {
+    padding-top: 20vh;
+    height: 50vh;
+ }
+
 
 .header-line{
     width: 100%;
