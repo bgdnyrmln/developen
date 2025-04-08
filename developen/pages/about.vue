@@ -1,4 +1,6 @@
 <template>
+
+<headerline/>
         <div class="container">
             <div class="about-title">
                 <h1>About Us</h1>
@@ -14,12 +16,8 @@
             </div>
         </div>
 
-
+<footerline/>
   </template>
 
   <style>
-    .container {
-       padding-top: 20vh;
-       height: 50vh;
-    }
 </style>

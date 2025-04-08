@@ -1,5 +1,5 @@
 <template>
-
+<headerline/>
     <div class="container1">
         <!-- down the header (big cool text 0_0, might add some animation) -->
             <div class="header-down">
@@ -152,6 +152,7 @@
     </div>
 </div>
 
+<footerline/>
 </template>
 
 <script>
@@ -184,3 +185,4 @@ const closeModal = () => {
     background-repeat: no-repeat; /* Prevents the image from repeating */
 }
 </style>
+

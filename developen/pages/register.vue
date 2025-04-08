@@ -1,4 +1,6 @@
 <template>
+    <headerline/>
+
     <div class="register">
       <div class="container">
         <div class="register-title">
@@ -29,6 +31,8 @@
         </div>
       </div>
     </div>
+<footerline/>
+
   </template>
   
   <script setup lang="ts">
@@ -43,6 +47,12 @@
     });
 
 
+  interface User {
+    id: number;
+    first_name: string;
+    last_name: string;
+    email: string;
+  }
   const { refreshUser } = useSanctum<User>();
 
   const form = useSanctumForm("post", "/register", {
@@ -57,7 +67,7 @@
     try {
       await form.submit();
       await refreshUser();
-      return navigateTo("/dashboard");
+      return navigateTo("/main");
     } catch (err) {
       console.log(err);
     }

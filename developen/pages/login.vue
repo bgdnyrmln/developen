@@ -1,4 +1,6 @@
 <template>
+  <headerline/>
+
     <div class="register">
       <div class="container">
         <div class="register-title">
@@ -36,6 +38,8 @@
         </div>
       </div>
     </div>
+<footerline/>
+
   </template>
   
   <script setup>

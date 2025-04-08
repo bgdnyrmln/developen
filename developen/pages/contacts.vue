@@ -1,4 +1,5 @@
 <template>
+    <headerline/>
     <div class="container">
         <div class="about-title">
             <h1>Contacts</h1>
@@ -15,6 +16,7 @@
     <maplibre/>
 
 
+    <footerline/>
 </template>
 
 <script setup>

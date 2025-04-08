@@ -1,17 +1,21 @@
 <template>
 
-    <div class = "container">
+    <div class = "container" style="padding-left: 34vh;">
         <div v-for="user in users" class = "usercard">
-            First Name: {{ user.first_name }} 
-            Last Name: {{ user.last_name }}
-            Email Adress: {{ user.email }}
-            Role: {{ user.role }}
-            <a href="">Edit</a>
-            <button @click = "deleteUser(user.id)">Delete</button>
-
+            <div>
+                First Name: {{ user.first_name }} <br>
+                Last Name: {{ user.last_name }} <br>
+                Email Adress: {{ user.email }}  <br>
+                Role: {{ user.role }} 
+            </div>
+            <div style="display: flex; gap: 10px;">
+                <NuxtLink :to="`/admin/users/${user.id}`" class="userbutton">Details</NuxtLink>
+                <button @click = "deleteUser(user.id)" class="userbutton" style="background-color: red;">Delete</button>
+            </div>
         </div>
     </div>
 
+    <admin-panel/>
 </template>
 
 <script setup>
@@ -54,7 +58,6 @@ const deleteUser = async (id) => {
 
 
 
-
 </script>
 
 <style>
@@ -66,10 +69,28 @@ const deleteUser = async (id) => {
     margin: auto;
     border-radius: 10px;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
+    padding-inline: 3vh;
     align-items: center;
     margin-bottom: 5px;
     transition: all 0.3s ease;
+}
+
+.usercard:hover{
+    background-color: #444444;
+}
+
+.userbutton{
+    background-color: #0f0f0f;
+    color: white;
+    border-radius: 5px;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
 }
 
 
