@@ -18,14 +18,13 @@ Route::get('/user', function (Request $request) {
 
 
 
-Route::get('/users', [Usercontroller::class, 'index']);
-
 Route::get('/exercises', [ExerciseController::class, 'index']);
-
 Route::get('/exercises/{exercise}', [ExerciseController::class, 'show']);
+Route::delete('/exercises/{exercise}', [ExerciseController::class, 'destroy']) -> middleware('auth:sanctum');
+Route::put('/exercises/{exercise}', [ExerciseController::class, 'update']) -> middleware('auth:sanctum');
+Route::post('/exercises', [ExerciseController::class, 'store']) -> middleware('auth:sanctum');
 
+Route::get('/users', [Usercontroller::class, 'index']);
 Route::get('/users/{user}', [Usercontroller::class, 'show']);
-
 Route::delete('/users/{user}', [Usercontroller::class, 'destroy']) -> middleware('auth:sanctum');
-
 Route::put('/users/{user}', [Usercontroller::class, 'update']) -> middleware('auth:sanctum');

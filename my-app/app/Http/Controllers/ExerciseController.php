@@ -20,8 +20,10 @@ class ExerciseController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $exercise = Exercise::create($request->only(['name', 'description', 'answer']));
+        return response()->json($exercise, 201);
     }
+
 
     /**
      * Display the specified resource.
@@ -39,16 +41,25 @@ class ExerciseController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $id)
     {
-        //
+        $exercise = Exercise::findOrFail($id);
+        $exercise->update($request->only(['name', 'description', 'answer']));
+        return response()->json(['message' => 'Updated']);
     }
+
 
     /**
      * Remove the specified resource from storage.
      */
     public function destroy(string $id)
     {
-        //
+        $exercise = Exercise::find($id);
+        if ($exercise) {
+            $exercise->delete();
+            return response()->json(['message' => 'Exercise deleted']);
+        } else {
+            return response()->json(['message' => 'Exercise not found'], 404);
+        }
     }
 }
