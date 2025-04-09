@@ -1,19 +1,3 @@
-<script setup>
-import { NuxtLink } from '#components';
-import { ref, onMounted } from 'vue';
-
-const exercises = ref([]);
-
-onMounted(async () => {
-  try {
-    exercises.value = await $fetch('http://localhost:9000/api/exercises');
-  } catch (error) {
-    console.error('Error fetching users:', error);
-  }
-});
-
-</script>
-
 <template>
   <headerline/>
     <div class="exercises">
@@ -22,10 +6,29 @@ onMounted(async () => {
         <NuxtLink v-for="exercise in exercises" :key="exercise.id" class="containerforexercise" :to="{ name: 'exercises-id', params: { id: exercise.id } }">
           {{ exercise.name  }}
         </NuxtLink>
-      </div>
+
+    </div>
+    <footerline/>
   </template>
   
 
+
+<script setup>
+  import { NuxtLink } from '#components';
+  import { ref, onMounted } from 'vue';
+  
+  const exercises = ref([]);
+  
+  onMounted(async () => {
+    try {
+      exercises.value = await $fetch('http://localhost:9000/api/exercises');
+    } catch (error) {
+      console.error('Error fetching users:', error);
+    }
+  });
+  
+</script>
+  
 
 <style>
 .exercises{
