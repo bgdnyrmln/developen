@@ -72,7 +72,18 @@ router.replace('/main')
 import { ref, onMounted, onUnmounted } from 'vue'
 
 const { isLoggedIn } = useSanctum()
-const { role } = await useSanctumFetch('http://localhost:9000/api/user');
+
+const role = ref(null)
+
+onMounted(async () => {
+  try {
+    const { role: fetchedRole } = await useSanctumFetch('http://localhost:9000/api/user')
+    role.value = fetchedRole
+  } catch (e) {
+    console.error('Error fetching role:', e)
+  }
+})
+
 
 // Reactive variables
 const name = ref("Bogdan")

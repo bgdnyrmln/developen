@@ -25,4 +25,4 @@ Route::get('/exercises', [ExerciseController::class, 'index']);
 Route::get('/exercises/{exercise}', [ExerciseController::class, 'show']);
 
 Route::get('/users/{user}', [Usercontroller::class, 'show']);
-Route::delete('/users/{user}', [Usercontroller::class, 'destroy'])->middleware('auth:sanctum');
+Route::delete('/users/{user}', [Usercontroller::class, 'destroy']);

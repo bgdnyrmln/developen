@@ -28,7 +28,12 @@ class ExerciseController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $exercise = Exercise::find($id);
+        if ($exercise) {
+            return response()->json($exercise);
+        } else {
+            return response()->json(['message' => 'Exercise not found'], 404);
+        }
     }
 
     /**
