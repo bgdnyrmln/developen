@@ -67,7 +67,7 @@
     try {
       await form.submit();
       await refreshUser();
-      return navigateTo("/main");
+      return navigateTo("/login");
     } catch (err) {
       console.log(err);
     }
