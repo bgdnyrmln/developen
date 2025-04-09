@@ -12,20 +12,17 @@ onMounted(async () => {
   }
 });
 
-
 </script>
 
 <template>
+  <headerline/>
     <div class="exercises">
       <h1>Exercises for you!</h1>
   
-      <div v-for="exercise in exercises" :key="exercise.id" class="containerforexercise">
-        <span>{{ exercise.name }}</span>
-        <NuxtLink :to="{ name: 'exercises-id', params: { id: exercise.id } }">
-          {{ exercise.description }}
+        <NuxtLink v-for="exercise in exercises" :key="exercise.id" class="containerforexercise" :to="{ name: 'exercises-id', params: { id: exercise.id } }">
+          {{ exercise.name  }}
         </NuxtLink>
       </div>
-    </div>
   </template>
   
 
