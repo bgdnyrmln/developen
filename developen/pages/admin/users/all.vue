@@ -44,26 +44,28 @@ onMounted(async () => {
 
 
 const deleteUser = async (id) => {
-  try {
-    // Get CSRF token from cookie
-    const token = decodeURIComponent(
-      document.cookie
-        .split("; ")
-        .find((row) => row.startsWith("XSRF-TOKEN="))
-        ?.split("=")[1] ?? ""
-    );
+    if (confirm("Are you sure you want to delete this user?")) {
+        try {
+        // Get CSRF token from cookie
+            const token = decodeURIComponent(
+                document.cookie
+                    .split("; ")
+                    .find((row) => row.startsWith("XSRF-TOKEN="))
+                    ?.split("=")[1] ?? ""
+            );
 
-    await axios.delete(`http://localhost:9000/api/users/${id}`, {
-      withCredentials: true,
-      headers: {
-        "X-XSRF-TOKEN": token,
-      },
-    });
+            await axios.delete(`http://localhost:9000/api/users/${id}`, {
+                withCredentials: true,
+                headers: {
+                    "X-XSRF-TOKEN": token,
+                },
+            });
 
-    users.value = users.value.filter((user) => user.id !== id);
-  } catch (error) {
-    console.error("Error deleting user:", error);
-  }
+            users.value = users.value.filter((user) => user.id !== id);
+        } catch (error) {
+            console.error("Error deleting user:", error);
+        }
+}
 };
 
 
