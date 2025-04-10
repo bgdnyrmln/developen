@@ -1,9 +1,10 @@
 <template>
     <headerline/>
-    <div class = "container" style="padding-left: 5vh;">
+    <div class = "container" style="padding: 20vh 5vh;">
         <h1>{{ exercise.name }}</h1>
-        <h2>{{ exercise.description }}</h2>
-        
+        <h2 class="description">{{ exercise.description }}</h2>
+
+
         <form @submit.prevent="checkAnswer($event)" class="register-form">
             <input class = "register-input" type="text" name="answer" placeholder="Your answer"/>
             <button class = "register-button" type="submit">Check answer</button>
@@ -27,6 +28,7 @@
 </template>
 
 <script setup>
+
 import { useRoute } from 'vue-router';
 import axios from 'axios';
 
@@ -34,6 +36,7 @@ import axios from 'axios';
 definePageMeta({
     middleware: ["$auth"],
 });
+
 
 const route = useRoute();
 const id = Number(route.params.id);
@@ -127,6 +130,11 @@ const checkAnswer = async (e) => {
         position: absolute;
         right: 50px;
         color: #333333;
+    }
+
+    .description {
+        white-space: pre-wrap;  /* Ensures newlines and wrapping are respected */
+        word-wrap: break-word;  /* Allows long words to break properly */
     }
 
     @media (max-width: 700px) {

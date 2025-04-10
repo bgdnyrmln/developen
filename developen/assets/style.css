@@ -532,6 +532,23 @@ html:has(body:has(:not(.header-line))) .header-line {
     text-align: center;
 }
 
+.description-input {
+    width: 100%;
+    height: 20vh; /* Changed from 4vh to 20vh for more vertical space */
+    margin-bottom: 2vh;
+    font-weight: 700;
+    font-size: 14px;
+    background-color: #000000;
+    border: 3px solid #505050;
+    border-radius: 15px;
+    color: white;
+    padding: 10px; /* Added for better text spacing */
+    box-sizing: border-box;
+    text-align: left; /* Changed to left for better readability in multiline */
+    overflow-wrap: break-word;
+    white-space: pre-wrap;
+  }
+
 .register-button{
     width: 50.5vh;
     margin-bottom: 7vh;
@@ -543,6 +560,38 @@ html:has(body:has(:not(.header-line))) .header-line {
     color: white;
     padding: 16px 32px;
     text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+
+.usercard{
+    height: 10vh;
+    width: 80%;
+    background-color: #222222;
+    margin: auto;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    padding-inline: 3vh;
+    align-items: center;
+    margin-bottom: 5px;
+    transition: all 0.3s ease;
+}
+
+.usercard:hover{
+    background-color: #444444;
+}
+
+.userbutton{
+    background-color: #0f0f0f;
+    color: white;
+    border-radius: 5px;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
     margin: 4px 2px;
     cursor: pointer;
 }

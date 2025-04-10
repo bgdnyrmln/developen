@@ -11,7 +11,7 @@
             <form @submit.prevent="editexercise($event, exercise.id)" class="register-form">
                 <input class="register-input" type="text" name="id" placeholder="id" :value="exercise.id" />
                 <input class="register-input" type="text" name="name" placeholder="name" :value="exercise.name" />
-                <input class="register-input" type="text" name="description" placeholder="description" :value="exercise.description" />
+                <textarea class="description-input" name="description" placeholder="Description" :value="exercise.description"></textarea>
                 <input class="register-input" type="text" name="answer" placeholder="answer" :value="exercise.answer" />
                 <button class="register-button" type="submit">Submit</button>
             </form>

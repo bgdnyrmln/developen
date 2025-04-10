@@ -65,46 +65,10 @@ const deleteUser = async (id) => {
         } catch (error) {
             console.error("Error deleting user:", error);
         }
-}
+    }
 };
 
 
 
 
 </script>
-
-<style>
-
-.usercard{
-    height: 10vh;
-    width: 80%;
-    background-color: #222222;
-    margin: auto;
-    border-radius: 10px;
-    display: flex;
-    justify-content: space-between;
-    padding-inline: 3vh;
-    align-items: center;
-    margin-bottom: 5px;
-    transition: all 0.3s ease;
-}
-
-.usercard:hover{
-    background-color: #444444;
-}
-
-.userbutton{
-    background-color: #0f0f0f;
-    color: white;
-    border-radius: 5px;
-    padding: 10px 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    cursor: pointer;
-}
-
-
-</style>

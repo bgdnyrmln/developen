@@ -6,7 +6,7 @@
         <NuxtLink v-for="exercise in exercises" :key="exercise.id" class="containerforexercise" :to="{ name: 'exercises-id', params: { id: exercise.id } }">
                 
           <h1 class="exercise-id">{{ exercise.id }}</h1>
-          <p class="exercise-name">{{ exercise.name }}</p>
+          <h2>{{ exercise.name }}</h2>
         </NuxtLink>
               
     </div>
@@ -70,6 +70,4 @@
   color: #333333;
 }
 
-.exercise-name {
-}
 </style>

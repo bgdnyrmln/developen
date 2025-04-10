@@ -4,7 +4,7 @@
   
       <form @submit.prevent="createExercise" class="register-form">
         <input class="register-input" type="text" name="name" placeholder="Exercise Name" />
-        <input class="register-input" type="text" name="description" placeholder="Description" />
+        <textarea class="description-input" name="description" placeholder="Description"></textarea>
         <input class="register-input" type="text" name="answer" placeholder="Answer" />
         <button class="register-button" type="submit">Create</button>
       </form>
@@ -58,3 +58,4 @@ const createExercise = async (e) => {
   }
 };
 </script>
+
