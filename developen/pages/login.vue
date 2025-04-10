@@ -70,8 +70,7 @@ const { isLoggedIn } = useSanctum();
 
 <style>
 .register {
-    padding-top: 20vh;
-    height: 60vh;
+    height: 80vh;
     background-image: url(assets/background3.png);
     background-size: cover;
     background-position: center;

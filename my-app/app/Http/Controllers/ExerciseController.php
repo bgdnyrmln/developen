@@ -44,7 +44,7 @@ class ExerciseController extends Controller
     public function update(Request $request, $id)
     {
         $exercise = Exercise::findOrFail($id);
-        $exercise->update($request->only(['name', 'description', 'answer']));
+        $exercise->update($request->only(['id', 'name', 'description', 'answer']));
         return response()->json(['message' => 'Updated']);
     }
 

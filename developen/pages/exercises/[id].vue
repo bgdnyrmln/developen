@@ -9,15 +9,18 @@
             <button class = "register-button" type="submit">Check answer</button>
         </form>
 
-        <div style= "display:flex; justify-content: space-around; margin-top: 2vh;">
-            <NuxtLink v-if = "beforeExercise.id != null" class="register-button" :to="{ name: 'exercises-id', params: { id: beforeExercise.id } }">
-                {{ beforeExercise.name  }}
+        <div class = "navigation">
+            <NuxtLink v-if = "beforeExercise.id != null" class="navigation-button" :to="{ name: 'exercises-id', params: { id: beforeExercise.id } }">
+                <p class = "navigation-button-text">{{ beforeExercise.name  }}</p>
+                <p class = "navigation-button-symbol"><</p>
             </NuxtLink>
-            <NuxtLink to="/exercises/all" class="register-button">
-                Back to exercises
+            <NuxtLink to="/exercises/all" class="navigation-button">
+                <p class = "navigation-button-text">Back to exercises </p>
+                <p class = "navigation-button-symbol">⌂</p>
             </NuxtLink>
-            <NuxtLink v-if = "nextExercise.id != null" class="register-button" :to="{ name: 'exercises-id', params: { id: nextExercise.id } }">
-                {{ nextExercise.name  }}
+            <NuxtLink v-if = "nextExercise.id != null" class="navigation-button" :to="{ name: 'exercises-id', params: { id: nextExercise.id } }">
+                <p class = "navigation-button-text">{{ nextExercise.name  }}</p>
+                <p class = "navigation-button-symbol">></p>
             </NuxtLink>
         </div>
     </div>
@@ -79,3 +82,56 @@ const checkAnswer = async (e) => {
 };
 
 </script>
+
+
+<style>
+
+    .navigation{
+        display:flex; 
+        justify-content:space-around; 
+        margin-top: 2vh;
+    }
+
+    .navigation-button{
+        height: 20vh;
+        display: flex;
+        position: relative;
+        align-items: center;
+        width: 100%;
+        margin-bottom: 7vh;
+        font-weight: 700;
+        font-size: 14px;
+        border-radius: 15px;
+        background-color: #222222;
+        border: none;
+        color: white;
+        padding: 16px 32px;
+        text-decoration: none;
+        margin: 4px 2px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+   
+    .navigation-button:hover{
+        background-color: #444444;
+    }
+
+    .navigation-button-text{
+        font-size: 20px;
+        z-index: 2;
+    }
+
+
+    .navigation-button-symbol{
+        font-size: 200px;
+        position: absolute;
+        right: 50px;
+        color: #333333;
+    }
+
+    @media (max-width: 700px) {
+        .navigation {
+            flex-direction: column;
+        }}
+
+</style>

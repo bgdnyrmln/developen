@@ -11,12 +11,21 @@
             <h1>Edit User</h1>
             <form @submit.prevent="edituser($event, user.id)" class="register-form">
                 <input class="register-input" type="text" name="first_name" placeholder="First Name" :value="user.first_name" />
+                <p v-if="error.first_name" style="color: red;">{{ error.first_name[0] }}</p>
+
                 <input class="register-input" type="text" name="last_name" placeholder="Last Name" :value="user.last_name" />
+                <p v-if="error.last_name" style="color: red;">{{ error.last_name[0] }}</p>
+
                 <input class="register-input" type="text" name="email" placeholder="Email" :value="user.email" />
+                <p v-if="error.email" style="color: red;">{{ error.email[0] }}</p>
+
                 <input class="register-input" type="text" name="role" placeholder="Role" :value="user.role" />
+                <p v-if="error.role" style="color: red;">{{ error.role[0] }}</p>
+
+                <p v-if="error.general" style="color: red; font-weight: bold;">{{ error.general }}</p>
+
                 <button class="register-button" type="submit">Submit</button>
             </form>
-
         </div>
     </div>
     <admin-panel/>
@@ -48,6 +57,7 @@
 
     const route = useRoute();
     const id = route.params.id;
+    const error = ref({});
 
     
 
@@ -82,9 +92,20 @@
                 });
                 
                 alert("User updated successfully!");
-            } catch (error) {
-                console.error("Error editing user:", error);
+            } catch (err) {
+                console.error("Error editing user:", err);
+                
+                if (err.response?.data?.errors) {
+                    // Assign each field error
+                    error.value = err.response.data.errors;
+                } else if (err.response?.data?.message) {
+                    // Generic fallback message
+                    error.value = { general: err.response.data.message };
+                } else {
+                    error.value = { general: "An unexpected error occurred." };
+                }
             }
+
         }
     };
 

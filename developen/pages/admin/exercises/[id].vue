@@ -9,6 +9,7 @@
         <div>
             <h1>Edit exercise</h1>
             <form @submit.prevent="editexercise($event, exercise.id)" class="register-form">
+                <input class="register-input" type="text" name="id" placeholder="id" :value="exercise.id" />
                 <input class="register-input" type="text" name="name" placeholder="name" :value="exercise.name" />
                 <input class="register-input" type="text" name="description" placeholder="description" :value="exercise.description" />
                 <input class="register-input" type="text" name="answer" placeholder="answer" :value="exercise.answer" />
@@ -20,68 +21,64 @@
 </template>
 
 <script setup>
-    
-    import axios from 'axios';
-    import { useRoute } from 'vue-router';
+import axios from 'axios';
+import { useRoute, useRouter } from 'vue-router';
+import { onMounted, ref } from 'vue';
 
-    definePageMeta({
-        middleware: ["$auth", "admin"],    
-    });
+definePageMeta({
+    middleware: ["$auth", "admin"],    
+});
 
-    const exercise = ref([]);
+const route = useRoute();
+const router = useRouter();
+const id = route.params.id;
+const exercise = ref([]);
 
-    onMounted(async () => {     
-        try {
-            // First, get CSRF cookie
-            await axios.get("http://localhost:9000/sanctum/csrf-cookie", {
-                withCredentials: true
-            });
-            exercise.value = await $fetch(`http://localhost:9000/api/exercises/${id}`)
-        } catch (error) {
-            console.error('Error fetching exercises:', error);
-        }
-    });
-    
-
-    const route = useRoute();
-    const id = route.params.id;
-
-    
-
-
-    const editexercise = async (e, id) => {
-  if (confirm("Are you sure you want to edit this exercise?")) {
+onMounted(async () => {
     try {
-      const form = e.target;
-
-      // Get values directly from the form
-      const payload = {
-        name: form.name.value,
-        description: form.description.value,
-        answer: form.answer.value,
-      };
-
-      // Get CSRF token from cookies
-      const token = decodeURIComponent(
-        document.cookie
-          .split("; ")
-          .find((row) => row.startsWith("XSRF-TOKEN="))
-          ?.split("=")[1] ?? ""
-      );
-
-      await axios.put(`http://localhost:9000/api/exercises/${id}`, payload, {
-        withCredentials: true,
-        headers: {
-          "X-XSRF-TOKEN": token,
-          "Content-Type": "application/json", // explicitly declare JSON
-        },
-      });
-
-      alert("Exercise updated successfully!");
+        await axios.get("http://localhost:9000/sanctum/csrf-cookie", {
+            withCredentials: true
+        });
+        exercise.value = await $fetch(`http://localhost:9000/api/exercises/${id}`);
     } catch (error) {
-      console.error("Error editing exercise:", error.response?.data || error);
+        console.error('Error fetching exercise:', error);
     }
-  }
-};
+});
 
+const editexercise = async (e, id) => {
+    if (confirm("Are you sure you want to edit this exercise?")) {
+        try {
+            const form = e.target;
+            const formData = new FormData(form);
+
+            const payload = {
+                id: formData.get("id"),
+                name: formData.get("name"),
+                description: formData.get("description"),
+                answer: formData.get("answer"),
+            };
+
+            const token = decodeURIComponent(
+                document.cookie
+                .split("; ")
+                .find((row) => row.startsWith("XSRF-TOKEN="))
+                ?.split("=")[1] ?? ""
+            );
+
+            await axios.put(`http://localhost:9000/api/exercises/${id}`, payload, {
+                withCredentials: true,
+                headers: {
+                    "X-XSRF-TOKEN": token,
+                },
+            });
+
+            alert("Exercise updated successfully!");
+
+            const newId = formData.get("id");
+            router.push(`/admin/exercises/${newId}`);
+        } catch (error) {
+            console.error("Error editing exercise:", error);
+        }
+    }
+};
 </script>
