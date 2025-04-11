@@ -14,8 +14,14 @@
         <div class="right">
             <h1>Edit Your Profile</h1>
             <form @submit.prevent="edituser($event, user.id)" class="register-form" style="width: 40vw;">
+                    
+                <label class="register-text" for="first_name">First Name:</label>
                 <input class = "register-input" type="text" :value="user.first_name" name="first_name" placeholder="First Name" />
+
+                <label class="register-text" for="last_name">Last Name:</label>
                 <input class = "register-input" type="text" :value="user.last_name" name="last_name" placeholder="Last Name" />
+
+                <label class="register-text" for="email">Email:</label>
                 <input class = "register-input" type="email" :value="user.email" name="email" placeholder="Email" />
                 <button class = "register-button" type="submit"> Edit</button>
             </form>

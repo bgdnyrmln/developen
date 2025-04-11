@@ -4,6 +4,7 @@
 
     <div class = "usercard" v-for="exercise in exercises" :key="exercise.id">
         <div>
+            ID: {{ exercise.id }} <br>
             Name: {{ exercise.name }} <br>
         </div>
         <div style="display: flex; gap: 10px;">
