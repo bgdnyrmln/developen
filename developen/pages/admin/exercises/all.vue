@@ -1,20 +1,19 @@
 <template>
-<div class = "container" style="margin-left: 34vh;">
-  <a class = "usercard"  href="/admin/exercises/create">Create new exercise</a>
-  
-  <div class = "usercard" v-for="exercise in exercises" :key="exercise.id">
-    <div>
-        Name: {{ exercise.name }} <br>
-        Description: {{ exercise.description }} <br>
-    </div>
-    <div style="display: flex; gap: 10px;">
-        <NuxtLink :to="`/admin/exercises/${exercise.id}`" class="userbutton">Details</NuxtLink>
-        <button @click = "deleteExercise(exercise.id)" class="userbutton" style="background-color: red;">Delete</button>
-    </div>
-  </div>
+    <div class = "container" style="margin-left: 34vh;">
+    <a class = "usercard"  href="/admin/exercises/create">Create new exercise</a>
 
-</div>
-<admin-panel/>
+    <div class = "usercard" v-for="exercise in exercises" :key="exercise.id">
+        <div>
+            Name: {{ exercise.name }} <br>
+        </div>
+        <div style="display: flex; gap: 10px;">
+            <NuxtLink :to="`/admin/exercises/${exercise.id}`" class="userbutton">Details</NuxtLink>
+            <button @click = "deleteExercise(exercise.id)" class="userbutton" style="background-color: red;">Delete</button>
+        </div>
+    </div>
+
+    </div>
+    <admin-panel/>
 </template>
 
 <script setup>

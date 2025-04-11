@@ -517,7 +517,7 @@ html:has(body:has(:not(.header-line))) .header-line {
 }
 
 .form-group{
-    width: 50vh;
+    width: 45vw;
 }
 
 .register-input{
@@ -551,7 +551,7 @@ html:has(body:has(:not(.header-line))) .header-line {
   }
 
 .register-button{
-    width: 50.5vh;
+    width: 100%;
     margin-bottom: 7vh;
     font-weight: 700;
     font-size: 14px;

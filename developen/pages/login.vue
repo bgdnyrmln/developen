@@ -11,8 +11,9 @@
         </div>
         <div class="register-form">
           <!-- Prevent default form submission and handle it with submitForm method -->
+          <div class="form-group">
           <form @submit.prevent="submitForm">
-            <div class="form-group">
+
               <label class="register-text" for="email">Username:</label>
               <input
                 class="register-input"
@@ -32,9 +33,12 @@
               />
   
               <button class="register-button" type="submit">Enter</button>
-            </div>
+              
+
           </form>
-          <a class="register-button" href="/register">Don't have an account?</a>
+          <button class="register-button" @click="navigateTo('/register')">Dont have an account</button>
+        </div>
+
         </div>
       </div>
     </div>

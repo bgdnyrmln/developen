@@ -37,7 +37,7 @@
                 <a v-bind:href="login">Login</a>
               </template>
               <template v-else>
-                <a href="#">Profile</a>
+                <a href="/profile">Profile</a>
                 <a href="#" id="logout" @click.prevent="logout()">Logout</a>
               </template>
 
@@ -74,10 +74,13 @@ import { ref, onMounted, onUnmounted } from 'vue'
 const { isLoggedIn } = useSanctum()
 
 const role = ref(null)
+const id = ref(null)
+
 
 onMounted(async () => {
   try {
-    const { role: fetchedRole } = await useSanctumFetch('http://localhost:9000/api/user')
+    const { id: fetchedId, role: fetchedRole } = await useSanctumFetch('http://localhost:9000/api/user')
+    id.value = fetchedId
     role.value = fetchedRole
   } catch (e) {
     console.error('Error fetching role:', e)

@@ -10,8 +10,8 @@
           <p>Fill in the form below to create an account.</p>
         </div>
         <div class="register-form">
+          <div class="form-group">
           <form @submit.prevent="submitForm"> 
-            <div class="form-group">
               <label class="register-text" for="first_name">Name:</label>
               <input class="register-input" type="text" id="first_name" v-model="form.first_name" placeholder="Enter your name" required />
   
@@ -25,10 +25,11 @@
               <input class="register-input" type="password" id="password" v-model="form.password" placeholder="Enter your password" required />
   
               <button class="register-button" type="submit">Enter</button>
-            </div>
-          </form>
-          <a class="register-button" href="/login">Already have an account?</a>
+            
+          </form>          
+          <button class="register-button" @click="navigateTo('/login')">Already have an account?</button>
         </div>
+      </div>
       </div>
     </div>
 <footerline/>
