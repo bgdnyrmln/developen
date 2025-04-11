@@ -8,6 +8,7 @@ use App\Http\Controllers\Usercontroller;
 Route::get('/user', function (Request $request) {
     return response()->json(
         [
+            'id' => $request->user()->id,
             'role' => $request->user()->role,
             'first_name' => $request->user()->first_name,
             'last_name' => $request->user()->last_name,
@@ -28,3 +29,5 @@ Route::get('/users', [Usercontroller::class, 'index']);
 Route::get('/users/{user}', [Usercontroller::class, 'show']);
 Route::delete('/users/{user}', [Usercontroller::class, 'destroy']) -> middleware('auth:sanctum');
 Route::put('/users/{user}', [Usercontroller::class, 'update']) -> middleware('auth:sanctum');
+
+Route::put('/users/profile/{user}', [Usercontroller::class, 'edit']) -> middleware('auth:sanctum');

@@ -28,7 +28,7 @@
                 <!-- profile button dropdown (need to add the functionality)-->
         <div class="dropdown" >
             <div class="btn">
-                <a class = "button">Profile &#x2935;</a>
+                <a class = "button" style="color: white;">Profile &#x2935;</a>
             </div>
 
             <div class="dropdown-content">

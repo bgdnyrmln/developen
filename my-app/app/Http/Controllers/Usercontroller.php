@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
+use function Laravel\Prompts\password;
 
 class Usercontroller extends Controller
 {
@@ -88,4 +89,22 @@ class Usercontroller extends Controller
 
         return response()->json(['message' => 'User updated successfully']);
     }
+
+    public function edit($id)
+    {
+        $user = User::find($id);
+
+        if (!$user) {
+            return response()->json(['message' => 'User not found'], 404);
+        }
+        $validatedData = $request->validate([
+            'first_name' => 'required|string|max:255',
+            'last_name' => 'required|string|max:255',
+            'email' => 'required|email|max:255'
+        ]);
+
+        $user->update($validatedData);
+
+        return response()->json(['message' => 'User updated successfully']);
 }
+

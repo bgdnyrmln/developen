@@ -11,10 +11,10 @@ body a:link, a:visited {
     text-decoration: none;
 }
 body.light-theme a:link {
-    color: black;
+    color: white;
 }
 body.light-theme a:visited {
-    color: black;
+    color: white;
 }
 
 /* Light theme styles */
@@ -31,6 +31,7 @@ body.light-theme {
 
 .header-line{
     width: 100%;
+    color: white;
     padding-top: 10px;
     display: flex;
     align-items: center;
@@ -115,7 +116,7 @@ body.light-theme {
 
 
 .button{
-    background-color: rgb(255, 255, 255);
+    background-color: rgb(100, 100, 100);
     border-radius: 5px;
     padding: 14px 19px;
     color: black;
@@ -124,18 +125,18 @@ body.light-theme {
     margin-right: 25px;
     text-decoration: none;
     transition: background-color 0.1s linear;
-    width: 13.6vh;
+    width: 84px;
 }
 
         /* Dropdown Content (Hidden by Default) */
 .dropdown-content {
-    width: 13.6vh;
+    width: 84px;
     margin-top: 0vh;
     position: absolute;
-    background-color: rgb(255, 255, 255);
+    background-color: rgb(100,100,100);
     border-radius: 5px;
     padding: 1vh 0.7vh;
-    color: black;
+    color: white;
     font-weight: 700;
     font-size: 14px;
     margin-right: 25px;
@@ -144,14 +145,14 @@ body.light-theme {
     opacity: 0;
     transition: all 0.3s linear;
     display: block;
-    height: 0;
+    
 }
 
 
 
 /* Links inside the dropdown */
 .dropdown-content a {
-    color: black;
+    color: white;
     padding: 12px 16px;
     text-decoration: none;
     display: block;
@@ -159,7 +160,7 @@ body.light-theme {
 
 /* Change color of dropdown links on hover */
 .dropdown-content a:hover {
-    background-color: #ddd;
+    background-color: #717171;
 }
 
 /* Show the dropdown menu on hover */
@@ -218,7 +219,7 @@ body.light-theme {
 }
 
 .button-title{
-    background-color: rgb(255, 255, 255);
+    background-color: rgb(100, 100, 100);
     border-radius: 5px;
     padding: 14px 19px;
     color: black;
