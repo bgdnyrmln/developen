@@ -6,6 +6,8 @@
         <img src='https://picsum.photos/seed/{{ rand(0, 100000) }}/1550/400' alt="">
     </div>
 
+    
+
     <admin-panel/>
 </template>
 
