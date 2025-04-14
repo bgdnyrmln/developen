@@ -1,40 +1,41 @@
 <template>
     <headerline/>
-    <div class = "container" style="padding: 20vh 5vh;">
+    <div class="container" style="padding: 20vh 5vh;">
         <div class="exercise">
             <h1>{{ exercise.name }}</h1>
             <h2 class="description">{{ exercise.description }}</h2>
 
             <form @submit.prevent="checkAnswer($event)" class="register-form">
-                <input class = "register-input" type="text" name="answer" placeholder="Your answer"/>
-                <button class = "register-button" type="submit">Check answer</button>
+                <input class="register-input" type="text" name="answer" placeholder="Your answer"/>
+                <button class="register-button" type="submit" ref="submitButton">Check answer</button>
             </form>
         </div>
-        <div id="confetti-container" v-if="iscorrert">
+
+        <div id="confetti-container" v-if="iscorrert !== null">
             <div class="confetti-card">
-                <p>Congratulations, you are right!</p>
+                <p>{{ result }}</p>
             </div>
         </div>
 
-        <div class = "navigation">
-            <NuxtLink v-if = "beforeExercise.id != null" style="width: 100%;" class="navigation-button" :to="{ name: 'exercises-id', params: { id: beforeExercise.id } }">
-                <p class = "navigation-button-text" style="font-size: 20px;">{{ beforeExercise.name  }}</p>
-                <p class = "navigation-button-symbol" style="font-size: 200px;"><</p>
-            </NuxtLink>
+        <div class="navigation">
+            <a v-if="beforeExercise.id != null" style="width: 100%;" class="navigation-button" :href="`${beforeExercise.id}`">
+                <p class="navigation-button-text" style="font-size: 20px;">{{ beforeExercise.name }}</p>
+                <p class="navigation-button-symbol" style="font-size: 200px;"><</p>
+            </a>
             <NuxtLink to="/exercises/all" class="navigation-button" style="width: 100%;">
-                <p class = "navigation-button-text" style="font-size: 20px;">Back to exercises </p>
-                <p class = "navigation-button-symbol" style="font-size: 200px;">⌂</p>
+                <p class="navigation-button-text" style="font-size: 20px;">Back to exercises </p>
+                <p class="navigation-button-symbol" style="font-size: 200px;">⌂</p>
             </NuxtLink>
-            <NuxtLink id="next-button" v-if = "nextExercise.id != null && iscorrert===true" class="navigation-button" :to="{ name: 'exercises-id', params: { id: nextExercise.id }}">
-                <p id="next-button-text" class = "navigation-button-text">{{ nextExercise.name  }}</p>
-                <p id="next-button-symbol" class = "navigation-button-symbol">></p>
-            </NuxtLink>
+            <a id="next-button" v-if="nextExercise.id != null && iscorrert === true" class="navigation-button" :href="`${nextExercise.id}`">
+                <p id="next-button-text" class="navigation-button-text">{{ nextExercise.name }}</p>
+                <p id="next-button-symbol" class="navigation-button-symbol">></p>
+            </a>
         </div>
     </div>
 </template>
 
 <script setup>
-import { ref, watch } from 'vue';
+import { ref, watch, onMounted, onBeforeUnmount } from 'vue';
 import { useRoute } from 'vue-router';
 import axios from 'axios';
 
@@ -48,104 +49,132 @@ const id = Number(route.params.id);
 const exercise = ref([]);
 const nextExercise = ref([]);
 const beforeExercise = ref([]);
-const iscorrert = ref(false);
+const iscorrert = ref(null);
+const result = ref("");
+
+// Add a ref for the submit button
+const submitButton = ref(null);
 
 onMounted(async () => {
-  try {
-    await axios.get("http://localhost:9000/sanctum/csrf-cookie", {
-      withCredentials: true,
-    });
-    exercise.value = await $fetch(`http://localhost:9000/api/exercises/${id}`);
-  } catch (error) {
-    console.error('Error fetching exercises:', error);
-  }
+    try {
+        await axios.get("http://localhost:9000/sanctum/csrf-cookie", {
+            withCredentials: true,
+        });
+        exercise.value = await $fetch(`http://localhost:9000/api/exercises/${id}`);
+    } catch (error) {
+        console.error('Error fetching exercises:', error);
+    }
 
-  try {
-    beforeExercise.value = await $fetch(`http://localhost:9000/api/exercises/${id - 1}`);
-  } catch (error) {
-    console.error('Error fetching previous exercise:', error);
-  }
+    try {
+        beforeExercise.value = await $fetch(`http://localhost:9000/api/exercises/${id - 1}`);
+    } catch (error) {
+        console.error('Error fetching previous exercise:', error);
+    }
 
-  try {
-    nextExercise.value = await $fetch(`http://localhost:9000/api/exercises/${id + 1}`);
-  } catch (error) {
-    console.error('Error fetching next exercise:', error);
-  }
+    try {
+        nextExercise.value = await $fetch(`http://localhost:9000/api/exercises/${id + 1}`);
+    } catch (error) {
+        console.error('Error fetching next exercise:', error);
+    }
+});
+
+onBeforeUnmount(() => {
+    // Reset the state when leaving the page and remove event listener
+    iscorrert.value = null;
+    result.value = "";
+
+    if (submitButton.value) {
+        submitButton.value.removeEventListener('click', handleSubmit);
+    }
 });
 
 const showConfetti = () => {
-  const confettiContainer = document.querySelector('#confetti-container');
-  const confettiCardText = document.querySelector('.confetti-card p');
-  const nextButton = document.querySelector('#next-button');
-  const nextButtonText = document.querySelector('#next-button-text');
-  const nextButtonSymbol = document.querySelector('#next-button-symbol');
+    const confettiContainer = document.querySelector('#confetti-container');
+    const confettiCard = document.querySelector('.confetti-card');
+    const confettiCardText = document.querySelector('.confetti-card p');
+    const nextButton = document.querySelector('#next-button');
+    const nextButtonText = document.querySelector('#next-button-text');
+    const nextButtonSymbol = document.querySelector('#next-button-symbol');
 
-  confettiContainer.style.height = '5vh';
-  confettiCardText.style.fontSize = '2rem';
-  nextButton.style.width = '100%';
-  nextButtonText.style.fontSize = '20px';
-  nextButtonSymbol.style.fontSize = '200px';
+    if (iscorrert.value === true) {
+        confettiContainer.style.height = '5vh';
+        confettiCardText.style.fontSize = '2rem';
+        confettiCard.style.backgroundColor = '#76c883';
+        if(nextExercise.value.id != null) {
+            nextButton.style.width = '100%';
+            nextButtonText.style.fontSize = '20px';
+            nextButtonSymbol.style.fontSize = '200px';
+        }
+    } else if (iscorrert.value === false) {
+        confettiContainer.style.height = '5vh';
+        confettiCardText.style.fontSize = '2rem';
+        confettiCard.style.backgroundColor = '#b54040';
+        return;
+    }
 
-  if (!confettiContainer) return;
+    if (!confettiContainer) return;
 
-  const confetti = document.createElement('div');
-  confetti.textContent = '🎉';
-  confetti.classList.add('confetti');
-  confetti.style.left = Math.random() * window.innerWidth + 'px';
+    const confetti = document.createElement('div');
+    confetti.classList.add('confetti');
+    confetti.style.left = Math.random() * window.innerWidth + 'px';
+    confetti.textContent = '🎉';
+    confettiContainer.appendChild(confetti);
 
-  confettiContainer.appendChild(confetti);
-
-  setTimeout(() => {
-    confetti.remove();
-  }, 5000);
+    setTimeout(() => {
+        confetti.remove();
+    }, 5000);
 };
 
 let confettiInterval = null;
 
 watch(iscorrert, (newVal) => {
-  if (newVal === true) {
+    if (newVal === null) {
+        // Stop the confetti if it's reset to null
+        clearInterval(confettiInterval);
+        return;
+    }
+
     confettiInterval = setInterval(showConfetti, 400);
-    // Optionally clear it after a while to stop the rain
+
     setTimeout(() => {
-      clearInterval(confettiInterval);
+        clearInterval(confettiInterval);
     }, 5000); // stop after 5 seconds
-  }
 });
 
+
+
+// Your existing checkAnswer function
 const checkAnswer = async (e) => {
-  try {
+
     const form = e.target;
     const formData = new FormData(form);
     const userAnswer = formData.get("answer").trim().toLowerCase();
     const correctAnswer = exercise.value.answer.trim().toLowerCase();
 
     if (userAnswer === correctAnswer) {
-      iscorrert.value = true;
+        result.value = "Correct answer! 🎉";
+        iscorrert.value = true;
     } else {
-      alert("Incorrect answer. Try again.");
+        result.value = "Incorrect answer. Try again. 😢";
+        iscorrert.value = false;
     }
-  } catch (error) {
-    console.error("Error checking answer:", error);
-    alert("An error occurred while checking the answer.");
-  }
+
 };
 </script>
 
-
 <style>
-
-    .navigation{
-        display:flex; 
-        justify-content:space-around; 
+    .navigation {
+        display: flex; 
+        justify-content: space-around; 
         margin-top: 0vh;
     }
 
-    .navigation-button{
+    .navigation-button {
         height: 20vh;
         display: flex;
         position: relative;
         align-items: center;
-        width: 0%;
+        width: 0px;
         margin-bottom: 7vh;
         font-weight: 700;
         font-size: 14px;
@@ -159,19 +188,18 @@ const checkAnswer = async (e) => {
         cursor: pointer;
         transition: all 0.3s ease;
     }
-   
-    .navigation-button:hover{
+
+    .navigation-button:hover {
         background-color: #444444;
     }
 
-    .navigation-button-text{
+    .navigation-button-text {
         font-size: 0px;
         z-index: 2;
         transition: all 0.2s ease;
     }
 
-
-    .navigation-button-symbol{
+    .navigation-button-symbol {
         font-size: 0px;
         position: absolute;
         right: 50px;
@@ -187,9 +215,8 @@ const checkAnswer = async (e) => {
     @media (max-width: 700px) {
         .navigation {
             flex-direction: column;
-        }}
-
-
+        }
+    }
 
     #confetti-container {
         margin: 1vh 0;
@@ -200,9 +227,8 @@ const checkAnswer = async (e) => {
         transition: all 0.3s ease;
     }
 
-
     .confetti-card {
-        background-color: #76c883;
+        background-color: whitesmoke;
         width: 100%;
         height: 100%;
         border-radius: 15px;
@@ -211,6 +237,7 @@ const checkAnswer = async (e) => {
         justify-content: center;
         transition: all 0.2s ease;
     }
+
     .confetti-card p {
         font-size: 0rem;
         color: white;
@@ -218,7 +245,6 @@ const checkAnswer = async (e) => {
         text-align: center;
         transition: all 0.2s ease;
     }
-
 
     .confetti {
         position: absolute;
@@ -235,5 +261,4 @@ const checkAnswer = async (e) => {
             transform: translateY(100vh) rotate(180deg);
         }
     }
-
 </style>
