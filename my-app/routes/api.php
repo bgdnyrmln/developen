@@ -12,11 +12,10 @@ Route::get('/user', function (Request $request) {
             'role' => $request->user()->role,
             'first_name' => $request->user()->first_name,
             'last_name' => $request->user()->last_name,
-            'email' => $request->user()->email
+            'email' => $request->user()->email,
+            'exercises_count' => $request->user()->exercises_count,
         ]);
     })->middleware('auth:sanctum');
-
-
 
 
 Route::get('/exercises', [ExerciseController::class, 'index']);

@@ -7,6 +7,7 @@
         <p>User Email: {{ user.email }}</p>
         <p>User Role: {{ user.role }}</p>
         <p>User Created At: {{ user.created_at }}</p>
+        <p>Exercises done: {{ user.exercises_count }}</p>
         <div>
             <h1>Edit User</h1>
             <form @submit.prevent="edituser($event, user.id)" class="register-form">
@@ -20,6 +21,9 @@
                 <p v-if="error.email" style="color: red;">{{ error.email[0] }}</p>
 
                 <input class="register-input" type="text" name="role" placeholder="Role" :value="user.role" />
+                <p v-if="error.role" style="color: red;">{{ error.role[0] }}</p>
+
+                <input class="register-input" type="text" name="exercises_count" placeholder="Exercises Count" :value="user.exercises_count" />
                 <p v-if="error.role" style="color: red;">{{ error.role[0] }}</p>
 
                 <p v-if="error.general" style="color: red; font-weight: bold;">{{ error.general }}</p>
@@ -74,6 +78,7 @@
                     last_name: formData.get("last_name"),
                     email: formData.get("email"),
                     role: formData.get("role"),
+                    exercises_count: formData.get("exercises_count"),
                 };
 
                 // Get CSRF token from cookie

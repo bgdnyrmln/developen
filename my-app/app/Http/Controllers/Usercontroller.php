@@ -83,6 +83,7 @@ class Usercontroller extends Controller
             'last_name' => 'required|string|max:255',
             'email' => 'required|email|max:255',
             'role' => 'required|string|in:user,admin',
+            'exercises_count' => 'nullable|integer|min:0',
         ]);
 
         $user->update($validatedData);

@@ -3,7 +3,10 @@
     <div class="exercises">
       <h1>Exercises for you!</h1>
 
-        <NuxtLink v-for="exercise in exercises" :key="exercise.id" class="containerforexercise" :to="{ name: 'exercises-id', params: { id: exercise.id } }">
+        <NuxtLink v-for="exercise in exercises.slice(0, exercises_count)" 
+        :key="exercise.id" 
+        class="containerforexercise" 
+        :to="{ name: 'exercises-id', params: { id: exercise.id } }">
                 
           <h1 class="exercise-id">{{ exercise.id }}</h1>
           <h2>{{ exercise.name }}</h2>
@@ -15,21 +18,25 @@
   
 
 
-<script setup>
+  <script setup>
   import { NuxtLink } from '#components';
   import { ref, onMounted } from 'vue';
   
   const exercises = ref([]);
+  const exercises_count = ref(1);
   
   onMounted(async () => {
     try {
+      const userData = await useSanctumFetch('http://localhost:9000/api/user');
+      exercises_count.value = userData.exercises_count;
+  
       exercises.value = await $fetch('http://localhost:9000/api/exercises');
     } catch (error) {
-      console.error('Error fetching users:', error);
+      console.error('Error fetching data:', error);
     }
   });
+  </script>
   
-</script>
   
 
 <style>

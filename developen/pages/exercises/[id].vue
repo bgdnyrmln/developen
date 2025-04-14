@@ -40,7 +40,7 @@ import { useRoute } from 'vue-router';
 import axios from 'axios';
 
 definePageMeta({
-    middleware: ["$auth"],
+    middleware: ["$auth", "exerciseaccess"],
 });
 
 const route = useRoute();
@@ -55,12 +55,17 @@ const result = ref("");
 // Add a ref for the submit button
 const submitButton = ref(null);
 
+const user = ref([]);
+
 onMounted(async () => {
     try {
+
         await axios.get("http://localhost:9000/sanctum/csrf-cookie", {
             withCredentials: true,
         });
         exercise.value = await $fetch(`http://localhost:9000/api/exercises/${id}`);
+        user.value = await useSanctumFetch(`http://localhost:9000/api/user`);
+
     } catch (error) {
         console.error('Error fetching exercises:', error);
     }
@@ -142,7 +147,6 @@ watch(iscorrert, (newVal) => {
 });
 
 
-
 // Your existing checkAnswer function
 const checkAnswer = async (e) => {
 
@@ -151,9 +155,57 @@ const checkAnswer = async (e) => {
     const userAnswer = formData.get("answer").trim().toLowerCase();
     const correctAnswer = exercise.value.answer.trim().toLowerCase();
 
+    
+
+
     if (userAnswer === correctAnswer) {
         result.value = "Correct answer! 🎉";
         iscorrert.value = true;
+
+        if (user.value.exercises_count < id+1) {
+            try {
+                // Grab form data manually
+                const form = e.target;
+                const formData = new FormData(form);
+
+                const payload = {
+                    first_name: user.value.first_name,
+                    last_name: user.value.last_name,
+                    email: user.value.email,
+                    role: user.value.role,
+                    exercises_count: id+1,
+                };
+
+                // Get CSRF token from cookie
+                const token = decodeURIComponent(
+                    document.cookie
+                    .split("; ")
+                    .find((row) => row.startsWith("XSRF-TOKEN="))
+                    ?.split("=")[1] ?? ""
+                );
+
+                await axios.put(`http://localhost:9000/api/users/${user.value.id}`, payload, {
+                    withCredentials: true,
+                    headers: {
+                    "X-XSRF-TOKEN": token,
+                    },
+                });
+                
+            } catch (err) {
+                console.error("Error editing user:", err);
+                
+                if (err.response?.data?.errors) {
+                    // Assign each field error
+                    error.value = err.response.data.errors;
+                } else if (err.response?.data?.message) {
+                    // Generic fallback message
+                    error.value = { general: err.response.data.message };
+                } else {
+                    error.value = { general: "An unexpected error occurred." };
+                }
+            }
+
+        }
     } else {
         result.value = "Incorrect answer. Try again. 😢";
         iscorrert.value = false;
