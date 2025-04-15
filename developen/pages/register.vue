@@ -2,7 +2,7 @@
     <headerline/>
 
     <div class="register">
-      <div class="container">
+      
         <div class="register-title">
           <h1>Let's get started!</h1>
         </div>
@@ -30,14 +30,14 @@
           <button class="register-button" @click="navigateTo('/login')">Already have an account?</button>
         </div>
       </div>
-      </div>
+    
     </div>
 <footerline/>
 
   </template>
   
   <script setup lang="ts">
-  import { ref } from 'vue'
+  import { ref } from 'vue';
   import axios from 'axios';
   useSeoMeta({
     title: "Register",
@@ -79,12 +79,5 @@
   </script>
   
   <style>
-  .register {
-    height: 125vh;
-    background-image: url(assets/background3.png);
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-  }
   </style>
   

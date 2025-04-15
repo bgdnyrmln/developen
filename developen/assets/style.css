@@ -494,6 +494,14 @@ html:has(body:has(:not(.header-line))) .header-line {
     margin-top: 10vh;
 }
 
+.register {
+    height: 125vh;
+    background-image: url(assets/background3.png);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
 .register-title{
     padding-top: 10vh;
     color: white;

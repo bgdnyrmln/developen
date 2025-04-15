@@ -21,6 +21,7 @@
     "nuxt-mapbox": "^1.6.2",
     "nuxt-maplibre": "^1.0.1",
     "vue": "latest",
+    "vue-awesome-paginate": "^1.2.0",
     "vue-router": "latest"
   },
   "devDependencies": {

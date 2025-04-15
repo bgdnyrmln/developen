@@ -19,12 +19,12 @@
 
         <div class="navigation">
             <a v-if="beforeExercise.id != null" style="width: 100%;" class="navigation-button" :href="`${beforeExercise.id}`">
-                <p class="navigation-button-text" style="font-size: 20px;">{{ beforeExercise.name }}</p>
-                <p class="navigation-button-symbol" style="font-size: 200px;"><</p>
+                <p class="navigation-button-text" style="font-size: 4vh;">{{ beforeExercise.name }}</p>
+                <p class="navigation-button-symbol" style="font-size: 25vh;"><</p>
             </a>
             <NuxtLink to="/exercises/all" class="navigation-button" style="width: 100%;">
-                <p class="navigation-button-text" style="font-size: 20px;">Back to exercises </p>
-                <p class="navigation-button-symbol" style="font-size: 200px;">⌂</p>
+                <p class="navigation-button-text" style="font-size: 4vh;">Back to exercises </p>
+                <p class="navigation-button-symbol" style="font-size: 25vh;">⌂</p>
             </NuxtLink>
             <a id="next-button" v-if="nextExercise.id != null && iscorrert === true" class="navigation-button" :href="`${nextExercise.id}`">
                 <p id="next-button-text" class="navigation-button-text">{{ nextExercise.name }}</p>
@@ -103,7 +103,7 @@ const showConfetti = () => {
 
     if (iscorrert.value === true) {
         confettiContainer.style.height = '5vh';
-        confettiCardText.style.fontSize = '2rem';
+        confettiCardText.style.fontSize = '3vh';
         confettiCard.style.backgroundColor = '#76c883';
         if(nextExercise.value.id != null) {
             nextButton.style.width = '100%';
@@ -112,7 +112,7 @@ const showConfetti = () => {
         }
     } else if (iscorrert.value === false) {
         confettiContainer.style.height = '5vh';
-        confettiCardText.style.fontSize = '2rem';
+        confettiCardText.style.fontSize = '3vh';
         confettiCard.style.backgroundColor = '#b54040';
         return;
     }
@@ -218,7 +218,6 @@ const checkAnswer = async (e) => {
     .navigation {
         display: flex; 
         justify-content: space-around; 
-        margin-top: 0vh;
     }
 
     .navigation-button {
@@ -267,7 +266,10 @@ const checkAnswer = async (e) => {
     @media (max-width: 700px) {
         .navigation {
             flex-direction: column;
+            gap: 3px;
+            padding-right: 5vh;
         }
+
     }
 
     #confetti-container {
@@ -301,7 +303,7 @@ const checkAnswer = async (e) => {
     .confetti {
         position: absolute;
         top: 0;
-        font-size: 1.6rem;
+        font-size: 3vh;
         animation: confetti-fall linear 5s infinite;
     }
 
