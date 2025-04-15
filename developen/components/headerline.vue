@@ -24,18 +24,6 @@
         <div v-if="role === 'admin'">
             <a class = "button" href="/admin/panel">Admin panel</a>
         </div>
-        <button style="-webkit-transform: rotate(45deg); 
-          -moz-transform: rotate(45deg); 
-          -o-transform: rotate(45deg);
-          transform: rotate(45deg);
-          font-size: 3vh;
-          font-weight: bold;
-          background-color: transparent;
-          color: white;
-          border-color: transparent;"
-        >
-          &#9906;
-        </button>
         <div class="dropdown" >
             <div class="btn">
                 <a class = "button" style="color: white;">Profile &#x2935;</a>
@@ -67,20 +55,13 @@
 
 
 <script setup>
-import { useRouter } from 'vue-router'
+
 import { ref, onMounted, onUnmounted } from 'vue'
 import axios from 'axios'
 
-const router = useRouter()
 
-if (process.client) {
-if (router.currentRoute.value.path === '/') {
-router.replace('/main')
-}
-}
 
 const { logout } = useSanctum()
-
 const { isLoggedIn } = useSanctum()
 const role = ref(null)
 const id = ref(null)
@@ -109,25 +90,38 @@ onMounted(async () => {
 // Header Scroll Behavior
 const headerline = ref(null)
 
+
 onMounted(() => {
-headerline.value = document.getElementById("headerline")
+  const route = useRoute()
+  headerline.value = document.getElementById("headerline")
 
-window.addEventListener("scroll", () => {
-if (window.scrollY > 0) {
-  headerline.value.style.backgroundColor = "black"
-} else {
-  headerline.value.style.backgroundColor = "transparent"
-}
+  const handleScroll = () => {
+    const scrolled = window.scrollY > 0
 
-if (window.scrollY > window.innerHeight * 0.99) {
-  headerline.value.style.opacity = "0"
-  headerline.value.style.pointerEvents = "none"
-} else {
-  headerline.value.style.opacity = "1"
-  headerline.value.style.pointerEvents = "auto"
-}
+    // If we're on /main, use transparent at the top, otherwise always black
+    if (route.path === '/main') {
+      headerline.value.style.backgroundColor = scrolled ? "black" : "transparent"
+    } else {
+      headerline.value.style.backgroundColor = "black"
+    }
+
+    // Hide the header if user scrolls too far
+    if (window.scrollY > window.innerHeight * 0.99) {
+      headerline.value.style.opacity = "0"
+      headerline.value.style.pointerEvents = "none"
+    } else {
+      headerline.value.style.opacity = "1"
+      headerline.value.style.pointerEvents = "auto"
+    }
+  }
+
+  // Set initial style
+  handleScroll()
+
+  window.addEventListener("scroll", handleScroll)
 })
-})
+
+
 
 // Mobile Menu
 onMounted(() => {
