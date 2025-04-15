@@ -255,5 +255,9 @@ const displayedExercises = computed(() => {
   transition: background-color 0.3s;
 }
 
+.search-exercise-button:hover {
+  background-color: #444444;
+}
+
 
 </style>
