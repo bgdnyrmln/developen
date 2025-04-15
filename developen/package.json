@@ -20,6 +20,7 @@
     "nuxt-auth-utils": "^0.5.18",
     "nuxt-mapbox": "^1.6.2",
     "nuxt-maplibre": "^1.0.1",
+    "nuxt-meilisearch": "^1.3.10",
     "vue": "latest",
     "vue-awesome-paginate": "^1.2.0",
     "vue-router": "latest"

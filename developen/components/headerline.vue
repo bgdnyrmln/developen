@@ -24,13 +24,22 @@
         <div v-if="role === 'admin'">
             <a class = "button" href="/admin/panel">Admin panel</a>
         </div>
-                
-                <!-- profile button dropdown (need to add the functionality)-->
+        <button style="-webkit-transform: rotate(45deg); 
+          -moz-transform: rotate(45deg); 
+          -o-transform: rotate(45deg);
+          transform: rotate(45deg);
+          font-size: 3vh;
+          font-weight: bold;
+          background-color: transparent;
+          color: white;
+          border-color: transparent;"
+        >
+          &#9906;
+        </button>
         <div class="dropdown" >
             <div class="btn">
                 <a class = "button" style="color: white;">Profile &#x2935;</a>
             </div>
-
             <div class="dropdown-content">
               <template v-if="!isLoggedIn">
                 <a v-bind:href="register">Register</a>
@@ -59,7 +68,8 @@
 
 <script setup>
 import { useRouter } from 'vue-router'
-const { logout } = useSanctum()
+import { ref, onMounted, onUnmounted } from 'vue'
+import axios from 'axios'
 
 const router = useRouter()
 
@@ -69,12 +79,21 @@ router.replace('/main')
 }
 }
 
-import { ref, onMounted, onUnmounted } from 'vue'
+const { logout } = useSanctum()
 
 const { isLoggedIn } = useSanctum()
-
 const role = ref(null)
 const id = ref(null)
+// Reactive variables
+const name = ref("Bogdan")
+const surname = ref("Yarmolinsqy")
+const number = ref("+37122073901")
+const aboutpage = ref("/about")
+const contactpage = ref("/contacts")
+const home = ref("/main")
+const register = ref("/register")
+const login = ref("/login")
+
 
 
 onMounted(async () => {
@@ -86,18 +105,6 @@ onMounted(async () => {
     console.error('Error fetching role:', e)
   }
 })
-
-
-// Reactive variables
-const name = ref("Bogdan")
-const surname = ref("Yarmolinsqy")
-const number = ref("+37122073901")
-const aboutpage = ref("/about")
-const contactpage = ref("/contacts")
-const home = ref("/main")
-const register = ref("/register")
-const login = ref("/login")
-
 
 // Header Scroll Behavior
 const headerline = ref(null)
@@ -139,16 +146,20 @@ document.getElementById("side-menu").style.width = "0"
 
 // Theme Toggle
 onMounted(() => {
-const themeToggleButton = document.getElementById("theme-toggle")
-const bodyElement = document.body
+  const themeToggleButton = document.getElementById("theme-toggle")
+  const bodyElement = document.body
 
-themeToggleButton.addEventListener("click", () => {
-bodyElement.classList.toggle("light-theme")
+  themeToggleButton.addEventListener("click", () => {
+  bodyElement.classList.toggle("light-theme")
 
-themeToggleButton.textContent = bodyElement.classList.contains("light-theme")
-  ? "Back to Dark Mode"
-  : "freak my eyes pls"
+  themeToggleButton.textContent = bodyElement.classList.contains("light-theme")
+    ? "Back to Dark Mode"
+    : "freak my eyes pls"
+  })
 })
-})
+
+
+
+
 </script>
 

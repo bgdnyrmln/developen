@@ -10,9 +10,11 @@ class ExerciseController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        return response()->json(Exercise::all());
+        $query = $request->get('name');  // Get the 'name' query parameter
+        $exercises = Exercise::where('name', 'LIKE', "%$query%")->get();
+        return response()->json($exercises);
     }
 
     /**

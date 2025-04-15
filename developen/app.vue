@@ -6,3 +6,13 @@
 <style>
 @import url('assets/style.css');
 </style>
+
+<script setup>
+import { useRouter } from 'vue-router'
+const router = useRouter()
+if (process.client) {
+  if (router.currentRoute.value.path === '/') {
+    router.replace('/main')
+  }
+}
+</script>

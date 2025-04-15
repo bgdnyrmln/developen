@@ -21,7 +21,7 @@ export default defineNuxtConfig({
     apiUrl: "http://localhost:9000",
     authMode: "cookie",  // Switch to token-based authentication
   },
-
+  
 
 
   compatibilityDate: '2025-04-03',
