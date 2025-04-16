@@ -603,3 +603,95 @@ html:has(body:has(:not(.header-line))) .header-line {
     margin: 4px 2px;
     cursor: pointer;
 }
+
+.pagination{
+    margin-top: 5vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .pagination-container {
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .paginate-buttons {
+    height: 5vh;
+    width: 5vw;
+    margin: 0px 2px;
+    cursor: pointer;
+    background-color: #222222;
+    border: 1px solid #222222;
+    color: white;
+    transition: all 0.3s ease;
+    border-radius: 5px;
+  }
+  
+  .paginate-buttons:hover {
+    background-color: #444444;
+  }
+  
+  .active-page {
+    background-color: #444444;
+    border: 1px solid #444444;
+    color: white;
+  }
+  
+  .active-page:hover {
+    background-color: #555555;
+  }
+  
+  .filter-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .sort-button {
+    background-color: #222222;
+    color: white;
+    border: #222222;
+    padding: 1vh 2vh;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.5vh;
+    transition: background-color 0.3s;
+  }
+  
+  .sort-button:hover {
+    background-color: #444444;
+  }
+  
+  .search-exercise {
+    display: flex;
+    align-items: center;
+  }
+  
+  .search-exercise-input {
+    padding: 1vh 2vh;
+    border: 1px solid #222222;
+    border-radius: 5px;
+    margin-right: 10px;
+    color: white;
+    background-color: #222222;
+  }
+  
+  .search-exercise-button {
+    background-color: #222222;
+    color: white;
+    border: none;
+    padding: 1vh 2vh;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .search-exercise-button:hover {
+    background-color: #444444;
+  }
+  
+  

@@ -13,17 +13,17 @@
 </template>    
 
 <script setup>
-import { ref } from 'vue'
+import { ref } from 'vue';
 
 
-const name = ref("Bogdan")
-const surname = ref("Yarmolinsqy")
-const number = ref("+37122073901")
-const aboutpage = ref("/about")
-const contactpage = ref("/contacts")
-const home = ref("/main")
-const register = ref("/register")
-const login = ref("/login")
+const name = ref("Bogdan");
+const surname = ref("Yarmolinsqy");
+const number = ref("+37122073901");
+const aboutpage = ref("/about");
+const contactpage = ref("/contacts");
+const home = ref("/main");
+const register = ref("/register");
+const login = ref("/login");
 
 
 </script>

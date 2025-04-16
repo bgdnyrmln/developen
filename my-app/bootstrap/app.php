@@ -16,9 +16,7 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->alias([
             \App\Http\Middleware\CorsMiddleware::class,
             HandleCors::class,
-
           ]);
-
           $middleware->statefulApi();
 
     })

@@ -5,7 +5,8 @@
     <div class="container" style="
     display: flex;
     position: relative;
-    justify-content: space-around;">
+    justify-content: space-around;
+    color: white;">
         <div class = "left">
             <h1>Current Profile</h1>
             <h2>Name: <span>{{ user.first_name }} {{ user.last_name }}</span></h2>

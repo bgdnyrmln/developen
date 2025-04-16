@@ -2,7 +2,7 @@
     <headerline/>
 
     <div class="register">
-      
+      <div class="container">
         <div class="register-title">
           <h1>Let's get started!</h1>
         </div>
@@ -30,7 +30,7 @@
           <button class="register-button" @click="navigateTo('/login')">Already have an account?</button>
         </div>
       </div>
-    
+      </div>
     </div>
 <footerline/>
 

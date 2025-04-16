@@ -139,18 +139,31 @@ document.getElementById("side-menu").style.width = "0"
 })
 
 // Theme Toggle
+// Theme Toggle
 onMounted(() => {
   const themeToggleButton = document.getElementById("theme-toggle")
   const bodyElement = document.body
 
-  themeToggleButton.addEventListener("click", () => {
-  bodyElement.classList.toggle("light-theme")
+  // Check localStorage on load
+  const savedTheme = localStorage.getItem("theme")
+  if (savedTheme === "light") {
+    bodyElement.classList.add("light-theme")
+    themeToggleButton.textContent = "Back to Dark Mode"
+  } else {
+    themeToggleButton.textContent = "freak my eyes pls"
+  }
 
-  themeToggleButton.textContent = bodyElement.classList.contains("light-theme")
-    ? "Back to Dark Mode"
-    : "freak my eyes pls"
+  // Toggle and save to localStorage
+  themeToggleButton.addEventListener("click", () => {
+    const isLight = bodyElement.classList.toggle("light-theme")
+
+    localStorage.setItem("theme", isLight ? "light" : "dark")
+    themeToggleButton.textContent = isLight
+      ? "Back to Dark Mode"
+      : "freak my eyes pls"
   })
 })
+
 
 
 
