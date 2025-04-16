@@ -295,6 +295,7 @@ html:has(body:has(:not(.header-line))) .header-line {
     border-radius: 1vh;
     box-shadow: 1vh 1vh 4vh 2vh #0000001A;
     width: 34.9vh;
+    height: 35vh;
     margin-right: 3vh;
     background-color: white;
     margin-top: -80px;

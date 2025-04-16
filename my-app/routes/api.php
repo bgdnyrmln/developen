@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ExerciseController;
 use App\Http\Controllers\Usercontroller;
+use App\Http\Controllers\CardController;
 
 Route::get('/user', function (Request $request) {
     return response()->json(
@@ -30,3 +31,5 @@ Route::delete('/users/{user}', [Usercontroller::class, 'destroy']) -> middleware
 Route::put('/users/{user}', [Usercontroller::class, 'update']) -> middleware('auth:sanctum');
 
 Route::put('/users/profile/{user}', [Usercontroller::class, 'update']) -> middleware('auth:sanctum');
+
+Route::get('/cards', [CardController::class, 'index']);

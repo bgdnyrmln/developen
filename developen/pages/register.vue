@@ -36,7 +36,7 @@
 
   </template>
   
-  <script setup lang="ts">
+  <script setup>
   import { ref } from 'vue';
   import axios from 'axios';
   useSeoMeta({
@@ -47,14 +47,7 @@
         withCredentials: true
     });
 
-
-  interface User {
-    id: number;
-    first_name: string;
-    last_name: string;
-    email: string;
-  }
-  const { refreshUser } = useSanctum<User>();
+  const { refreshUser } = useSanctum();
 
   const form = useSanctumForm("post", "/register", {
     first_name: "",
@@ -73,11 +66,4 @@
       console.log(err);
     }
   }
-
-
-
-  </script>
-  
-  <style>
-  </style>
-  
+</script>

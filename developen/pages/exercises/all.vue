@@ -30,7 +30,7 @@
       <h2>{{ exercise.name }}</h2>
     </NuxtLink>
 
-    <div v-if="displayedExercises.length" class="pagination">
+    <div v-if="filteredExercises.filter(ex => ex.id <= exercises_count).length > 5" class="pagination">
       <vue-awesome-paginate
         :total-items="filteredExercises.filter(ex => ex.id <= exercises_count).length"
         :items-per-page="5"

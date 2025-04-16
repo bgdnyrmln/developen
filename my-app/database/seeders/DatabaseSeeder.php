@@ -16,17 +16,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
-
-        User::factory()->create([
-            'first_name' => 'Test',
-            'last_name' => 'User',
-            'email' => 'test@example.com',
-        ]);
-
-
-            $tags = Tag::factory(3)->create();
-            Car::factory(10)->hasAttached($tags)->create();
-        }
+        //
+    }
 
 }
