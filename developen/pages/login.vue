@@ -1,7 +1,7 @@
 <template>
   <headerline/>
 
-    <div class="register">
+  <div class="register">
       <div class="container">
         <div class="register-title">
           <h1>Welcome back!</h1>
@@ -71,13 +71,3 @@ const submitForm = async () => {
 const { isLoggedIn } = useSanctum();
 </script>
   
-
-<style>
-.register {
-    height: 80vh;
-    background-image: url(assets/background3.png);
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-  }
-</style>

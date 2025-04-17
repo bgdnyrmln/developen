@@ -17,12 +17,6 @@ class Usercontroller extends Controller
 }
 
 
-    public function create()
-    {
-        return view('register');
-    }
-
-
     public function store()
     {
         $ValidatedAttributes = request()->validate([
@@ -90,6 +84,22 @@ class Usercontroller extends Controller
 
         return response()->json(['message' => 'User updated successfully']);
     }
+
+    public function show_roles($id)
+    {
+        $user = User::find($id);
+
+        if (!$user) {
+            return response()->json(['message' => 'User not found'], 404);
+        }
+
+        $roles = $user->roles;
+
+        return response()->json($roles);
+    }
+
+
+
 
 
 }

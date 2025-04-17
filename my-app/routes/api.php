@@ -30,6 +30,8 @@ Route::get('/users/{user}', [Usercontroller::class, 'show']);
 Route::delete('/users/{user}', [Usercontroller::class, 'destroy']) -> middleware('auth:sanctum');
 Route::put('/users/{user}', [Usercontroller::class, 'update']) -> middleware('auth:sanctum');
 
+
 Route::put('/users/profile/{user}', [Usercontroller::class, 'update']) -> middleware('auth:sanctum');
+
 
 Route::get('/cards', [CardController::class, 'index']);

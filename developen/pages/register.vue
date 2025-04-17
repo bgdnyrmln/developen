@@ -1,7 +1,7 @@
-<template>
+<template style="background-color: black;">
     <headerline/>
 
-    <div class="register">
+    <div class="register" style="height: 125vh;">
       <div class="container">
         <div class="register-title">
           <h1>Let's get started!</h1>
