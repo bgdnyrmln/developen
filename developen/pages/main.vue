@@ -11,7 +11,7 @@
             Place to start your journey.
           </div>
           <div class="btn">
-            <a class="button-title" href="/exercises/all">
+            <a class="button-title" href="/exercises">
               Let's get started</a>
           </div>
         </div>
@@ -81,6 +81,8 @@
   const randomCards = data.filter(item =>
     item.id === randomId1 || item.id === randomId2 || item.id === randomId3
   );
+
+  
   
   </script>
   

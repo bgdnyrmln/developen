@@ -31,7 +31,7 @@
                 v-model="form.password"
                 placeholder="Enter your password"
               />
-  
+              <p v-if="error" style="color: red;">{{ error }}</p>
               <button class="register-button" type="submit">Enter</button>
               
 
@@ -46,28 +46,57 @@
 
   </template>
   
-  <script setup>
-  import axios from 'axios';
-  import { ref } from 'vue';
-  
-  // Call this before making login requests
-    await axios.get("http://localhost:9000/sanctum/csrf-cookie", {
-        withCredentials: true
-    });
+<script setup>
+import axios from 'axios';
+import { ref } from 'vue';
+import { useRouter } from 'vue-router';
+const router = useRouter();
 
-  const form = ref({
-    email: '',
-    password: ''
-  });
 
-// Assuming useSanctum is a composable that provides authentication methods
-const { login } = useSanctum();
+
+definePageMeta({
+  middleware: ["$guest"],
+});
+
+
+await axios.get("http://localhost:9000/sanctum/csrf-cookie", {
+  withCredentials: true
+});
+
+
+const form = ref({
+  email: '',
+  password: ''
+});
+
+
+const error = ref(null);
+
+const { refreshUser } = useSanctum();
 
 const submitForm = async () => {
-    await login(form.value);
+  try {
+    const token = decodeURIComponent(
+      document.cookie
+        .split("; ")
+        .find((row) => row.startsWith("XSRF-TOKEN="))
+        ?.split("=")[1] ?? ""
+    );
+
+    await axios.post("http://localhost:9000/login", form.value, {
+      withCredentials: true,
+      headers: {
+        "X-XSRF-TOKEN": token,
+      },
+    });
+
+    await refreshUser();
+
+    router.push("/exercises");
+  } catch (err) {
+    error.value = "Invalid username or password";
+    console.error("Login error:", err);
+  }
 };
-
-
-const { isLoggedIn } = useSanctum();
 </script>
   

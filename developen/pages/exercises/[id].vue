@@ -22,7 +22,7 @@
                 <p class="navigation-button-text" style="font-size: 4vh;">{{ beforeExercise.name }}</p>
                 <p class="navigation-button-symbol" style="font-size: 25vh;"><</p>
             </a>
-            <NuxtLink to="/exercises/all" class="navigation-button" style="width: 100%;">
+            <NuxtLink to="/exercises" class="navigation-button" style="width: 100%;">
                 <p class="navigation-button-text" style="font-size: 4vh;">Back to exercises </p>
                 <p class="navigation-button-symbol" style="font-size: 25vh;">⌂</p>
             </NuxtLink>

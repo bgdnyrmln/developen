@@ -48,6 +48,11 @@
 import { NuxtLink } from '#components';
 import { ref, computed, onMounted } from 'vue';
 import axios from 'axios';
+import { useRouter } from 'vue-router'
+
+
+const router = useRouter()
+
 
 interface Exercise {
   id: number;
