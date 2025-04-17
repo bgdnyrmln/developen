@@ -142,7 +142,8 @@ const displayedExercises = computed(() => {
   padding-top: 20vh;
   padding-left: 10vh; 
   padding-right: 10vh;
-  height: 90vh;
+  min-height: 50vh;
+  padding-bottom: 10vh;
 }
 
 .containerforexercise {
