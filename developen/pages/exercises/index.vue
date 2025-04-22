@@ -1,35 +1,65 @@
 <template>
-  <headerline/>
+  <headerline />
   <div class="exercises">
     <h1>Exercises for you!</h1>
 
-    <!-- Button to toggle sort direction -->
-     <div class = "filter-container">
-      <button @click="toggleSortDirection" class="sort-button">
-        Sort: {{ sortDirection === 'asc' ? 'Ascending' : 'Descending' }}
-      </button>
+    <!-- Sort and Search -->
+    <div class="filter-container">
+      <div style="display:flex; gap: 5px">
+        <button @click="toggleSortDirection" class="sort-button">
+          Sort: {{ sortDirection === 'asc' ? 'Ascending' : 'Descending' }}
+        </button>
+        <button @click="clearFilters" class="sort-button" style="background-color: #555555;">
+          Clear filters
+        </button>
+      </div>
+
       <form class="search-exercise" @submit="handleSearch">
         <input
           class="search-exercise-input"
           type="text"
           placeholder="Search exercise"
           v-model="query"
-        >
-        <button class="search-exercise-button" type="submit">
-          Search
-        </button>
+        />
+        <button class="search-exercise-button" type="submit">Search</button>
       </form>
 
     </div>
 
-    <NuxtLink v-for="exercise in displayedExercises" 
-      :key="exercise.id" 
-      class="containerforexercise" 
-      :to="{ name: 'exercises-id', params: { id: exercise.id } }">
+    <!-- Exercises list -->
+    <NuxtLink
+      v-for="exercise in displayedExercises"
+      :key="exercise.id"
+      class="containerforexercise"
+      :to="{ name: 'exercises-id', params: { id: exercise.id } }"
+    >
       <h1 class="exercise-id">{{ exercise.id }}</h1>
-      <h2>{{ exercise.name }}</h2>
+
+      <div class="exercise-content">
+        <h2 class="exercise-name">{{ exercise.name }}</h2>
+
+        <div class="exercise-categories">
+          <button
+            v-for="category in exercise.categories"
+            :key="category.id"
+            class="exercise-category"
+            :style="{
+              backgroundColor: category.color,
+              color: '#fff',
+              border: `1px solid ${category.color}`,
+              borderRadius: '50px',
+              padding: '5px 10px',
+              cursor: 'pointer'
+            }"
+            @click.stop.prevent="selectedCategory = selectedCategory === category.id ? null : category.id"
+          >
+            {{ category.name }}
+          </button>
+        </div>
+      </div>
     </NuxtLink>
 
+    <!-- Pagination -->
     <div v-if="filteredExercises.filter(ex => ex.id <= exercises_count).length > 5" class="pagination">
       <vue-awesome-paginate
         :total-items="filteredExercises.filter(ex => ex.id <= exercises_count).length"
@@ -39,24 +69,28 @@
         @click="onClickHandler"
       />
     </div>
-
   </div>
-  <footerline/>
+  <footerline />
 </template>
 
 <script setup lang="ts">
 import { NuxtLink } from '#components';
 import { ref, computed, onMounted } from 'vue';
 import axios from 'axios';
-import { useRouter } from 'vue-router'
+import { useRouter } from 'vue-router';
 
+const router = useRouter();
 
-const router = useRouter()
-
+interface Category {
+  id: number;
+  name: string;
+  color: string;
+}
 
 interface Exercise {
   id: number;
   name: string;
+  categories: Category[];
 }
 
 const exercises = ref<Exercise[]>([]);
@@ -70,6 +104,9 @@ const query = ref('');
 const loading = ref(false);
 const error = ref<string | null>(null);
 
+// Category filter
+const selectedCategory = ref<number | null>(null);
+
 definePageMeta({
   middleware: ["$auth"],
 });
@@ -78,6 +115,7 @@ onMounted(async () => {
   try {
     const userData = await useSanctumFetch('http://localhost:9000/api/user');
     exercises_count.value = userData.exercises_count;
+
     const data = await $fetch<Exercise[]>('http://localhost:9000/api/exercises');
     exercises.value = data;
     filteredExercises.value = data;
@@ -87,17 +125,15 @@ onMounted(async () => {
 });
 
 const onClickHandler = (page: number) => {
-  console.log(page);
+  currentPage.value = page;
 };
 
 const toggleSortDirection = () => {
   sortDirection.value = sortDirection.value === 'asc' ? 'desc' : 'asc';
 };
 
-// Fetch data from API based on search query
 const fetchData = async () => {
   if (!query.value.trim()) {
-    // Reset to full list if search is cleared
     filteredExercises.value = exercises.value;
     return;
   }
@@ -106,11 +142,11 @@ const fetchData = async () => {
   error.value = null;
 
   try {
-    const response = await axios.get('http://localhost:9000/api/exercises', {
+    const response = await axios.get<Exercise[]>('http://localhost:9000/api/exercises', {
       params: { name: query.value }
     });
     filteredExercises.value = response.data;
-    currentPage.value = 1; // Reset pagination
+    currentPage.value = 1;
   } catch (err) {
     error.value = 'Error fetching data';
     filteredExercises.value = [];
@@ -119,28 +155,44 @@ const fetchData = async () => {
   }
 };
 
+
+const clearFilters = () => {
+  selectedCategory.value = null;
+  query.value = '';
+  filteredExercises.value = exercises.value;
+  currentPage.value = 1;
+};
+
+
 const handleSearch = (e: Event) => {
   e.preventDefault();
   fetchData();
 };
 
-// Computed property for sorting + paginating
 const displayedExercises = computed(() => {
-  const filtered = filteredExercises.value.filter(ex => ex.id <= exercises_count.value);
-  const sorted = filtered.sort((a, b) => {
-    return sortDirection.value === 'asc' ? a.id - b.id : b.id - a.id;
-  });
+  let filtered = filteredExercises.value.filter(ex => ex.id <= exercises_count.value);
+
+  // Filter by selected category
+  if (selectedCategory.value !== null) {
+    filtered = filtered.filter(ex =>
+      ex.categories.some(cat => cat.id === selectedCategory.value)
+    );
+  }
+
+  const sorted = filtered.sort((a, b) =>
+    sortDirection.value === 'asc' ? a.id - b.id : b.id - a.id
+  );
+
   const start = (currentPage.value - 1) * 5;
   const end = start + 5;
   return sorted.slice(start, end);
 });
 </script>
 
-
 <style>
-.exercises{
+.exercises {
   padding-top: 20vh;
-  padding-left: 10vh; 
+  padding-left: 10vh;
   padding-right: 10vh;
   min-height: 50vh;
   padding-bottom: 10vh;
@@ -148,8 +200,8 @@ const displayedExercises = computed(() => {
 
 .containerforexercise {
   color: white;
-  height: 10vh;
-  width: 100%;
+  width: 96%;
+  min-height: 10vh;
   background-color: #222222;
   margin: auto;
   border-radius: 10px;
@@ -157,12 +209,13 @@ const displayedExercises = computed(() => {
   position: relative;
   align-items: center;
   justify-content: center;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
+  padding: 2% 2%;
   transition: all 0.3s ease;
   text-decoration: none;
 }
 
-.containerforexercise:hover{
+.containerforexercise:hover {
   background-color: #444444;
   cursor: pointer;
 }
@@ -171,7 +224,35 @@ const displayedExercises = computed(() => {
   position: absolute;
   left: 20px;
   font-weight: bold;
-  font-size: 10vh;
+  font-size: 6vh;
   color: #333333;
 }
+
+.exercise-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+}
+
+.exercise-name {
+  font-size: 2rem;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.exercise-categories {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  width: 100%;
+  gap: 8px;
+  transition: all 0.2s ease;
+}
+
+.exercise-category:hover {
+  filter: brightness(1.3);
+  transform: scale(1.05);
+}
+
 </style>

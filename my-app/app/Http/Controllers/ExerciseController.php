@@ -13,9 +13,16 @@ class ExerciseController extends Controller
     public function index(Request $request)
     {
         $query = $request->get('name');  // Get the 'name' query parameter
-        $exercises = Exercise::where('name', 'LIKE', "%$query%")->get();
+
+        $exercises = Exercise::with('categories') // Eager load categories
+            ->when($query, function ($q) use ($query) {
+                $q->where('name', 'LIKE', "%$query%");
+            })
+            ->get();
+
         return response()->json($exercises);
     }
+
 
     /**
      * Store a newly created resource in storage.
