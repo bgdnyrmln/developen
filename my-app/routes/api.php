@@ -10,7 +10,7 @@ Route::get('/user', function (Request $request) {
     return response()->json(
         [
             'id' => $request->user()->id,
-            'role' => $request->user()->role,
+            'role' => "asd",
             'first_name' => $request->user()->first_name,
             'last_name' => $request->user()->last_name,
             'email' => $request->user()->email,

@@ -28,10 +28,10 @@
               <img class="card-img" src="assets/card1.png" alt="">
             </div>
             <div class="card-title">
-              New <span>{{ randomCards[0].name }}.</span>
+              New <span>{{ 1 }}.</span>
             </div>
             <div class="card-desc">
-              {{ randomCards[0].description }} <br>
+              {{ 1 }} <br>
             </div>
           </div>
           <!-- Card 2 -->
@@ -40,10 +40,10 @@
               <img class="card-img" src="assets/card2.png" alt="">
             </div>
             <div class="card-title">
-              New <span>{{ randomCards[1].name }}.</span>
+              New <span>{{ 1 }}.</span>
             </div>
             <div class="card-desc">
-              {{ randomCards[1].description }} <br>
+              {{ 1 }} <br>
             </div>
           </div>
           <!-- Card 3 -->
@@ -52,10 +52,10 @@
               <img class="card-img" src="assets/card3.png" alt="">
             </div>
             <div class="card-title">
-              New <span>{{ randomCards[2].name }}.</span>
+              New <span>{{ 1 }}.</span>
             </div>
             <div class="card-desc">
-              {{ randomCards[2].description }} <br>
+              {{ 1 }} <br>
             </div>
           </div>
         </div>

@@ -21,7 +21,7 @@
             freak my eyes pls
         </div>
 
-        <div v-if="role === 'admin'">
+        <div v-if="role === 2">
             <a class = "button" href="/admin/panel">Admin panel</a>
         </div>
         <div class="dropdown" >

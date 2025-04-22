@@ -14,13 +14,13 @@
           <div class="form-group">
           <form @submit.prevent="submitForm">
 
-              <label class="register-text" for="email">Username:</label>
+              <label class="register-text" for="email">Email:</label>
               <input
                 class="register-input"
-                type="text"
+                type="email"
                 id="email"
                 v-model="form.email"
-                placeholder="Enter your username"
+                placeholder="Enter your email"
               />
   
               <label class="register-text" for="password">Password:</label>
@@ -50,6 +50,7 @@
 import axios from 'axios';
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
+import { onMounted } from 'vue';
 const router = useRouter();
 
 
@@ -58,10 +59,12 @@ definePageMeta({
   middleware: ["$guest"],
 });
 
-
-await axios.get("http://localhost:9000/sanctum/csrf-cookie", {
-  withCredentials: true
+onMounted( async () => {
+  await axios.get("http://localhost:9000/sanctum/csrf-cookie", {
+    withCredentials: true
+  });
 });
+
 
 
 const form = ref({
