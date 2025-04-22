@@ -6,11 +6,12 @@ use App\Http\Controllers\ExerciseController;
 use App\Http\Controllers\Usercontroller;
 use App\Http\Controllers\CardController;
 
+
 Route::get('/user', function (Request $request) {
     return response()->json(
         [
             'id' => $request->user()->id,
-            'role' => "asd",
+            'role' => $request->user()->role,
             'first_name' => $request->user()->first_name,
             'last_name' => $request->user()->last_name,
             'email' => $request->user()->email,
@@ -24,6 +25,8 @@ Route::get('/exercises/{exercise}', [ExerciseController::class, 'show']);
 Route::delete('/exercises/{exercise}', [ExerciseController::class, 'destroy']) -> middleware('auth:sanctum');
 Route::put('/exercises/{exercise}', [ExerciseController::class, 'update']) -> middleware('auth:sanctum');
 Route::post('/exercises', [ExerciseController::class, 'store']) -> middleware('auth:sanctum');
+Route::get('/exercises/categories/{exercise}', [ExerciseController::class, 'showExerciseCategories']);
+
 
 Route::get('/users', [Usercontroller::class, 'index']);
 Route::get('/users/{user}', [Usercontroller::class, 'show']);

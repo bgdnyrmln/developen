@@ -76,7 +76,7 @@ class Usercontroller extends Controller
             'first_name' => 'required|string|max:255',
             'last_name' => 'required|string|max:255',
             'email' => 'required|email|max:255',
-            'role' => 'required|string|in:user,admin',
+            'role' => 'required|in:1,2',
             'exercises_count' => 'nullable|integer|min:0',
         ]);
 
@@ -84,22 +84,4 @@ class Usercontroller extends Controller
 
         return response()->json(['message' => 'User updated successfully']);
     }
-
-    public function show_roles($id)
-    {
-        $user = User::find($id);
-
-        if (!$user) {
-            return response()->json(['message' => 'User not found'], 404);
-        }
-
-        $roles = $user->roles;
-
-        return response()->json($roles);
-    }
-
-
-
-
-
 }

@@ -64,4 +64,13 @@ class ExerciseController extends Controller
             return response()->json(['message' => 'Exercise not found'], 404);
         }
     }
+
+
+    public function showExerciseCategories($exerciseId)
+    {
+        $exercise = Exercise::find($exerciseId);
+        $categories = $exercise->categories;  // Get all categories related to this exercise
+        return response()->json($categories);  // Return categories as a JSON response
+    }
+
 }
