@@ -23,7 +23,7 @@ return new class extends Migration
         Schema::create('exercises', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('description');
+            $table->string('description', 10000);
             $table->string('answer');
             $table->timestamps();
         });
