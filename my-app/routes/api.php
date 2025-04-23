@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ExerciseController;
 use App\Http\Controllers\Usercontroller;
 use App\Http\Controllers\CardController;
+use App\Http\Controllers\CategoryController;
 
 
 Route::get('/user', function (Request $request) {
@@ -38,3 +39,9 @@ Route::put('/users/profile/{user}', [Usercontroller::class, 'update']) -> middle
 
 
 Route::get('/cards', [CardController::class, 'index']);
+
+Route::get('/categories', [CategoryController::class, 'index']);
+Route::get('/categories/{category}', [CategoryController::class, 'show']);
+Route::post('/categories', [CategoryController::class, 'store']) -> middleware('auth:sanctum');
+Route::put('/categories/{category}', [CategoryController::class, 'update']) -> middleware('auth:sanctum');
+Route::delete('/categories/{category}', [CategoryController::class, 'destroy']) -> middleware('auth:sanctum');

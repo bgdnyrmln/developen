@@ -6,6 +6,7 @@
         </a>
         <a href="/admin/users/all">Users</a>
         <a href="/admin/exercises/all">Exercises</a>
+        <a href="/admin/categories/all">Categories</a>
     </div> 
 </template>
 

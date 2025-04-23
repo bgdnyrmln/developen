@@ -39,13 +39,14 @@ class ExerciseController extends Controller
      */
     public function show(string $id)
     {
-        $exercise = Exercise::find($id);
+        $exercise = Exercise::with('categories')->find($id);
         if ($exercise) {
             return response()->json($exercise);
         } else {
             return response()->json(['message' => 'Exercise not found'], 404);
         }
     }
+
 
     /**
      * Update the specified resource in storage.
@@ -54,8 +55,15 @@ class ExerciseController extends Controller
     {
         $exercise = Exercise::findOrFail($id);
         $exercise->update($request->only(['id', 'name', 'description', 'answer']));
+
+        // Sync categories if provided
+        if ($request->has('categories')) {
+            $exercise->categories()->sync($request->input('categories'));
+        }
+
         return response()->json(['message' => 'Updated']);
     }
+
 
 
     /**

@@ -1,5 +1,7 @@
 <template>
-    <div class="container" style="margin-left: 34vh; padding-top: 15vh;">
+    <div class="container" style="margin-left: 34vh; padding-top: 10vh;">
+        <h1 style="justify-self: center;">Exercises</h1>
+
       <div class="filter-container" style="width: 80%; margin: auto; margin-bottom: 2vh;">
         <div>
           <button @click="toggleSortDirection" class="sort-button" style="margin-right: 10px;">

@@ -9,7 +9,7 @@ class Category extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name']; // allow mass-assignment if needed
+    protected $fillable = ['name', 'color']; // allow mass-assignment if needed
 
     public function exercises()
     {
