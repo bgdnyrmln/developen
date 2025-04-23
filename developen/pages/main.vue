@@ -28,10 +28,10 @@
               <img class="card-img" src="assets/card1.png" alt="">
             </div>
             <div class="card-title">
-              New <span>{{ 1 }}.</span>
+              New <span>{{ randomCards[0].name }}.</span>
             </div>
             <div class="card-desc">
-              {{ 1 }} <br>
+              {{ randomCards[0].description }} <br>
             </div>
           </div>
           <!-- Card 2 -->
@@ -40,10 +40,10 @@
               <img class="card-img" src="assets/card2.png" alt="">
             </div>
             <div class="card-title">
-              New <span>{{ 1 }}.</span>
+              New <span>{{ randomCards[1].name }}.</span>
             </div>
             <div class="card-desc">
-              {{ 1 }} <br>
+              {{ randomCards[1].description }} <br>
             </div>
           </div>
           <!-- Card 3 -->
@@ -52,10 +52,10 @@
               <img class="card-img" src="assets/card3.png" alt="">
             </div>
             <div class="card-title">
-              New <span>{{ 1 }}.</span>
+              New <span>{{ randomCards[2].name }}.</span>
             </div>
             <div class="card-desc">
-              {{ 1 }} <br>
+              {{ randomCards[2].description }} <br>
             </div>
           </div>
         </div>
@@ -68,6 +68,7 @@
   <script setup>
   import { ref } from 'vue';
   
+
   const data = await $fetch('http://localhost:9000/api/cards');
   
   // Extract all the IDs
