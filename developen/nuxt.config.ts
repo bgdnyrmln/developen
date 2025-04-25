@@ -1,6 +1,5 @@
 // nuxt.config.ts
 export default defineNuxtConfig({
-
   app: {
     head: {
       title: 'DevelOpen',
@@ -18,10 +17,39 @@ export default defineNuxtConfig({
   modules: ['nuxt-mapbox', 'nuxt-maplibre', 'nuxt-auth-utils', "@qirolab/nuxt-sanctum-authentication"],
 
   laravelSanctum: {
-    apiUrl: "http://localhost:9000",
+    apiUrl: "/",
     authMode: "cookie",  // Switch to token-based authentication
   },
   
+
+
+  nitro: {
+    routeRules: {
+      '/':{
+        cors: true,
+        proxy: 'http://localhost:9000/',
+      },
+      '/api/**': {
+        cors: true,
+        proxy: 'http://localhost:9000/api/**',
+      },
+      '/sanctum/**': {
+        cors: true,
+        proxy: 'http://localhost:9000/sanctum/**',
+      },
+
+      'auth/**': {
+        cors: true,
+        proxy: 'http://localhost:9000/auth/**',
+      },
+
+      '/logout': {
+      proxy: 'http://localhost:9000/auth/logout',
+    },
+
+    }  
+  },
+
 
 
   compatibilityDate: '2025-04-03',
