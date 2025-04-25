@@ -111,13 +111,12 @@ definePageMeta({
   middleware: ["$auth"],
 });
 
-
 onMounted(async () => {
   try {
-    const userData = await useSanctumFetch('/api/user');
+    const userData = await useSanctumFetch('http://localhost:9000/api/user');
     exercises_count.value = userData.exercises_count;
 
-    const data = await $fetch<Exercise[]>('/api/exercises');
+    const data = await $fetch<Exercise[]>('http://localhost:9000/api/exercises');
     exercises.value = data;
     filteredExercises.value = data;
   } catch (err) {
@@ -143,7 +142,7 @@ const fetchData = async () => {
   error.value = null;
 
   try {
-    const response = await axios.get<Exercise[]>('/api/exercises', {
+    const response = await axios.get<Exercise[]>('http://localhost:9000/api/exercises', {
       params: { name: query.value }
     });
     filteredExercises.value = response.data;

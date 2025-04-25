@@ -75,10 +75,10 @@
   // Fetch exercises
   onMounted(async () => {
     try {
-      await axios.get("/sanctum/csrf-cookie", {
+      await axios.get("http://localhost:9000/sanctum/csrf-cookie", {
         withCredentials: true,
       });
-      exercises.value = await $fetch("/api/exercises");
+      exercises.value = await $fetch("http://localhost:9000/api/exercises");
     } catch (error) {
       console.error("Error fetching exercises:", error);
     }
@@ -95,7 +95,7 @@
             ?.split("=")[1] ?? ""
         );
   
-        await axios.delete(`/api/exercises/${id}`, {
+        await axios.delete(`http://localhost:9000/api/exercises/${id}`, {
           withCredentials: true,
           headers: {
             "X-XSRF-TOKEN": token,

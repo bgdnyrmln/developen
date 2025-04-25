@@ -1,5 +1,5 @@
 export default defineNuxtRouteMiddleware(async (to, from) => {
-    const { role } = await useSanctumFetch('/api/user');
+    const { role } = await useSanctumFetch('http://localhost:9000/api/user');
 
     // You may need to replace this with your actual API or logic to get the user's role
     if (role !== 2) {

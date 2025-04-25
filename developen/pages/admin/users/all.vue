@@ -77,11 +77,11 @@
   // Fetch users
   onMounted(async () => {
     try {
-      await axios.get("/sanctum/csrf-cookie", {
+      await axios.get("http://localhost:9000/sanctum/csrf-cookie", {
         withCredentials: true,
       });
   
-      users.value = await $fetch("/api/users");
+      users.value = await $fetch("http://localhost:9000/api/users");
     } catch (error) {
       console.error("Error fetching users:", error);
     }
@@ -98,7 +98,7 @@
             ?.split("=")[1] ?? ""
         );
   
-        await axios.delete(`/api/users/${id}`, {
+        await axios.delete(`http://localhost:9000/api/users/${id}`, {
           withCredentials: true,
           headers: {
             "X-XSRF-TOKEN": token,

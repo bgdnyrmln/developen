@@ -71,10 +71,10 @@
   // Fetch categories
   onMounted(async () => {
     try {
-      await axios.get("/sanctum/csrf-cookie", {
+      await axios.get("http://localhost:9000/sanctum/csrf-cookie", {
         withCredentials: true,
       });
-      categories.value = await $fetch("/api/categories");
+      categories.value = await $fetch("http://localhost:9000/api/categories");
     } catch (error) {
       console.error("Error fetching categories:", error);
     }
@@ -91,7 +91,7 @@
             ?.split("=")[1] ?? ""
         );
   
-        await axios.delete(`/api/categories/${id}`, {
+        await axios.delete(`http://localhost:9000/api/categories/${id}`, {
           withCredentials: true,
           headers: {
             "X-XSRF-TOKEN": token,

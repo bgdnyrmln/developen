@@ -49,10 +49,10 @@
     onMounted(async () => {     
         try {
             // First, get CSRF cookie
-            await axios.get("/sanctum/csrf-cookie", {
+            await axios.get("http://localhost:9000/sanctum/csrf-cookie", {
                 withCredentials: true
             });
-            user.value = await $fetch(`/api/users/${id}`)
+            user.value = await $fetch(`http://localhost:9000/api/users/${id}`)
         } catch (error) {
             console.error('Error fetching users:', error);
         }
@@ -89,7 +89,7 @@
                     ?.split("=")[1] ?? ""
                 );
 
-                await axios.put(`/api/users/${id}`, payload, {
+                await axios.put(`http://localhost:9000/api/users/${id}`, payload, {
                     withCredentials: true,
                     headers: {
                     "X-XSRF-TOKEN": token,

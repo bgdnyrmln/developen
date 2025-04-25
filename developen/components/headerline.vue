@@ -79,7 +79,7 @@ const login = ref("/login")
 
 onMounted(async () => {
   try {
-    const { id: fetchedId, role: fetchedRole } = await useSanctumFetch('/api/user')
+    const { id: fetchedId, role: fetchedRole } = await useSanctumFetch('http://localhost:9000/api/user')
     id.value = fetchedId
     role.value = fetchedRole
   } catch (e) {

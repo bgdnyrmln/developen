@@ -27,7 +27,7 @@
       };
   
       // CSRF setup
-      await axios.get("/sanctum/csrf-cookie", {
+      await axios.get("http://localhost:9000/sanctum/csrf-cookie", {
         withCredentials: true,
       });
   
@@ -38,7 +38,7 @@
           ?.split("=")[1] ?? ""
       );
   
-      await axios.post("/api/categories", payload, {
+      await axios.post("http://localhost:9000/api/categories", payload, {
         withCredentials: true,
         headers: {
           "X-XSRF-TOKEN": token,

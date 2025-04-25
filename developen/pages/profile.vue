@@ -47,17 +47,17 @@ const id = ref(null);
 const role = ref(null);
 const user = ref([]);
 
-const { id: fetchedId, role: fetchedRole } = await useSanctumFetch('/api/user')
+const { id: fetchedId, role: fetchedRole } = await useSanctumFetch('http://localhost:9000/api/user')
 id.value = fetchedId
 role.value = fetchedRole
 
 onMounted(async () => {     
         try {
             // First, get CSRF cookie
-            await axios.get("/sanctum/csrf-cookie", {
+            await axios.get("http://localhost:9000/sanctum/csrf-cookie", {
                 withCredentials: true
             });
-            user.value = await $fetch(`/api/users/${id.value}`)
+            user.value = await $fetch(`http://localhost:9000/api/users/${id.value}`)
         } catch (error) {
             console.error('Error fetching users:', error);
         }
@@ -85,7 +85,7 @@ onMounted(async () => {
                     ?.split("=")[1] ?? ""
                 );
 
-                await axios.put(`/api/users/${id}`, payload, {
+                await axios.put(`http://localhost:9000/api/users/${id}`, payload, {
                     withCredentials: true,
                     headers: {
                     "X-XSRF-TOKEN": token,

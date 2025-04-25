@@ -79,19 +79,19 @@
   // Fetch exercise and categories data when the component is mounted
   onMounted(async () => {
     try {
-      await axios.get("/sanctum/csrf-cookie", {
+      await axios.get("http://localhost:9000/sanctum/csrf-cookie", {
         withCredentials: true
       });
   
       // Fetch exercise details
-      const exerciseRes = await axios.get(`/api/exercises/${id}`);
+      const exerciseRes = await axios.get(`http://localhost:9000/api/exercises/${id}`);
       exercise.value = exerciseRes.data;
   
       // Set selected categories based on current exercise
       selectedCategories.value = exerciseRes.data.categories?.map(c => c.id) || [];
   
       // Fetch all categories
-      const categoriesRes = await axios.get("/api/categories");
+      const categoriesRes = await axios.get("http://localhost:9000/api/categories");
       categories.value = categoriesRes.data;
   
     } catch (error) {
@@ -121,7 +121,7 @@
             ?.split("=")[1] ?? ""
         );
   
-        await axios.put(`/api/exercises/${id}`, payload, {
+        await axios.put(`http://localhost:9000/api/exercises/${id}`, payload, {
           withCredentials: true,
           headers: {
             "X-XSRF-TOKEN": token,
