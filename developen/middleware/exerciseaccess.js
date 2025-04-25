@@ -1,7 +1,7 @@
 export default defineNuxtRouteMiddleware(async (to, from) => {
     const routeid = Number(to.params.id);
   
-    const user = await useSanctumFetch('/api/user');
+    const user = await useSanctumFetch('http://localhost:9000/api/user');
   
     // In your previous code: typo: `exerices_count` => `exercises_count`
     if (user.exercises_count < routeid) {
