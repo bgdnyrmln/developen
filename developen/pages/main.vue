@@ -69,7 +69,7 @@
   import { ref } from 'vue';
   
 
-  const data = await $fetch('http://localhost:9000/api/cards');
+  const data = await $fetch('/api/cards');
   
   // Extract all the IDs
   const allIds = data.map(item => item.id);

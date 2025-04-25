@@ -12,7 +12,7 @@
 
 <script setup lang="ts">
 
-const { first_name } = await useSanctumFetch('http://localhost:9000/api/user');
+const { first_name } = await useSanctumFetch('/api/user');
 
 definePageMeta({
   middleware: ["$auth", "admin"]

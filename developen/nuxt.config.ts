@@ -18,10 +18,19 @@ export default defineNuxtConfig({
   modules: ['nuxt-mapbox', 'nuxt-maplibre', 'nuxt-auth-utils', "@qirolab/nuxt-sanctum-authentication"],
 
   laravelSanctum: {
-    apiUrl: "http://localhost:9000",
+    apiUrl: "/",
     authMode: "cookie",  // Switch to token-based authentication
   },
   
+
+  nitro: {
+    routeRules: {
+      '/api/**': {
+        cors: true,
+        proxy: 'http://localhost:9000/api/**',
+      },
+    }
+  },
 
 
   compatibilityDate: '2025-04-03',

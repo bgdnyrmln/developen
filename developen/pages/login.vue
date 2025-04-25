@@ -60,7 +60,7 @@ definePageMeta({
 });
 
 onMounted( async () => {
-  await axios.get("http://localhost:9000/sanctum/csrf-cookie", {
+  await axios.get("/sanctum/csrf-cookie", {
     withCredentials: true
   });
 });
@@ -86,7 +86,7 @@ const submitForm = async () => {
         ?.split("=")[1] ?? ""
     );
 
-    await axios.post("http://localhost:9000/login", form.value, {
+    await axios.post("/login", form.value, {
       withCredentials: true,
       headers: {
         "X-XSRF-TOKEN": token,
