@@ -174,4 +174,3 @@
     currentPage.value = page;
   };
   </script>
-  

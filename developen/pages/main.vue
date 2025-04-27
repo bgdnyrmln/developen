@@ -28,10 +28,10 @@
               <img class="card-img" src="assets/card1.png" alt="">
             </div>
             <div class="card-title">
-              New <span>{{ randomCards[0].name }}.</span>
+              New <span>{{ 1 }}.</span>
             </div>
             <div class="card-desc">
-              {{ randomCards[0].description }} <br>
+              {{ 1 }} <br>
             </div>
           </div>
           <!-- Card 2 -->
@@ -40,10 +40,10 @@
               <img class="card-img" src="assets/card2.png" alt="">
             </div>
             <div class="card-title">
-              New <span>{{ randomCards[1].name }}.</span>
+              New <span>{{ 1 }}.</span>
             </div>
             <div class="card-desc">
-              {{ randomCards[1].description }} <br>
+              {{ 1 }} <br>
             </div>
           </div>
           <!-- Card 3 -->
@@ -52,10 +52,10 @@
               <img class="card-img" src="assets/card3.png" alt="">
             </div>
             <div class="card-title">
-              New <span>{{ randomCards[2].name }}.</span>
+              New <span>{{ 1 }}.</span>
             </div>
             <div class="card-desc">
-              {{ randomCards[2].description }} <br>
+              {{ 1 }} <br>
             </div>
           </div>
         </div>
@@ -69,19 +69,19 @@
   import { ref } from 'vue';
   
 
-  const data = await $fetch('http://localhost:9000/api/cards');
+  // const data = await $fetch('http://localhost:9000/api/cards');
   
-  // Extract all the IDs
-  const allIds = data.map(item => item.id);
+  // // Extract all the IDs
+  // const allIds = data.map(item => item.id);
   
-  // Shuffle the IDs and pick the first 3
-  const shuffledIds = allIds.sort(() => 0.5 - Math.random());
-  const [randomId1, randomId2, randomId3] = shuffledIds.slice(0, 3);
+  // // Shuffle the IDs and pick the first 3
+  // const shuffledIds = allIds.sort(() => 0.5 - Math.random());
+  // const [randomId1, randomId2, randomId3] = shuffledIds.slice(0, 3);
   
-  // Find the corresponding cards
-  const randomCards = data.filter(item =>
-    item.id === randomId1 || item.id === randomId2 || item.id === randomId3
-  );
+  // // Find the corresponding cards
+  // const randomCards = data.filter(item =>
+  //   item.id === randomId1 || item.id === randomId2 || item.id === randomId3
+  // );
 
   
   
