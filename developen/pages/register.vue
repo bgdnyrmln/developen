@@ -79,12 +79,11 @@ definePageMeta({
   middleware: ["$guest"],
 });
 
-
-await $fetch('/sanctum/csrf-cookie', {
-  credentials: 'include',
+onMounted( async () => {
+  await axios.get("/sanctum/csrf-cookie", {
+    withCredentials: true
+  });
 });
-
-
 
 const router = useRouter();
 
