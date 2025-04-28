@@ -80,9 +80,10 @@ definePageMeta({
 });
 
 
-await axios.get("http://localhost:9000/sanctum/csrf-cookie", {
-  withCredentials: true,
+await $fetch('/sanctum/csrf-cookie', {
+  credentials: 'include',
 });
+
 
 
 const router = useRouter();

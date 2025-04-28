@@ -31,7 +31,7 @@ const createExercise = async (e) => {
     };
 
     // CSRF setup
-    await axios.get("http://localhost:9000/sanctum/csrf-cookie", {
+    await axios.get("/sanctum/csrf-cookie", {
       withCredentials: true,
     });
 
@@ -42,7 +42,7 @@ const createExercise = async (e) => {
         ?.split("=")[1] ?? ""
     );
 
-    await axios.post("http://localhost:9000/api/exercises", payload, {
+    await axios.post("/api/exercises", payload, {
       withCredentials: true,
       headers: {
         "X-XSRF-TOKEN": token,

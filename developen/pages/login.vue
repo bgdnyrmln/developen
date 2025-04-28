@@ -60,7 +60,7 @@ definePageMeta({
 });
 
 onMounted( async () => {
-  await axios.get("http://localhost:9000/sanctum/csrf-cookie", {
+  await axios.get("/sanctum/csrf-cookie", {
     withCredentials: true
   });
 });

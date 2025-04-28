@@ -28,10 +28,10 @@ const category = ref({});
 
 onMounted(async () => {
   try {
-    await axios.get("http://localhost:9000/sanctum/csrf-cookie", { withCredentials: true });
+    await axios.get("/sanctum/csrf-cookie", { withCredentials: true });
 
     // Fetch category details
-    const categoryRes = await axios.get(`http://localhost:9000/api/categories/${id}`);
+    const categoryRes = await axios.get(`/api/categories/${id}`);
     category.value = categoryRes.data;
   } catch (error) {
     console.error("Error fetching category:", error);
@@ -56,7 +56,7 @@ const editCategory = async (e, id) => {
         ?.split("=")[1] ?? ""
     );
 
-    await axios.put(`http://localhost:9000/api/categories/${id}`, payload, {
+    await axios.put(`/api/categories/${id}`, payload, {
       withCredentials: true,
       headers: {
         "X-XSRF-TOKEN": token,

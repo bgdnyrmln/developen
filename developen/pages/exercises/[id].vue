@@ -60,24 +60,24 @@ const user = ref([]);
 onMounted(async () => {
     try {
 
-        await axios.get("http://localhost:9000/sanctum/csrf-cookie", {
+        await axios.get("/sanctum/csrf-cookie", {
             withCredentials: true,
         });
-        exercise.value = await $fetch(`http://localhost:9000/api/exercises/${id}`);
-        user.value = await useSanctumFetch(`http://localhost:9000/api/user`);
+        exercise.value = await $fetch(`/api/exercises/${id}`);
+        user.value = await useSanctumFetch(`/api/user`);
 
     } catch (error) {
         console.error('Error fetching exercises:', error);
     }
 
     try {
-        beforeExercise.value = await $fetch(`http://localhost:9000/api/exercises/${id - 1}`);
+        beforeExercise.value = await $fetch(`/api/exercises/${id - 1}`);
     } catch (error) {
         console.error('Error fetching previous exercise:', error);
     }
 
     try {
-        nextExercise.value = await $fetch(`http://localhost:9000/api/exercises/${id + 1}`);
+        nextExercise.value = await $fetch(`/api/exercises/${id + 1}`);
     } catch (error) {
         console.error('Error fetching next exercise:', error);
     }
@@ -184,7 +184,7 @@ const checkAnswer = async (e) => {
                     ?.split("=")[1] ?? ""
                 );
 
-                await axios.put(`http://localhost:9000/api/users/${user.value.id}`, payload, {
+                await axios.put(`/api/users/${user.value.id}`, payload, {
                     withCredentials: true,
                     headers: {
                     "X-XSRF-TOKEN": token,
