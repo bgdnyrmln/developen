@@ -1,19 +1,24 @@
 <template>
+  <!-- Header component -->
   <headerline />
+
   <div class="exercises">
     <h1>Exercises for you!</h1>
 
-    <!-- Sort and Search -->
+    <!-- Sorting and filtering UI -->
     <div class="filter-container">
       <div style="display:flex; gap: 5px">
+        <!-- Toggle sorting order -->
         <button @click="toggleSortDirection" class="sort-button">
           Sort: {{ sortDirection === 'asc' ? 'Ascending' : 'Descending' }}
         </button>
+        <!-- Reset search and category filter -->
         <button @click="clearFilters" class="sort-button" style="background-color: #555555;">
           Clear filters
         </button>
       </div>
 
+      <!-- Search form -->
       <form class="search-exercise" @submit="handleSearch">
         <input
           class="search-exercise-input"
@@ -23,10 +28,9 @@
         />
         <button class="search-exercise-button" type="submit">Search</button>
       </form>
-
     </div>
 
-    <!-- Exercises list -->
+    <!-- List of exercises (filtered, sorted, paginated) -->
     <NuxtLink
       v-for="exercise in displayedExercises"
       :key="exercise.id"
@@ -38,6 +42,7 @@
       <div class="exercise-content">
         <h2 class="exercise-name">{{ exercise.name }}</h2>
 
+        <!-- Category buttons (filterable) -->
         <div class="exercise-categories">
           <button
             v-for="category in exercise.categories"
@@ -59,7 +64,7 @@
       </div>
     </NuxtLink>
 
-    <!-- Pagination -->
+    <!-- Pagination (only shown if more than 5 items) -->
     <div v-if="filteredExercises.filter(ex => ex.id <= exercises_count).length > 5" class="pagination">
       <vue-awesome-paginate
         :total-items="filteredExercises.filter(ex => ex.id <= exercises_count).length"
@@ -70,6 +75,8 @@
       />
     </div>
   </div>
+
+  <!-- Footer component -->
   <footerline />
 </template>
 
@@ -81,6 +88,7 @@ import { useRouter } from 'vue-router';
 
 const router = useRouter();
 
+// Data types
 interface Category {
   id: number;
   name: string;
@@ -93,24 +101,24 @@ interface Exercise {
   categories: Category[];
 }
 
+// Reactive state
 const exercises = ref<Exercise[]>([]);
 const filteredExercises = ref<Exercise[]>([]);
 const exercises_count = ref(1);
 const sortDirection = ref<'asc' | 'desc'>('asc');
 const currentPage = ref(1);
 
-// Search-related states
 const query = ref('');
 const loading = ref(false);
 const error = ref<string | null>(null);
-
-// Category filter
 const selectedCategory = ref<number | null>(null);
 
+// Middleware protection (authenticated users only)
 definePageMeta({
   middleware: ["$auth"],
 });
 
+// Load user data and exercise list
 onMounted(async () => {
   try {
     const userData = await useSanctumFetch('/api/user');
@@ -124,14 +132,17 @@ onMounted(async () => {
   }
 });
 
+// Pagination handler
 const onClickHandler = (page: number) => {
   currentPage.value = page;
 };
 
+// Toggle sorting direction
 const toggleSortDirection = () => {
   sortDirection.value = sortDirection.value === 'asc' ? 'desc' : 'asc';
 };
 
+// Search exercises by name
 const fetchData = async () => {
   if (!query.value.trim()) {
     filteredExercises.value = exercises.value;
@@ -155,7 +166,7 @@ const fetchData = async () => {
   }
 };
 
-
+// Reset all filters and search
 const clearFilters = () => {
   selectedCategory.value = null;
   query.value = '';
@@ -163,16 +174,16 @@ const clearFilters = () => {
   currentPage.value = 1;
 };
 
-
+// Handle search form submit
 const handleSearch = (e: Event) => {
   e.preventDefault();
   fetchData();
 };
 
+// Displayed list (filtered, sorted, paginated)
 const displayedExercises = computed(() => {
   let filtered = filteredExercises.value.filter(ex => ex.id <= exercises_count.value);
 
-  // Filter by selected category
   if (selectedCategory.value !== null) {
     filtered = filtered.filter(ex =>
       ex.categories.some(cat => cat.id === selectedCategory.value)
@@ -190,6 +201,7 @@ const displayedExercises = computed(() => {
 </script>
 
 <style>
+/* Layout and spacing */
 .exercises {
   padding-top: 20vh;
   padding-left: 10vh;
@@ -198,6 +210,7 @@ const displayedExercises = computed(() => {
   padding-bottom: 10vh;
 }
 
+/* Exercise card styling */
 .containerforexercise {
   color: white;
   width: 96%;
@@ -254,5 +267,4 @@ const displayedExercises = computed(() => {
   filter: brightness(1.3);
   transform: scale(1.05);
 }
-
 </style>

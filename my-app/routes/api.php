@@ -38,8 +38,6 @@ Route::put('/users/{user}', [Usercontroller::class, 'update']) -> middleware('au
 Route::put('/users/profile/{user}', [Usercontroller::class, 'update']) -> middleware('auth:sanctum');
 
 
-Route::get('/cards', [CardController::class, 'index']);
-
 Route::get('/categories', [CategoryController::class, 'index']);
 Route::get('/categories/{category}', [CategoryController::class, 'show']);
 Route::post('/categories', [CategoryController::class, 'store']) -> middleware('auth:sanctum');
