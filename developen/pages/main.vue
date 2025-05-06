@@ -33,10 +33,12 @@
             <img class="card-img" src="assets/card1.png" alt="">
           </div>
           <div class="card-title">
-            New <span>.</span>
+            New <span>perspectives.</span>
           </div>
           <div class="card-desc">
-             <br>
+            See the world through fresh eyes, <br>
+            embrace what’s different, <br>
+            and open your mind to endless opportunities. <br>
           </div>
         </div>
 
@@ -46,10 +48,12 @@
             <img class="card-img" src="assets/card2.png" alt="">
           </div>
           <div class="card-title">
-            New <span>.</span>
+            New <span> challenges.</span>
           </div>
-          <div class="card-desc">
-             <br>
+          <div class="card-desc">                    
+            Push past your comfort zone, <br>
+            face your fears, <br>
+            and grow stronger every day. <br>
           </div>
         </div>
 
@@ -59,10 +63,12 @@
             <img class="card-img" src="assets/card3.png" alt="">
           </div>
           <div class="card-title">
-            New <span>.</span>
+            New <span> connections.</span>
           </div>
           <div class="card-desc">
-             <br>
+            Meet new people, <br>
+            build meaningful relationships, <br>
+            and learn from diverse perspectives. <br>
           </div>
         </div>
       </div>
