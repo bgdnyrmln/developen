@@ -18,7 +18,7 @@
             </div>
         </div>
         <div class="changetheme" id='theme-toggle'>
-            freak my eyes pls
+            Ligt Mode
         </div>
 
         <div v-if="role === 2">
@@ -150,7 +150,7 @@ onMounted(() => {
     bodyElement.classList.add("light-theme")
     themeToggleButton.textContent = "Back to Dark Mode"
   } else {
-    themeToggleButton.textContent = "freak my eyes pls"
+    themeToggleButton.textContent = "Ligt Mode"
   }
 
   // Toggle and save to localStorage
@@ -160,7 +160,7 @@ onMounted(() => {
     localStorage.setItem("theme", isLight ? "light" : "dark")
     themeToggleButton.textContent = isLight
       ? "Back to Dark Mode"
-      : "freak my eyes pls"
+      : "Ligt Mode"
   })
 })
 
